@@ -12,7 +12,7 @@ class DesignersController < ApplicationController
 		@designer = Designer.create(designer_params) 
 		respond_to do |format|
 			if @designer.save
-				format.html { redirect_to "/", notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"}
+				format.html { redirect_to root_path, notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"}
 			else
 				@wholeCollections = Collection.all.order('id ASC')
 				@wholeDesigners = Designer.all.order('lastname ASC')
@@ -34,7 +34,7 @@ class DesignersController < ApplicationController
 			if @designer.update(designer_params)
 				format.html {redirect_to "/", notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha actualizado con éxito" }
 			else
-				format.html {render 'collections/index'}
+				format.html {render 'edit', alert:"something went wrong"}
 			end
 		end
 

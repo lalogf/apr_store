@@ -13,7 +13,7 @@ class CollectionsController < ApplicationController
 		@collection = Collection.create(collection_params)
 		respond_to do |format| 
 			if(@collection.save)
-				format.html {redirect_to "/", notice: "La colección " + @collection.name + " se ha creado con éxito"}
+				format.html {redirect_to root_path, notice: "La colección " + @collection.name + " se ha creado con éxito"}
 			else
 				@wholeCollections = Collection.all.order('id ASC')
 				@wholeDesigners = Designer.all.order('lastname ASC')
@@ -33,11 +33,9 @@ end
 def update
 	respond_to do |format|	
 		if @collection.update(collection_params)
-				format.html {redirect_to "/", notice: "La colección " + @collection.name + " se ha actualizado con éxito" }
+				format.html {redirect_to root_path, notice: "La colección " + @collection.name + " se ha actualizado con éxito" }
 		else
-			pre_requisites
-			format.html{render 'index', alert: "something went wrong"}
-
+			format.html{render 'edit', alert: "something went wrong"}
 		end
 	end
 end
