@@ -2,10 +2,8 @@ class CollectionsController < ApplicationController
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		@wholeCollections = Collection.all.order('id ASC')
+		pre_requisites
 		@collection = Collection.new
-		@wholeDesigners = Designer.all.order('lastname ASC')
-		@designer = Designer.new
 	end
 
 	def show
@@ -27,18 +25,30 @@ class CollectionsController < ApplicationController
 end
 
 def new
-
 end
 
 def edit
 end
 
 def update
-	@collection.update(collection_params)
-	redirect_to "/"
+	respond_to do |format|	
+		if @collection.update(collection_params)
+				format.html {redirect_to "/", notice: "La colección " + @collection.name + " se ha actualizado con éxito" }
+		else
+			pre_requisites
+			format.html{render 'index', alert: "something went wrong"}
+
+		end
+	end
 end
 
 def destroy
+end
+
+def pre_requisites
+	@wholeCollections = Collection.all.order('id ASC')
+	@wholeDesigners = Designer.all.order('lastname ASC')
+	@designer = Designer.new 
 end
 
 private

@@ -30,8 +30,14 @@ class DesignersController < ApplicationController
 	end
 
 	def update
-		@designer.update(designer_params)
-		redirect_to "/"
+		respond_to do |format|
+			if @designer.update(designer_params)
+				format.html {redirect_to "/", notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha actualizado con éxito" }
+			else
+				format.html {render 'collections/index'}
+			end
+		end
+
 	end
 
 	def destroy

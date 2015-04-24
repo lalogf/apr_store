@@ -15,12 +15,18 @@
 //= require turbolinks
 //= require_tree .
 var ready = function (){
-	if ($("form#new_collection .form-group").attr("class") == "form-group has-error"){
+	// if ($("form#new_collection .form-group").attr("class") == "form-group has-error has-feedback"){
+	// 	$("#crearColeccion").modal("show");
+	// }
+	if ((($("form#new_collection .has-error")).length > 0)) {
 		$("#crearColeccion").modal("show");
 	}
-	else if ($("form#new_designer .form-group").attr("class") == "form-group has-error"){
-		$("#crearDisenador").modal("show");
+	else if (($("form#new_designer .has-error").length) > 0) {
+			$("#crearDisenador").modal("show");
 	}
+	// else if ($(".editarColeccion .form-group").attr("class") == "form-group has-error"){
+	// 	alert("working");
+	// };
 };
 
 $(document).ready(ready)
