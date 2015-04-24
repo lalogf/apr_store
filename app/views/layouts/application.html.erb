@@ -53,6 +53,12 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
+		<% if notice %>
+		<p class="alert alert-info"><%= notice %></p>
+		<% end %>
+		<% if alert %>
+		<p class="alert alert-danger"><%= alert %></p>
+		<% end %>
 		<%= yield %>
 	</div>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

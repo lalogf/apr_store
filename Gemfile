@@ -27,7 +27,9 @@ gem 'hirb'
 
 gem 'bootstrap_form'
 
-gem 'hirb'
+gem 'better_errors'
+
+gem 'rb-readline'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
