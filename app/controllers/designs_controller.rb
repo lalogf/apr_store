@@ -1,8 +1,7 @@
 class DesignsController < ApplicationController
 	before_action :set_design, only: [:show, :edit, :update, :destroy]
 	before_action :set_designer , only: [:new, :create]
-	def index
-		@designs = Design.all
+	def show	
 	end
 	def new
 		@design = Design.new
@@ -15,7 +14,7 @@ class DesignsController < ApplicationController
 		@design = Design.create(design_params.merge(designer_id: (params[:designer_id])))
 		respond_to do |format|
 			if @design.save
-				format.html {redirect_to "/", notice: "El diseño se ha creado con éxito" }
+				format.html {redirect_to "/", notice: "El diseño " + @design.name + " se ha creado con éxito" }
 			end
 		end
 	end

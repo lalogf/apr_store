@@ -35,7 +35,7 @@
 					<td><%= f.name %></td>
 					<td> 123 </td>
 					<td> <%= f.designs.group(:designer_id).count(:designer_id).length %></td>
-					<td> <%= f.designs.count %></td>
+					<td> <%= f.designs.count  %></td>
 					<td> 234 </td>
 					<td> <%= link_to "Editar", edit_collection_path(f)  %> </td>
 				</tr>
@@ -73,7 +73,7 @@
 					<td><%= f.designs.count %> </td>
 					<td> 456 </td>
 					<td> 234 </td>
-					<td> <%= link_to "Editar", edit_designer_path(f) %><br><a href="">Agregar diseño</a><br><a href="">Pagar</a> 
+					<td> <%= link_to "Editar", edit_designer_path(f) %><br><%=link_to "Agregar diseño",  new_designer_design_path(f) %><br><a href="">Pagar</a> 
 					</td>
 				</tr>
 				<%end%>
@@ -81,6 +81,46 @@
 
 		</table>
 	</div>
+
+
+</div>
+<div class="row">
+
+	<h2>Nuestros diseños</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead >
+				<tr class="info">
+
+					<th> Nombre </th>
+					<th> Imagen </th>
+					<th> Diseñador </th>
+					<th> Colección </th>
+					<th> # Productos </th>
+					<th> Otros</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% @designs.each do |f|%>
+
+				<tr>
+
+					<td><%= f.name %></td>
+					<td><%=image_tag f.picture.url(:thumb) %></td>
+					<td><%= f.designer.name %> <%= f.designer.lastname %> </td>
+					<td><%= f.collection.name %></td>
+					<td> 234 </td>
+					<td><%=link_to "Ver", designer_design_path(f.designer_id,f)%></td>
+
+				</tr>
+				<%end%>
+			</tbody>
+
+		</table>
+	</div>
+
+	
 </div>
 
 <div class="modal fade" id="crearColeccion" >
@@ -93,7 +133,7 @@
 			<div class="modal-body">
 				<%= bootstrap_form_for (@collection) do |f| %>
 
-				<%= f.text_field :name, label:"Nombre", placeholder: "Elige el nombre de la colección", icon: "tag" %>
+				<%= f.text_field :name, label:"Nombre", placeholder: "Elige el nombre de la colección", icon: "tag", autofocus: true %>
 
 
 				
@@ -120,7 +160,7 @@
 
 				<div id="error_explanation"  style="display:none;"></div>
 
-				<%= f.text_field :name, label:"Nombre", placeholder: "Nombre" %>
+				<%= f.text_field :name, label:"Nombre", placeholder: "Nombre", autofocus: true %>
 				<%= f.text_field :lastname, label:"Apellido", placeholder: "Apellido" %>
 
 

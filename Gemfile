@@ -27,9 +27,10 @@ gem 'hirb'
 
 gem 'bootstrap_form'
 
-gem 'better_errors'
+gem 'better_errors', group: :development
 
-gem 'rb-readline'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+# gem 'rb-readline'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
