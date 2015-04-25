@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   root 'collections#index'
 
-  resources :collections, except: [:destroy] 
-  resources :designers, except: [:destroy] 
-  
+  resources :collections, except: [:destroy]
+  resources :designers, except: [:destroy] do
+    resources :designs, except: [:destroy]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

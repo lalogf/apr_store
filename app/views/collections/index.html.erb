@@ -3,7 +3,7 @@
 <div class="row">
 	
 	<div class="col-md-4">
-		
+
 		<a href="" data-toggle="modal" data-target="#crearColeccion" class="btn btn-warning">Crear nueva colección</a>
 
 		<a href="" data-toggle="modal" data-target="#crearDisenador" class="btn btn-primary">Crear nuevo Diseñador</a>
@@ -21,6 +21,7 @@
 					<th> Nombre </th>
 					<th> # Productos </th>
 					<th> # Diseñadores </th>
+					<th> # Diseños </th>
 					<th> # Ventas </th>
 					<th> Otros </th>
 				</tr>
@@ -33,7 +34,8 @@
 					<td><%=f.id %></td>
 					<td><%= f.name %></td>
 					<td> 123 </td>
-					<td> 456 </td>
+					<td> <%= f.designs.group(:designer_id).count(:designer_id).length %></td>
+					<td> <%= f.designs.count %></td>
 					<td> 234 </td>
 					<td> <%= link_to "Editar", edit_collection_path(f)  %> </td>
 				</tr>
@@ -68,7 +70,7 @@
 
 					<td><%= f.name %></td>
 					<td><%= f.lastname %></td>
-					<td> 123 </td>
+					<td><%= f.designs.count %> </td>
 					<td> 456 </td>
 					<td> 234 </td>
 					<td> <%= link_to "Editar", edit_designer_path(f) %><br><a href="">Agregar diseño</a><br><a href="">Pagar</a> 

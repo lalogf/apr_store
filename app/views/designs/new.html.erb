@@ -1,0 +1,19 @@
+<h2><%=@designer.name%> <%= @designer.lastname%> nuevo diseño</h2>
+<%= bootstrap_form_for [@designer, @design] do |f|%>
+<div class="row">
+<div class="col-md-7">
+	<%= f.text_field :name %>
+</div>
+<div class="col-md-7">
+	<%= f.file_field :picture%>
+</div>
+<div class="col-md-7">
+	<%= f.select :collection_id, @collections %>
+</div>
+
+<div class="col-md-6">
+<a href="/" class="btn btn-default">Cancelar</a>
+<%= f.submit "Guardar diseño" %>
+</div>
+</div>
+<%end%>
