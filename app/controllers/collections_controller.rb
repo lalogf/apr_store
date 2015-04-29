@@ -4,7 +4,7 @@ class CollectionsController < ApplicationController
 	def index
 		pre_requisites
 		@collection = Collection.new
-		@designs = Design.all
+
 	end
 
 	def show
@@ -14,49 +14,49 @@ class CollectionsController < ApplicationController
 		@collection = Collection.create(collection_params)
 		respond_to do |format| 
 			if(@collection.save)
-				format.html {redirect_to root_path, notice: "La colección " + @collection.name + " se ha creado con éxito"}
+				format.html {redirect_to root_path, success: "La colección " + @collection.name + " se ha creado con éxito"}
 			else
-				@wholeCollections = Collection.all.order('id ASC')
-				@wholeDesigners = Designer.all.order('lastname ASC')
-				@designer = Designer.new 
-				format.html {render 'index', alert: "No se pudo guardar la colección" }
+				pre_requisites
+				format.html {render 'index', error: "No se pudo guardar la colección" }
 
+			end
 		end
 	end
-end
 
-def new
-end
+	def new
+	end
 
-def edit
-end
+	def edit
+	end
 
-def update
-	respond_to do |format|	
-		if @collection.update(collection_params)
-				format.html {redirect_to root_path, notice: "La colección " + @collection.name + " se ha actualizado con éxito" }
-		else
-			format.html{render 'edit', alert: "something went wrong"}
+	def update
+		respond_to do |format|	
+			if @collection.update(collection_params)
+				flash[:success] = "La colección " + @collection.name + " se ha actualizado con éxito"
+				format.html {redirect_to root_path }
+			else
+				format.html{render 'edit', alert: "something went wrong"}
+			end
 		end
 	end
-end
 
-def destroy
-end
+	def destroy
+	end
 
-def pre_requisites
-	@wholeCollections = Collection.all.order('id ASC')
-	@wholeDesigners = Designer.all.order('lastname ASC')
-	@designer = Designer.new 
-end
+	def pre_requisites
+		@wholeCollections = Collection.all.order('id ASC')
+		@wholeDesigners = Designer.all.order('lastname ASC')
+		@designer = Designer.new 
+		@designs = Design.all
+	end
 
-private
+	private
 
-def set_collection
-	@collection = Collection.find(params[:id])
-end
-def collection_params
-	params.require(:collection).permit(:name)
-end
+	def set_collection
+		@collection = Collection.find(params[:id])
+	end
+	def collection_params
+		params.require(:collection).permit(:name)
+	end
 
 end

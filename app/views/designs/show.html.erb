@@ -1,4 +1,13 @@
 <h1><%= @design.name %></h1>
 <p><strong>Made by: </strong> <%=@design.designer.name %> <%=@design.designer.lastname %></p>
 <p><strong>Collection: </strong><%=@design.collection.name %></p>
+
 <%= image_tag @design.picture.url(:medium)%>
+<%= image_tag @design.picture.url(:medium), class: "sepia"%>
+<%= image_tag @design.picture.url(:medium), class: "contrast" %>
+<%= image_tag @design.picture.url(:medium), class: "grayscale" %>
+<%= image_tag @design.picture.url(:medium), class: "saturate" %>
+<%= image_tag @design.picture.url(:medium), class: "huerotate" %>
+<%= image_tag @design.picture.url(:medium), class: "invert" %>
+<%= image_tag @design.picture.url(:medium), class: "opacity" %>
+<%= image_tag @design.picture.url(:medium), class: "brightness" %>

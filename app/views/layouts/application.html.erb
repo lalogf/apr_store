@@ -53,12 +53,27 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		<% if notice %>
-		<p class="alert alert-info"><%= notice %></p>
+		<% if flash[:notice].present? %>
+		<div class="container text-center alert alert-warning">
+			<%= flash[:notice] %>
+		</div>
 		<% end %>
-		<% if alert %>
-		<p class="alert alert-danger"><%= alert %></p>
+
+		<% if flash[:alert].present? %>
+		<div class="container text-center alert alert-danger">
+			<%= flash[:alert] %>
+		</div>
 		<% end %>
+
+		<% if flash[:success].present? %>
+		<div class="container text-center alert alert-success">
+			<%= flash[:success] %>
+		</div>
+		<% end %>
+
+
+
+
 		<%= yield %>
 	</div>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

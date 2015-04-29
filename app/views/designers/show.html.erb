@@ -1,2 +1,16 @@
-<h2>Working</h2>
-<p><%= @designer.name %> <%=@designer.lastname%></p>
+<h2><%= @designer.name %> <%=@designer.lastname%></h2>
+<div class="row">
+<% @designer.designs.each do |des|%>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag des.picture.url(:thumbBox), class: "thumb" %>
+      <div class="caption">
+        <h3><%= link_to des.name, designer_design_path(des.designer, des) %></h3>
+        <p><%= link_to des.collection.name, collection_path(des.collection)%></p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+<%end%>
+</div>
+

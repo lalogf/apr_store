@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 var ready = function (){
 	// if ($("form#new_collection .form-group").attr("class") == "form-group has-error has-feedback"){
 	// 	$("#crearColeccion").modal("show");

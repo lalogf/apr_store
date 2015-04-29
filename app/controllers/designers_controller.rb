@@ -16,7 +16,8 @@ class DesignersController < ApplicationController
 			else
 				@wholeCollections = Collection.all.order('id ASC')
 				@wholeDesigners = Designer.all.order('lastname ASC')
-				@collection = Collection.new  
+				@collection = Collection.new
+				@designs = Design.all  
 				format.html{render 'collections/index'} 
 			end
 		end

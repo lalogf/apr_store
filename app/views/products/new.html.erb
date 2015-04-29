@@ -1,0 +1,28 @@
+
+
+<h1>Working</h1>
+<div class="row">
+	<div class="col-md-8">
+		<!-- <canvas id="c"></canvas> -->
+	</div>
+	<div class="col-md-4">
+		<%= bootstrap_form_for [@design, @product] do |f|%>
+		<%=f.text_field :title, :readonly => true, value: "Case " + @design.name + " "+ @phonetypes[0][0] %>
+		<%= f.text_field :price %>
+		<%= f.number_field :stock %>
+		<%= f.file_field :picture %>
+		<%= f.select :phonetype_id, @phonetypes %>
+		<%= image_tag @design.picture(:thumbBox), id: "0", class: 'designtocase'%>
+		<%= f.submit "Crear", class: "btn btn-success" %>
+		<%end%>
+	</div>
+
+
+</div>
+
+
+
+
+
+<!-- <input id="newcaseimage" name="newcaseimage" type="hidden" type="text"> -->
+	<!-- 			:phonetype_id, [["iPhone 6", "iPhone 6"], ["iPhone 5", "iPhone 5"], ["iPhone 4", "iPhone 4"],["Galaxy S5", "Galaxy S5"], ["Moto G", "Moto G"]], { label: "Choose your favorite device" }, {id: "myselect"} -->

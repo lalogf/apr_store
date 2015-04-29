@@ -17,3 +17,52 @@
  .row {
  	margin-top: 20px;
  }
+
+ .margin-10 {
+  margin-top: 10px;
+ }
+
+/* .thumb{
+  height:100%;
+  width:250px;
+ }*/
+
+.sepia {
+	filter: sepia(1);
+	-webkit-filter: sepia(1)
+};
+
+.contrast {
+  -webkit-filter: contrast(4);
+  filter: contrast(4);
+}
+
+.grayscale {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.saturate {
+  -webkit-filter: saturate(8);
+  filter: saturate(8);
+}
+
+.huerotate {
+  -webkit-filter: hue-rotate(90deg);
+  filter: hue-rotate(90deg);
+}
+
+.invert {
+  -webkit-filter: invert(.8);
+  filter: invert(.8);
+}
+
+.opacity {
+  -webkit-filter: opacity(.2);
+  filter: opacity(.2);
+}
+
+.brightness {
+  -webkit-filter: brightness(3);
+  filter: brightness(3);
+}

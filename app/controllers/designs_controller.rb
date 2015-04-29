@@ -4,17 +4,21 @@ class DesignsController < ApplicationController
 	def show	
 	end
 	def new
-		@design = Design.new
-		@collections = []
-		Collection.all.each do |el|
-			@collections << [el.name, el.id]
-		end
+		pre_requisites
+		# @design = Design.new
+		# @collections = []
+		# Collection.all.each do |el|
+		# 	@collections << [el.name, el.id]
+		# end
 	end
 	def create
 		@design = Design.create(design_params.merge(designer_id: (params[:designer_id])))
 		respond_to do |format|
 			if @design.save
 				format.html {redirect_to "/", notice: "El diseño " + @design.name + " se ha creado con éxito" }
+			else
+				pre_requisites
+				format.html {render :new, message: "El diseño no se pudo guardar"}
 			end
 		end
 	end
@@ -27,6 +31,14 @@ class DesignsController < ApplicationController
 	def destroy
 		
 	end
+	def pre_requisites
+		@design = Design.new
+		@collections = []
+		Collection.all.each do |el|
+			@collections << [el.name, el.id]
+		end
+	end
+
 	private
 	def design_params
 		params.require(:design).permit(:name,:picture,:collection_id)

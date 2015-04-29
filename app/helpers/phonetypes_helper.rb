@@ -1,0 +1,2 @@
+module PhonetypesHelper
+end

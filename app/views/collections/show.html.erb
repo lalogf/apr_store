@@ -1,0 +1,28 @@
+<h2><%=@collection.name%></h2>
+<div class="row">
+
+	<h2>Nuestras colecciones</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead >
+				<tr class="info">
+					<th> # Productos </th>
+					<th> # Diseñadores </th>
+					<th> # Diseños </th>
+					<th> # Ventas </th>
+					<th> Otros </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> 123 </td>
+					<td> <%= @collection.designs.group(:designer_id).count(:designer_id).length %></td>
+					<td> <%= @collection.designs.count  %></td>
+					<td> 234 </td>
+					<td> <%= link_to "Editar", edit_collection_path(@collection)  %> </td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</div>
