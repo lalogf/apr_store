@@ -7,19 +7,22 @@ var cod;
 
 
 
+
 var ready = function(){
   createCanvas();
-  $('#myselect').change(function(){
-    if($('#myselect').val() == "iPhone 5"){
+  $('#product_phonetype_id').change(function(){
+    if(($(this).val()) == 2 || ($(this).val()) == 3){
       canvas.setOverlayImage('/assets/i5.png', canvas.renderAll.bind(canvas))
-    } else if ($('#myselect').val() == "Galaxy S5") {
-      canvas.setOverlayImage('/assets/s52.png', canvas.renderAll.bind(canvas))
-    } else if ($('#myselect').val() == "Moto G"){
+    } else if (($(this).val()) == 9) {
+      canvas.setOverlayImage('/assets/s5t.png', canvas.renderAll.bind(canvas))
+    } else if (($(this).val()) == 10) {
       canvas.setOverlayImage('/assets/motog.png', canvas.renderAll.bind(canvas))
-    } else if ($('#myselect').val()==  "iPhone 4"){
-      canvas.setOverlayImage('/assets/i4.png', canvas.renderAll.bind(canvas))
-    } else {
+    } else if (($(this).val()) == 5 || ($(this).val()) == 6){
       canvas.setOverlayImage('/assets/i6.png', canvas.renderAll.bind(canvas))
+    } else if  (($(this).val()) == 7 || ($(this).val()) == 8) {
+      canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas))
+    } else {
+      canvas.setOverlayImage('/assets/i5.png')
     }
   });
   
@@ -48,18 +51,22 @@ var createCanvas = function (){
   canvas = new fabric.Canvas('c');
   canvas.setHeight(600);
   canvas.setWidth(400);
-  canvas.setOverlayImage('/assets/i6.png', canvas.renderAll.bind(canvas));
+  canvas.setOverlayImage('/assets/i4.png', canvas.renderAll.bind(canvas));
 }; 
 
 var createImage = function(cod){
   imgElement = $('.designtocase')[cod];
   imgInstance = new fabric.Image(imgElement, {
-    height: 600,
-    width: 400,
+    // height: 600,
+    // width: 400,
+    // scaleY:300/imgElement.width,
+    // scaleX:200/imgElement.width,
     left: 0,
     top: 0,
-  });
+  },{ crossOrigin: 'anonymous' } );
 };
+
+// fabric.Image.fromURL(imgData, callbackFunc , { crossOrigin: 'anonymous' });
 
 // var borders = function (i){
 //         canvas.item(i).set({
@@ -70,50 +77,6 @@ var createImage = function(cod){
 //       });
 // }
 
-// $(document).ready(function(){
-//   createCanvas();
-//   $('#my-select').change(function(){
-//     if($('#my-select').val() == "iPhone 5"){
-//       canvas.setOverlayImage('https://s3.amazonaws.com/spacioc/i5.png', canvas.renderAll.bind(canvas))
-//     } else if ($('#my-select').val() == "Galaxy S5") {
-//       canvas.setOverlayImage('https://s3.amazonaws.com/spacioc/s52.png', canvas.renderAll.bind(canvas))
-//     } else if ($('#my-select').val() == "Moto G"){
-//       canvas.setOverlayImage('https://s3.amazonaws.com/spacioc/motog.png', canvas.renderAll.bind(canvas))
-//     } else {
-//       canvas.setOverlayImage('https://s3.amazonaws.com/spacioc/i6.png', canvas.renderAll.bind(canvas))
-//     }
-//   });
-  
-//   $(".designtocase").click(function(){
-//     cod = (parseInt(this.id));
-//     createImage(cod);
-//     event.preventDefault();
-//     canvas.add(imgInstance);
-//     canvas.controlsAboveOverlay = true;
-//     canvas.item(0).set({
-//       borderColor: 'black',
-//       cornerColor: 'black',
-//       cornerSize: 20,
-//       transparentCorners: false
-//     });
-//     canvas.setActiveObject(canvas.item(0));
-//     canvas.deactivateAll().renderAll();
-//     $('#newcaseimage').val(canvas.toDataURL('image/png'));
-//   });
-// });
-
-
-
-
-
-// var createCanvas = function (){
-//   canvas = new fabric.Canvas('c');
-//   canvas.setHeight(600);
-
-//   canvas.setWidth(400);
-//   canvas.setOverlayImage('https://s3.amazonaws.com/spacioc/i6.png', canvas.renderAll.bind(canvas));
-
-// }; 
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

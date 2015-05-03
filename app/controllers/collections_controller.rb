@@ -4,6 +4,7 @@ class CollectionsController < ApplicationController
 	def index
 		pre_requisites
 		@collection = Collection.new
+		@products = Product.all
 
 	end
 

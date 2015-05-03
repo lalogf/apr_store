@@ -1,6 +1,7 @@
 var ready = function (){
 	var case_type;
 	var design_title = $("#product_title").val();
+	$("#product_title").val("Case "+ design_title + " iPhone 4 Tough" );
 	$("#product_phonetype_id").change(function(){
 		case_type = ($("#product_phonetype_id option:selected").text());
 		$("#product_title").val("Case "+ design_title +" " +case_type);

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :designs, except:[:new,:create,:show,:edit,:update,:destroy,:index] do
-    resources :products
+    resources :products, only:[:new, :create, :edit, :update]
   end
+
+  resources :products, only:[:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

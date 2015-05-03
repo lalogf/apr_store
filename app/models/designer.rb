@@ -1,5 +1,6 @@
 class Designer < ActiveRecord::Base
 	has_many :designs
+	has_many :products, through: :designs
 	
 	validates :name,
 	presence: { message: "Este campo no puede estar vacío"},
