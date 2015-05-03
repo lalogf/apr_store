@@ -102,6 +102,7 @@
 					<th> Diseñador </th>
 					<th> Colección </th>
 					<th> # Productos </th>
+					<th> # Modelos</th>
 					<th> Otros</th>
 				</tr>
 			</thead>
@@ -116,6 +117,19 @@
 					<td><%= f.designer.name %> <%= f.designer.lastname %> </td>
 					<td><%= f.collection.name %></td>
 					<td><%= f.products.count %></td>
+					<td>
+						<strong>iPhone 4  - </strong><%= f.phonetypes.where("phonetype_id=1").count %>
+						<br>
+						<strong>iPhone 5  - </strong><%= f.phonetypes.where("phonetype_id=2 OR phonetype_id=3 OR phonetype_id=4").count %>
+						<br>
+						<strong>iPhone 6  - </strong><%= f.phonetypes.where("phonetype_id=5 OR phonetype_id=6 OR phonetype_id=7").count %>
+						<br>
+						<strong>iPhone 6 Plus  - </strong><%= f.phonetypes.where("phonetype_id=8").count %>
+						<br>
+						<strong>Galaxy S5  - </strong><%= f.phonetypes.where("phonetype_id=9").count %>
+						<br>
+						<strong>Moto G  - </strong><%= f.phonetypes.where("phonetype_id=10").count %>
+					</td>
 					<td><%=link_to "Ver", designer_design_path(f.designer_id,f)%><br><%=link_to "Crear producto", new_design_product_path(f.id)%></td>
 
 				</tr>

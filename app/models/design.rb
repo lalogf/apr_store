@@ -1,7 +1,8 @@
 class Design < ActiveRecord::Base
 	belongs_to :designer
 	belongs_to :collection
-	has_many :products	
+	has_many :products
+	has_many :phonetypes, through: :products	
 
 
 	has_attached_file :picture, 

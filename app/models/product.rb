@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 	belongs_to :design
+	belongs_to :phonetype
 
 	has_attached_file :picture, 
 	:styles => { 
