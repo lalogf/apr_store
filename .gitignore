@@ -15,5 +15,6 @@
 .DS_Store
 
 /public/system/designs/pictures
+/public/system/products/pictures
 
 /app/assets/cases

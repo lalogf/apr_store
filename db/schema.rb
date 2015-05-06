@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503000158) do
+ActiveRecord::Schema.define(version: 20150506170152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "caption"
+    t.string   "type_of_banner"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "collections", force: :cascade do |t|
     t.string   "name"
@@ -50,13 +61,13 @@ ActiveRecord::Schema.define(version: 20150503000158) do
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
-    t.decimal  "price",                precision: 4, scale: 2
+    t.decimal  "price"
     t.string   "upc"
-    t.decimal  "stock",                precision: 4
+    t.decimal  "stock"
     t.integer  "design_id"
     t.integer  "phonetype_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"

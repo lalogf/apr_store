@@ -1,4 +1,4 @@
-class DesignersController < ApplicationController
+class Admin::DesignersController < ApplicationController
 
 	before_action :set_designer, only: [:show, :edit, :update, :destroy]
 	
@@ -18,7 +18,7 @@ class DesignersController < ApplicationController
 				@wholeDesigners = Designer.all.order('lastname ASC')
 				@collection = Collection.new
 				@designs = Design.all  
-				format.html{render 'collections/index'} 
+				format.html{render 'admin/collections/index'} 
 			end
 		end
 	end

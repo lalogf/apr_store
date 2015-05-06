@@ -1,4 +1,4 @@
-class DesignsController < ApplicationController
+class Admin::DesignsController < ApplicationController
 	before_action :set_design, only: [:show, :edit, :update, :destroy]
 	before_action :set_designer , only: [:new, :create]
 	def show	

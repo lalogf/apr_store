@@ -1,18 +1,32 @@
 Rails.application.routes.draw do
 
 
-  root 'collections#index'
 
+root 'front_store#index'
+
+namespace :admin do
+  get "/" => "collections#index"
   resources :collections, except: [:destroy]
   resources :designers, except: [:destroy] do
     resources :designs, except: [:destroy]
   end
+  resources :banners
+end
 
+namespace :admin do
   resources :designs, except:[:new,:create,:show,:edit,:update,:destroy,:index] do
     resources :products, only:[:new, :create, :edit, :update]
   end
-
   resources :products, only:[:show]
+end
+
+
+
+  get 'iphone6' => 'front_store#iphone6'
+  get 'iphone5' => 'front_store#iphone5'
+  get 'motog' => 'front_store#motog'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,4 +1,4 @@
-class CollectionsController < ApplicationController
+class Admin::CollectionsController < ApplicationController
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	
 	def index
@@ -15,7 +15,7 @@ class CollectionsController < ApplicationController
 		@collection = Collection.create(collection_params)
 		respond_to do |format| 
 			if(@collection.save)
-				format.html {redirect_to root_path, success: "La colección " + @collection.name + " se ha creado con éxito"}
+				format.html {redirect_to admin_collections_path, success: "La colección " + @collection.name + " se ha creado con éxito"}
 			else
 				pre_requisites
 				format.html {render 'index', error: "No se pudo guardar la colección" }

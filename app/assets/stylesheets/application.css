@@ -26,6 +26,10 @@
   border: dotted black 2px;
  }
 
+span.glyphicon {
+    font-size: 5em;
+}
+
 /* .thumb{
   height:100%;
   width:250px;

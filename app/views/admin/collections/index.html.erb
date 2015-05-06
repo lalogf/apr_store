@@ -1,9 +1,39 @@
-
-
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span><h2 class="pull-right">Designs</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span><h2 class="pull-right">Designers</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><h2 class="pull-right">Sales</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+</div>
 <div class="row">
 	
 	<div class="col-md-6">
-	<div class="col-md-4 margin-10">
+		<div class="col-md-4 margin-10">
 			<a href="" data-toggle="modal" data-target="#crearColeccion" class="btn btn-warning">Crear nueva colección</a>
 		</div>
 		<div class="col-md-4 margin-10">
@@ -42,7 +72,7 @@
 					<td> <%= f.designs.group(:designer_id).count(:designer_id).length %></td>
 					<td> <%= f.designs.count  %></td>
 					<td> 234 </td>
-					<td> <%= link_to "Ver detalle", collection_path(f)  %><br><%= link_to "Editar", edit_collection_path(f)  %> </td>
+					<td> <%= link_to "Ver detalle", admin_collection_path(f)  %><br><%= link_to "Editar", edit_admin_collection_path(f)  %> </td>
 				</tr>
 				<%end%>
 			</tbody>
@@ -78,7 +108,7 @@
 					<td><%= f.designs.count %> </td>
 					<td><%= f.products.count %></td>
 					<td> 234 </td>
-					<td> <%=link_to "Ver detalle", designer_path(f) %><br><%= link_to "Editar", edit_designer_path(f) %><br><%=link_to "Agregar diseño",  new_designer_design_path(f) %><br><a href="">Pagar</a> 
+					<td> <%=link_to "Ver detalle", admin_designer_path(f) %><br><%= link_to "Editar", edit_admin_designer_path(f) %><br><%=link_to "Agregar diseño",  new_admin_designer_design_path(f) %><br><a href="">Pagar</a> 
 					</td>
 				</tr>
 				<%end%>
@@ -130,7 +160,7 @@
 						<br>
 						<strong>Moto G  - </strong><%= f.phonetypes.where("phonetype_id=10").count %>
 					</td>
-					<td><%=link_to "Ver", designer_design_path(f.designer_id,f)%><br><%=link_to "Crear producto", new_design_product_path(f.id)%></td>
+					<td><%=link_to "Ver", admin_designer_design_path(f.designer_id,f)%><br><%=link_to "Crear producto", new_admin_design_product_path(f.id)%></td>
 
 				</tr>
 				<%end%>
@@ -150,7 +180,7 @@
 				<h4 class="modal-title">Crear nueva colección</h4>
 			</div>
 			<div class="modal-body">
-				<%= bootstrap_form_for (@collection) do |f| %>
+				<%= bootstrap_form_for [:admin, @collection] do |f| %>
 
 				<%= f.text_field :name, label:"Nombre", placeholder: "Elige el nombre de la colección", icon: "tag", autofocus: true %>
 
@@ -175,7 +205,7 @@
 				<h4 class="modal-title">Crear nuevo Diseñador</h4>
 			</div>
 			<div class="modal-body">
-				<%= bootstrap_form_for @designer , validate: true do |f| %>
+				<%= bootstrap_form_for [:admin, @designer] , validate: true do |f| %>
 
 				<div id="error_explanation"  style="display:none;"></div>
 
