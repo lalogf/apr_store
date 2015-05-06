@@ -12,12 +12,10 @@ class Admin::DesignersController < ApplicationController
 		@designer = Designer.create(designer_params) 
 		respond_to do |format|
 			if @designer.save
-				format.html { redirect_to root_path, notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"}
+				format.html { redirect_to admin_collections_path, notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"}
 			else
-				@wholeCollections = Collection.all.order('id ASC')
-				@wholeDesigners = Designer.all.order('lastname ASC')
-				@collection = Collection.new
-				@designs = Design.all  
+				pre_requisite
+				flash[:error] = "No se pudo guardar Diseñador"
 				format.html{render 'admin/collections/index'} 
 			end
 		end
@@ -45,6 +43,12 @@ class Admin::DesignersController < ApplicationController
 	end
 
 	private
+	def pre_requisite
+		@wholeCollections = Collection.all.order('id ASC')
+		@wholeDesigners = Designer.all.order('lastname ASC')
+		@collection = Collection.new
+		@designs = Design.all  
+	end
 
 	def set_designer
 		@designer = Designer.find(params[:id])

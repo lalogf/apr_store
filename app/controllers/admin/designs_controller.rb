@@ -31,6 +31,9 @@ class Admin::DesignsController < ApplicationController
 	def destroy
 		
 	end
+
+
+	private
 	def pre_requisites
 		@design = Design.new
 		@collections = []
@@ -38,8 +41,6 @@ class Admin::DesignsController < ApplicationController
 			@collections << [el.name, el.id]
 		end
 	end
-
-	private
 	def design_params
 		params.require(:design).permit(:name,:picture,:collection_id)
 	end

@@ -1,5 +1,5 @@
 <h2><%=@designer.name%> <%= @designer.lastname%> nuevo diseño</h2>
-<%= bootstrap_form_for [@designer, @design] do |f|%>
+<%= bootstrap_form_for [:admin, @designer, @design] do |f|%>
 <div class="row">
 <div class="col-md-7">
 	<%= f.text_field :name %>

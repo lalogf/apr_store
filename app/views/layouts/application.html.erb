@@ -69,6 +69,11 @@
 		<div class="container text-center alert alert-success">
 			<%= flash[:success] %>
 		</div>
+		<%end%>
+		<% if flash[:error].present? %>
+		<div class="container text-center alert alert-danger">
+			<%= flash[:error] %>
+		</div>
 		<% end %>
 
 

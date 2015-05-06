@@ -1,1 +1,13 @@
-<h1>Working</h1>
+<h1>Crear nuevo banner </h1>
+
+
+<div class="col-md-6">
+	<%= bootstrap_form_for [:admin, @banner] do |f|%>
+		<%= f.text_field :caption %>
+		<%= f.select :type_of_banner, [["Portada","Portada"],["Promoción","Promoción"]] %>
+		<%= f.file_field :image%>
+		<%= f.submit "Crear", class: "btn btn-success" %>
+	<%end%>
+</div>
+
+

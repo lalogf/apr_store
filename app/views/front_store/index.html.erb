@@ -5,12 +5,17 @@
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 			</ol>
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
+			<% @banners.each do |banner| %>
+				<div class="item">
+					<%= image_tag banner.image.url(:original) %>
+				</div>
+			<%end%>
+
+<!-- 				<div class="item active">
 					<img src="http://gatetoescape.com/wp-content/uploads/2014/09/Stones-1440x490.jpg" alt="...">
 					<div class="carousel-caption">
 						Lalo
@@ -35,7 +40,7 @@
 						La 4
 					</div>
 				</div>
-
+-->
 			</div>
 
 

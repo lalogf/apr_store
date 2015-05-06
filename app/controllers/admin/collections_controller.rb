@@ -18,7 +18,8 @@ class Admin::CollectionsController < ApplicationController
 				format.html {redirect_to admin_collections_path, success: "La colección " + @collection.name + " se ha creado con éxito"}
 			else
 				pre_requisites
-				format.html {render 'index', error: "No se pudo guardar la colección" }
+				flash[:error] = "No se pudo guardar la colección" 
+				format.html {render 'index'}
 
 			end
 		end

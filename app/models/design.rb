@@ -21,6 +21,6 @@ class Design < ActiveRecord::Base
 private
 	def rename_picture
 	    extension = File.extname(picture_file_name).downcase
-	    self.picture.instance_write :file_name, "#{name}.png"
+	    self.picture.instance_write :file_name, "#{name.split(" ").join("_")}.png"
   	end
 end
