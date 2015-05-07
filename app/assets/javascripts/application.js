@@ -25,8 +25,8 @@ var ready = function (){
 	else if (($("form#new_designer .has-error").length) > 0) {
 			$("#crearDisenador").modal("show");
 	}
-	var banners = $(".item");
-	$(banners[0]).addClass("active");
+	// var banners = $(".item");
+	// $(banners[0]).addClass("active");
 	// else if ($(".editarColeccion .form-group").attr("class") == "form-group has-error"){
 	// 	alert("working");
 	// };

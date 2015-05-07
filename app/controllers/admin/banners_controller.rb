@@ -34,7 +34,7 @@ class Admin::BannersController < ApplicationController
 
 	private
 	def banner_params
-		params.require(:banner).permit(:caption,:type_of_banner,:image)
+		params.require(:banner).permit(:caption,:type_of_banner,:image,:active)
 		
 	end
 
