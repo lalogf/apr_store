@@ -1,10 +1,13 @@
 class Admin::CollectionsController < ApplicationController
+	layout "admin"
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	
 	def index
+
 		pre_requisites
 		@collection = Collection.new
 		@products = Product.all
+
 
 	end
 

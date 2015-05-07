@@ -1,5 +1,5 @@
 class Admin::DesignersController < ApplicationController
-
+	layout "admin"
 	before_action :set_designer, only: [:show, :edit, :update, :destroy]
 	
 	def index

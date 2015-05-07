@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+	layout "admin"
 	before_action :set_product, only: [:show, :edit, :update, :destroy]
 	before_action :set_design , only: [:new, :create]
 
@@ -29,7 +30,7 @@ class Admin::ProductsController < ApplicationController
 		
 		respond_to do |format|
 			if @product.save
-				format.html {redirect_to "/", notice: "El producto " + @product.title +  " fue creado con éxito"}
+				format.html {redirect_to admin_collections_path, notice: "El producto " + @product.title +  " fue creado con éxito"}
 			else
 				pre_requisites
 				format.html {render :new, error: "El producto no se guardó"}

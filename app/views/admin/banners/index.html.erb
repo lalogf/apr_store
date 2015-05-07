@@ -1,1 +1,44 @@
-<h2>All the banners</h2>
+<div class="row">
+
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<h2>Banners actuales</h2>
+		</div>
+		<div class="col-md-3 ">
+			<a href="/admin/banners/new" class="btn btn-danger">Crear nuevo banner</a>
+		</div>
+	</div>
+
+	<div class="col-md-12 margin-10">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead >
+					<tr class="info">
+						<th> ID </th>
+						<th> Banner </th>
+						<th> Caption </th>
+						<th> Active </th>
+						<th> Principal </th>
+						<th> Otros </th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<% @banners.each do |banner| %>
+
+					<tr>
+						<td><%= banner.id %></td>
+						<td><%= image_tag banner.image.url(:thumb) %></td>
+						<td><%= banner.caption %></td>
+						<td> <%= banner.active %></td>
+						<td> <%= banner.principal%></td>
+
+						<td><%= link_to "Editar", edit_admin_banner_path(banner.id) %></td>
+					</tr>
+					<%end%>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+</div>

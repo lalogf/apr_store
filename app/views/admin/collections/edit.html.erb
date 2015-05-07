@@ -1,5 +1,5 @@
 <h1>Editar colección</h1>
-<%= bootstrap_form_for @collection, method: "put" do |el| %>
+<%= bootstrap_form_for [:admin, @collection], method: "put" do |el| %>
 <div>
 
 	<%= el.text_field :name, label:"Nombre de la colección", placeholder: "Nombre de la colección" %>

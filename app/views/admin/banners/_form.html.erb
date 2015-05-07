@@ -1,0 +1,12 @@
+
+<div class="col-md-6">
+	<%= bootstrap_form_for [:admin, @banner] do |f|%>
+		<%= f.text_field :caption %>
+		<%= f.select :type_of_banner, [["Portada","Portada"],["Promoción","Promoción"]] %>
+		<%= f.file_field :image%>
+		<%= f.check_box :active%>
+		<%= f.check_box :principal%>
+		<%= link_to 'Cancelar', admin_banners_path, class: "btn btn-default" %> <%= f.submit "Crear", class: "btn btn-success" %>
+	<%end%>
+
+</div>

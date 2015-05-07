@@ -1,5 +1,5 @@
 <h1>Editar diseñador</h1>
-<%= bootstrap_form_for @designer, method: "put" do |el| %>
+<%= bootstrap_form_for [:admin,@designer], method: "put" do |el| %>
 <div>
 
 	<%= el.text_field :name, label:"Nombre" %>
