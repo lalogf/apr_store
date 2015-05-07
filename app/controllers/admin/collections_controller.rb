@@ -1,5 +1,6 @@
 class Admin::CollectionsController < ApplicationController
 	layout "admin"
+	before_action :authenticate_admin!
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	
 	def index

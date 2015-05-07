@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
 	layout "admin"
+	before_action :authenticate_admin!
 	before_action :set_product, only: [:show, :edit, :update, :destroy]
 	before_action :set_design , only: [:new, :create]
 

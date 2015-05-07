@@ -1,5 +1,6 @@
 class Admin::BannersController < ApplicationController
 	layout "admin"
+	before_action :authenticate_admin!
 	before_action :set_banner, only:[:edit,:update,:destroy,:show]
 	def index
 		@banners = Banner.all

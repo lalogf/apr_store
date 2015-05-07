@@ -1,5 +1,5 @@
 class AddActiveToBanner < ActiveRecord::Migration
   def change
-    add_column :banners, :active, :boolean
+    add_column :banners, :active, :boolean, :default => false
   end
 end

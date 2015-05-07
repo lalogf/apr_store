@@ -1,5 +1,6 @@
 class Admin::DesignsController < ApplicationController
 	layout "admin"
+	before_action :authenticate_admin!
 	before_action :set_design, only: [:show, :edit, :update, :destroy]
 	before_action :set_designer , only: [:new, :create]
 	def show	
