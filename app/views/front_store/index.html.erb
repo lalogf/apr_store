@@ -1,3 +1,7 @@
+
+
+
+
 <div class="container">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
@@ -32,7 +36,7 @@
 
 	<!-- Login Modal -->
 	<div class="modal fade" id="loginmodal">
-		<div class="modal-dialog">
+		<div class="modal-dialog login-logout">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -52,27 +56,6 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-	<!-- Sign Up Modal -->
-	<div class="modal fade" id="signupmodal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Regístrate</h4>
-				</div>
-				<div class="modal-body">
-					<p>Email</p>
-					<input type="email" class="form-control" placeholder="mail@example.com">
-					<p>Password</p>
-					<input type="password" class="form-control" placeholder="Password">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
 
 
 
@@ -85,22 +68,22 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" id="designers">
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 1</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 2</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 3</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 4</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 5</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 6</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DISEÑADOR 7</div></a>
+		<% @designers.each do |de|%>
+		<a href="#cases"><div class="col-md-3 box showcases"><%= de.name %> <%= de.lastname%></div></a>
+		<% end %>
 		</div>
 		<div class="col-md-8 col-md-offset-2" id="devices">
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 1</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 2</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 3</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 4</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 5</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 6</div></a>
-			<a href="#cases"><div class="col-md-3 box showcases">DEVICE 7</div></a>
+
+
+			<% @products.each do |prod| %>
+				<% prod.products.each do |pr|%>
+					<a href="#cases"><div class="col-md-3 box showcases"><%= pr.phonetype.model %></div></a>
+					
+					<%end%>
+			<% end %>
+				
+
+			
 		</div>
 	</div>
 </div>

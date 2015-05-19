@@ -1,0 +1,139 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-picture bigIcon" aria-hidden="true"></span><h2 class="pull-right">Designs</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-user bigIcon" aria-hidden="true"></span><h2 class="pull-right">Designers</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-shopping-cart bigIcon" aria-hidden="true"></span><h2 class="pull-right">Sales</h2>
+			</div>
+			<div class="panel-body">
+				Hello 2
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	
+	<div class="col-md-12">
+		<div class="col-md-3 margin-10">
+			<a href="" data-toggle="modal" data-target="#crearColeccion" class="btn btn-warning btn-lg">Crear nueva colección</a>
+		</div>
+		<div class="col-md-3 margin-10">
+			<a href="" data-toggle="modal" data-target="#crearDisenador" class="btn btn-primary btn-lg">Crear nuevo Diseñador</a>
+		</div>
+		<div class="col-md-3 margin-10">
+			<a href="" data-toggle="modal" data-target="#crearTipoDeCase" class="btn btn-success btn-lg">Crear nuevo Tipo de Case</a>
+		</div>
+		<div class="col-md-3 margin-10">
+			<a href="/admin/banners/new" class="btn btn-danger btn-lg">Crear nuevo banner</a>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+
+	<h2>Nuestros Productos</h2>
+
+<% @products.each do |prod|%>
+	<div class="col-sm-6 col-md-12">
+		<div class="thumbnail withBorder col-md-12">
+
+			<div class="col-md-4">
+				<%= image_tag prod.picture.url(:medium), style: "height:300px" %>
+			</div>
+
+			<div class="caption col-md-4">
+				<h2><%= prod.title %></h2>
+				<p><%= prod.phonetype.model %></p>
+				<p><%= prod.design.designer.name%> <%= prod.design.designer.lastname%></p>
+				<p><%= prod.design.collection.name %></p>
+			</div>
+
+			<div class="col-md-4">
+				<div class="col-md-12">
+					<h1 class="price text-center"><%= number_with_precision(prod.price, :precision => 0, :delimiter => ',') %></h1>
+				</div>
+				<div class="col-md-12">
+					<p class="text-center"><a href="#edit/{{id}}" class="btn btn-success" role="button">Edit Wine</a> <a href="#"  class="btn btn-danger delete-button" id="{{id}}" role="button">Delete Wine</a></p>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+	<%end%>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="crearDisenador" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Crear nuevo Diseñador</h4>
+			</div>
+			<div class="modal-body">
+				<%= bootstrap_form_for [:admin, @designer] , validate: true do |f| %>
+
+				<div id="error_explanation"  style="display:none;"></div>
+
+				<%= f.text_field :name, label:"Nombre", placeholder: "Nombre", autofocus: true %>
+				<%= f.text_field :lastname, label:"Apellido", placeholder: "Apellido" %>
+
+
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= f.submit "Crear", class: "btn btn-success" %>
+
+			</div>
+			<%end%>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="crearColeccion" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Crear nueva colección</h4>
+			</div>
+			<div class="modal-body">
+				<%= bootstrap_form_for [:admin, @collection], validate: true do |f| %>
+
+				<%= f.text_field :name, label:"Nombre", placeholder: "Elige el nombre de la colección", icon: "tag", autofocus: true %>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= f.submit "Crear", class: "btn btn-success" %>
+
+			</div>
+			<%end%>
+		</div>
+	</div>
+</div> 

@@ -12,7 +12,7 @@ end
 root 'front_store#index'
 
 namespace :admin do
-  get "/" => "collections#index"
+  get "/" => "collections#adminHome"
   resources :collections, except: [:destroy]
   resources :designers, except: [:destroy] do
     resources :designs, except: [:destroy]
@@ -32,7 +32,7 @@ end
   get 'iphone6' => 'front_store#iphone6'
   get 'iphone5' => 'front_store#iphone5'
   get 'motog' => 'front_store#motog'
-
+  get 'admin/designs' => 'admin/designs#adminDesigns'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

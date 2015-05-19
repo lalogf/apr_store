@@ -7,17 +7,13 @@ class Admin::DesignsController < ApplicationController
 	end
 	def new
 		pre_requisites
-		# @design = Design.new
-		# @collections = []
-		# Collection.all.each do |el|
-		# 	@collections << [el.name, el.id]
-		# end
 	end
 	def create
 		@design = Design.create(design_params.merge(designer_id: (params[:designer_id])))
 		respond_to do |format|
 			if @design.save
-				format.html {redirect_to "/", notice: "El diseño " + @design.name + " se ha creado con éxito" }
+				flash[:success] = "El diseño " + @design.name + " se ha creado con éxito"
+				format.html {redirect_to admin_designer_path(@design.designer_id) }
 			else
 				pre_requisites
 				format.html {render :new, message: "El diseño no se pudo guardar"}
@@ -33,7 +29,9 @@ class Admin::DesignsController < ApplicationController
 	def destroy
 		
 	end
-
+	def adminDesigns
+		@designs = Design.all.paginate(:page => params[:page], :per_page => 5)
+	end
 
 	private
 	def pre_requisites

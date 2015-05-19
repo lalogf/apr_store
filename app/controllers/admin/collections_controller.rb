@@ -4,12 +4,12 @@ class Admin::CollectionsController < ApplicationController
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	
 	def index
+		@wholeCollections = Collection.all.paginate(:page => params[:page], :per_page => 8).order('id ASC')
+	end
 
-		pre_requisites
+	def adminHome
 		@collection = Collection.new
-		@products = Product.all
-
-
+		pre_requisites
 	end
 
 	def show
@@ -18,12 +18,13 @@ class Admin::CollectionsController < ApplicationController
 	def create
 		@collection = Collection.create(collection_params)
 		respond_to do |format| 
-			if(@collection.save)
-				format.html {redirect_to admin_collections_path, success: "La colección " + @collection.name + " se ha creado con éxito"}
+			if @collection.save
+				flash[:success] = "La colección " + @collection.name + " se ha creado con éxito"
+				format.html {redirect_to admin_collections_path}
 			else
 				pre_requisites
 				flash[:error] = "No se pudo guardar la colección" 
-				format.html {render 'index'}
+				format.html {render 'adminHome'}
 
 			end
 		end
@@ -39,9 +40,10 @@ class Admin::CollectionsController < ApplicationController
 		respond_to do |format|	
 			if @collection.update(collection_params)
 				flash[:success] = "La colección " + @collection.name + " se ha actualizado con éxito"
-				format.html {redirect_to root_path }
+				format.html {redirect_to admin_collections_path }
 			else
-				format.html{render 'edit', alert: "something went wrong"}
+				flash[:error] = "Por favor corregir los siguientes errores:"
+				format.html{render 'edit'}
 			end
 		end
 	end
@@ -51,9 +53,9 @@ class Admin::CollectionsController < ApplicationController
 
 	def pre_requisites
 		@wholeCollections = Collection.all.order('id ASC')
-		@wholeDesigners = Designer.all.order('lastname ASC')
 		@designer = Designer.new 
-		@designs = Design.all
+		@products = Product.all
+
 	end
 
 	private

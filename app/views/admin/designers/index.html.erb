@@ -1,1 +1,40 @@
-<h1>Index for designers</h1>
+<div class="row">
+
+	<h2>Nuestros diseñadores</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead >
+				<tr class="info">
+
+					<th> Nombre </th>
+					<th> Apellidos </th>
+					<th> # Diseños </th>
+					<th> # Productos </th>
+					<th> # Ventas </th>
+					<th> Otros </th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% @wholeDesigners.each do |f|%>
+
+				<tr>
+
+					<td><%= f.name %></td>
+					<td><%= f.lastname %></td>
+					<td><%= f.designs.count %> </td>
+					<td><%= f.products.count %></td>
+					<td> 234 </td>
+					<td> <%=link_to "Ver detalle", admin_designer_path(f) %><br><%= link_to "Editar", edit_admin_designer_path(f) %><br><%=link_to "Agregar diseño",  new_admin_designer_design_path(f) %><br><a href="">Pagar</a> 
+					</td>
+				</tr>
+				<%end%>
+			</tbody>
+
+		</table>
+
+		<%= will_paginate @wholeDesigners, renderer: BootstrapPagination::Rails %>
+	</div>
+
+
+</div>

@@ -4,6 +4,7 @@ class Admin::DesignersController < ApplicationController
 	before_action :set_designer, only: [:show, :edit, :update, :destroy]
 	
 	def index
+		pre_requisite
 	end
 
 	def show
@@ -13,11 +14,12 @@ class Admin::DesignersController < ApplicationController
 		@designer = Designer.create(designer_params) 
 		respond_to do |format|
 			if @designer.save
-				format.html { redirect_to admin_collections_path, notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"}
+				flash[:success] = "El diseñador " + @designer.name + " " + @designer.lastname + " se ha creado con éxito"
+				format.html { redirect_to admin_designers_path}
 			else
 				pre_requisite
 				flash[:error] = "No se pudo guardar Diseñador"
-				format.html{render 'admin/collections/index'} 
+				format.html{render 'admin/collections/adminHome'} 
 			end
 		end
 	end
@@ -32,9 +34,11 @@ class Admin::DesignersController < ApplicationController
 	def update
 		respond_to do |format|
 			if @designer.update(designer_params)
-				format.html {redirect_to "/", notice: "El diseñador " + @designer.name + " " + @designer.lastname + " se ha actualizado con éxito" }
+				flash[:success] = "El diseñador " + @designer.name + " " + @designer.lastname + " se ha actualizado con éxito" 
+				format.html {redirect_to admin_designers_path}
 			else
-				format.html {render 'edit', alert:"something went wrong"}
+				flash[:error] = "Por favor corregir los siguientes errores:"
+				format.html {render 'edit'}
 			end
 		end
 
@@ -45,10 +49,9 @@ class Admin::DesignersController < ApplicationController
 
 	private
 	def pre_requisite
-		@wholeCollections = Collection.all.order('id ASC')
-		@wholeDesigners = Designer.all.order('lastname ASC')
+		@wholeDesigners = Designer.all.paginate(:page => params[:page], :per_page => 5).order('lastname ASC')
 		@collection = Collection.new
-		@designs = Design.all  
+		@products = Product.all
 	end
 
 	def set_designer

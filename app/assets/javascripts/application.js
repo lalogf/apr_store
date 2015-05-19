@@ -15,21 +15,20 @@
 //= require turbolinks
 //= require_tree .
 
+
+
 var ready = function (){
 	// if ($("form#new_collection .form-group").attr("class") == "form-group has-error has-feedback"){
 	// 	$("#crearColeccion").modal("show");
 	// }
 	if ((($("form#new_collection .has-error")).length > 0)) {
 		$("#crearColeccion").modal("show");
+		console.log("hello error coleccion");
 	}
 	else if (($("form#new_designer .has-error").length) > 0) {
 			$("#crearDisenador").modal("show");
 	}
-	// var banners = $(".item");
-	// $(banners[0]).addClass("active");
-	// else if ($(".editarColeccion .form-group").attr("class") == "form-group has-error"){
-	// 	alert("working");
-	// };
+
 };
 
 $(document).ready(ready)

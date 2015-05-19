@@ -14,8 +14,19 @@
  *= require_self
  */
 
+.price{
+  font-size: 140px
+}
+
+.withBorder{
+  border: solid 1px black;
+}
  .row {
  	margin-top: 20px;
+ }
+
+ .margin-down{
+  margin-bottom: 10px;
  }
 
  .margin-10 {
@@ -26,7 +37,7 @@
   border: dotted black 2px;
  }
 
-span.glyphicon {
+span.glyphicon.bigIcon {
     font-size: 5em;
 }
 
@@ -74,3 +85,27 @@ span.glyphicon {
   -webkit-filter: brightness(3);
   filter: brightness(3);
 }
+
+.alert{
+  border: 0px;
+  border-radius: 0px;
+  background: none;
+  color:white;
+}
+
+.alert-success{
+  background-color:rgba(46, 204, 113,0.8);
+}
+
+.alert-warning{
+  background-color:rgba(241, 196, 15,0.8)
+}
+
+.alert-danger{
+  background-color: rgba(231, 76, 60,0.8)
+}
+
+.alert-primary{
+  background-color:rgba(52, 152, 219,0.8);
+}
+

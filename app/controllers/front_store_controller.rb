@@ -1,6 +1,8 @@
 class FrontStoreController < ApplicationController
 	def index
 		@banners = Banner.where("active=true AND type_of_banner='Portada'")
+		@designers = Designer.all
+		@products = Phonetype.all
 	end
 	def iphone6
 	@casesi6 = Product.where("phonetype_id=5 OR phonetype_id=6 OR phonetype_id=7")		
