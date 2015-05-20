@@ -68,8 +68,8 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" id="designers">
-		<% @designers.each do |de|%>
-		<a href="#cases"><div class="col-md-3 box showcases"><%= de.name %> <%= de.lastname%></div></a>
+		<% @designers.each do |designer|%>
+			<a href="#cases"><div class="col-md-3 box showcases" id="<%=designer.id%>"><%= designer.name %> <%= designer.lastname%></div></a>
 		<% end %>
 		</div>
 		<div class="col-md-8 col-md-offset-2" id="devices">
@@ -77,7 +77,7 @@
 
 			<% @products.each do |prod| %>
 				<% prod.products.each do |pr|%>
-					<a href="#cases"><div class="col-md-3 box showcases"><%= pr.phonetype.model %></div></a>
+					<a href="#cases"><div class="col-md-3 box showcases"><%= pr.phonetype.modelName %></div></a>
 					
 					<%end%>
 			<% end %>
@@ -86,93 +86,30 @@
 			
 		</div>
 	</div>
-</div>
 
-<div class="container">
-	<div class="row" id="cases">
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img style="width:50%" src="http://spacioc.com/system/products/case_images/000/000/002/medium/2e887972aecb3718d7714b4aeb3b2635.png?1421283991" alt="...">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat.</p>
-						<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img style="width:50%"src="http://spacioc.com/system/products/case_images/000/000/001/medium/1d3a6082fbf93c8482ee00c9eb58d694.png?1421283246" alt="...">
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
-							<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
-						</div>
-					</div>
-				</div>
+	<%@designers.each do |designer|%>
+		<div class="container">
+			<div class="row cases" id="cases<%=designer.id%>">
+				<% designer.designs.each do |design| %>
+				<% design.products.each do |product| %>
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img id="hovertry"style="width:50%" src="http://spacioc.com/system/products/case_images/000/000/018/medium/97b8f77d3925f06b8cdde01f46267f48.png?1421292509" alt="...">
+						<%= image_tag product.picture.url(:medium) %>
 						<div class="caption">
-<!-- 								<img class="hoverc" id="i6" src="assets/icons/i6.png">
-								<img class="hoverc" id="i5" src="assets/icons/i5.png">
-								<img class="hoverc" id="i4" src="assets/icons/i4.png">
-								<img class="hoverc" id="gs5" src="assets/icons/gs5.png">
-								<img class="hoverc" id="mg" src="assets/icons/motog.png"> -->
-								<h3>Thumbnail label</h3>
-								<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat.</p>
-									<p class="centered"><a href="#" class="btn btn-danger" role="button">Comprar</a> <a class="btn btn-success" role="button" href="" data-toggle="modal" data-target="#productmodal">Ver más</a></p>
-								</div>
+							<h3><%= product.title%></h3>
+							<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat.</p>
+								<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img style="width:50%" src="http://spacioc.com/system/products/case_images/000/000/020/medium/775cf53bfb0ba09142a3ceb2b196270f.png?1421293494" alt="...">
-								<div class="caption">
-									<h3>Thumbnail label</h3>
-									<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat.</p>
-										<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-4">
-								<div class="thumbnail">
-									<img style="width:50%" src="http://spacioc.com/system/products/case_images/000/000/025/medium/de44dd01392b226bd1b208a846ca64b8.png?1428693464" alt="...">
-									<div class="caption">
-										<h3>Thumbnail label</h3>
-										<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-											consequat.</p>
-											<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-4">
-									<div class="thumbnail">
-										<img style="width:50%" src="http://spacioc.com/system/products/case_images/000/000/011/medium/ba817ea46c7a4a51c64e9b7f709fa8cb.png?1421288074" alt="...">
-										<div class="caption">
-											<h3>Thumbnail label</h3>
-											<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-												quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-												consequat.</p>
-												<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
-											</div>
-										</div>
-									</div>
+					</div>
+					<%end%>
+					<%end%>
+				</div>
+		</div>
+	<% end %>
+</div>
 
-								</div>
-							</div>
+

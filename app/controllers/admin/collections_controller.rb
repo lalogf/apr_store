@@ -52,10 +52,8 @@ class Admin::CollectionsController < ApplicationController
 	end
 
 	def pre_requisites
-		@wholeCollections = Collection.all.order('id ASC')
 		@designer = Designer.new 
 		@products = Product.all
-
 	end
 
 	private

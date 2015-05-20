@@ -10,8 +10,6 @@ collections = Collection.create([
 	{name: "Lanzamiento"}, 
 	{name: "Día de la madre"},
 	{name: "Copa América 2015"} 
-	# {name: "Día del Padre"}, 
-	# {name: "Fiestas Patrias"}
 	])
 designers = Designer.create([
 	{name: "Tatiana", lastname: "De La Piedra"}, 
@@ -29,14 +27,27 @@ designs = Design.create([
 	])
 	
 phonetypes = Phonetype.create([
-	{model:"iPhone 4",finish: "Tough"	},
-	{model:"iPhone 5",finish: "Brillante"	},
-	{model:"iPhone 5",finish: "Mate"	},
-	{model:"iPhone 5",finish:"Tough"	},
-	{model:"iPhone 6",finish:"Mate"	},
-	{model:"iPhone 6",finish:"Brillante"	},
-	{model:"iPhone 6",finish:"Tough"	},
-	{model:"iPhone 6 Plus",finish:"Tough"	},
-	{model:"Galaxy S5",finish:"Tough"	},
-	{model:"Moto G",finish:"Brillante"}	
+	{modelName:"iPhone 4",type_of_case: "Tough"},
+	{modelName:"iPhone 5",type_of_case: "Slim"},
+	{modelName:"iPhone 5",type_of_case: "Tough"},
+	{modelName:"iPhone 6",type_of_case: "Slim"},
+	{modelName:"iPhone 6",type_of_case: "Tough"},
+	{modelName:"iPhone 6 Plus",type_of_case: "Tough"},
+	{modelName:"Galaxy S5",type_of_case: "Tough"},
+	{modelName:"Moto G",type_of_case: "Slim"}	
 	])
+
+inventories = CaseInventory.create([
+	{finish:"Brillante",phonetype_id: "1",stock: 50},
+	{finish:"Mate",phonetype_id:"2",stock:50 },
+	{finish:"Brillante",phonetype_id:"2",stock:50},
+	{finish:"Brillante",phonetype_id:"3",stock:100},
+	{finish:"Mate",phonetype_id:"4",stock: 48 },
+	{finish:"Brillante",phonetype_id:"4",stock: 50},
+	{finish:"Brillante",phonetype_id:"5",stock:100},
+	{finish:"Brillante",phonetype_id:"6",stock: 50},
+	{finish:"Brillante",phonetype_id:"7",stock: 50},
+	{finish:"Mate",phonetype_id:"8",stock:42},
+	])
+
+admin = Admin.create(email:"lalo@soulutions.com.pe",password:"@I9nstitut9o",god_mode:true)

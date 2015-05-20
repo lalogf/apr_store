@@ -13,16 +13,18 @@ var ready = function(){
   $('#product_phonetype_id').change(function(){
     if(($(this).val()) == 2 || ($(this).val()) == 3){
       canvas.setOverlayImage('/assets/i5.png', canvas.renderAll.bind(canvas))
-    } else if (($(this).val()) == 9) {
+    } else if (($(this).val()) == 7) {
       canvas.setOverlayImage('/assets/s5t.png', canvas.renderAll.bind(canvas))
-    } else if (($(this).val()) == 10) {
+    } else if (($(this).val()) == 8) {
       canvas.setOverlayImage('/assets/motog.png', canvas.renderAll.bind(canvas))
-    } else if (($(this).val()) == 5 || ($(this).val()) == 6){
+    } else if (($(this).val()) == 4){
       canvas.setOverlayImage('/assets/i6.png', canvas.renderAll.bind(canvas))
-    } else if  (($(this).val()) == 7 || ($(this).val()) == 8) {
+    } else if  (($(this).val()) == 5 ){
       canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas))
-    } else {
-      canvas.setOverlayImage('/assets/i5.png')
+    } else if  (($(this).val()) == 6) {
+      canvas.setOverlayImage('/assets/i6PT.png', canvas.renderAll.bind(canvas))
+    } else if(($(this).val()) == 1) {
+      canvas.setOverlayImage('/assets/i4t.png', canvas.renderAll.bind(canvas))
     }
   });
   
@@ -51,7 +53,7 @@ var createCanvas = function (){
   canvas = new fabric.Canvas('c');
   canvas.setHeight(600);
   canvas.setWidth(400);
-  canvas.setOverlayImage('/assets/i4.png', canvas.renderAll.bind(canvas));
+  canvas.setOverlayImage('/assets/i4t.png', canvas.renderAll.bind(canvas));
 }; 
 
 var createImage = function(cod){

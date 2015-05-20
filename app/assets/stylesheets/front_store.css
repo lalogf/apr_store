@@ -87,7 +87,11 @@
 	box-shadow:none;
 }
 
-#cases{
+/*#cases{
+	display:none;
+}*/
+
+.cases{
 	display:none;
 }
 
