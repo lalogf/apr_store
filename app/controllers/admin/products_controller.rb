@@ -31,10 +31,12 @@ class Admin::ProductsController < ApplicationController
 		
 		respond_to do |format|
 			if @product.save
-				format.html {redirect_to admin_collections_path, notice: "El producto " + @product.title +  " fue creado con éxito"}
+				flash[:success] = "El producto " + @product.title +  " fue creado con éxito"
+				format.html {redirect_to admin_designs_path}
 			else
 				pre_requisites
-				format.html {render :new, error: "El producto no se guardó"}
+				flash[:error] = "El producto no se guardó"
+				format.html {render :new }
 			end
 		end
 	end
@@ -54,7 +56,7 @@ class Admin::ProductsController < ApplicationController
 		@product = Product.new
 		@phonetypes = []
 		Phonetype.all.each do |el, index|
-			@phonetypes << [el.model + " " +el.finish , el.id]
+			@phonetypes << [el.modelName + " " + el.type_of_case, el.id]
 		end
 	end
 	private

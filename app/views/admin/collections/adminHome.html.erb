@@ -62,7 +62,7 @@
 
 			<div class="caption col-md-4">
 				<h2><%= prod.title %></h2>
-				<p><%= prod.phonetype.model %></p>
+				<p><%= prod.phonetype.modelName %></p>
 				<p><%= prod.design.designer.name%> <%= prod.design.designer.lastname%></p>
 				<p><%= prod.design.collection.name %></p>
 			</div>
@@ -72,7 +72,7 @@
 					<h1 class="price text-center"><%= number_with_precision(prod.price, :precision => 0, :delimiter => ',') %></h1>
 				</div>
 				<div class="col-md-12">
-					<p class="text-center"><a href="#edit/{{id}}" class="btn btn-success" role="button">Edit Wine</a> <a href="#"  class="btn btn-danger delete-button" id="{{id}}" role="button">Delete Wine</a></p>
+					<p class="text-center"><a href="#" class="btn btn-success" role="button">Edit Product</a> <a href="#"  class="btn btn-danger delete-button" role="button">Delete Product</a></p>
 				</div>
 			</div>
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finish: MyString
+  phonetype_id: 
+  stock: 1
+
+two:
+  finish: MyString
+  phonetype_id: 
+  stock: 1
