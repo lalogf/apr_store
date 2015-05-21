@@ -89,6 +89,17 @@
 									<% design.products.each do |product|%>
 										<%= image_tag product.picture.url(:thumb), class: "hoverforcase", id: product.phonetype.modelName , design_id: product.design_id.to_s %>
 									<% end %>
+									<br>
+									<% design.products.each do |product|%>
+									<% if product.phonetype.id == 7 %>
+										<span class="label label-primary" style="text-align:center;display:inline-block"><%=product.phonetype.modelName%></span>
+									<% elsif product.phonetype.id == 8 %>
+										<span class="label label-warning" style="text-align:center;display:inline-block"><%=product.phonetype.modelName%></span>
+									<% else %>
+										<span class="label label-success" style="text-align:center;display:inline-block"><%=product.phonetype.modelName%></span>
+									<% end %>
+										
+									<% end %>
 									<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -107,7 +118,7 @@
 	</div>
 
 	<%@designers.each do |designer|%>
-		<div class="container">
+		<div class="container designercases">
 			<div class="row cases" id="cases<%=designer.id%>">
 				<% designer.designs.each do |design| %>
 					<% design.products.each do |product| %>

@@ -11,10 +11,11 @@ var ready2 = function(){
 	});
 	$("#designs").click(function(){
 		$("#alldesigns").toggle();
-
+		$("#designers").hide();
+		$(".designercases").hide();
 	});
 
-	$(".hoverforcase").mouseover(function(){
+	$(".hoverforcase").click(function(){
 		var caseImage = ($(this).attr("src")).replace("thumb","thumbBox");
 		var DesignId = "#hovertry" + $(this).attr("design_id");
 		$(DesignId).attr("src",caseImage);
