@@ -32,7 +32,7 @@ class Admin::ProductsController < ApplicationController
 		respond_to do |format|
 			if @product.save
 				flash[:success] = "El producto " + @product.title +  " fue creado con éxito"
-				format.html {redirect_to admin_path}
+				format.html {redirect_to admin_designs_path}
 			else
 				pre_requisites
 				flash[:error] = "El producto no se guardó"

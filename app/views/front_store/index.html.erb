@@ -60,30 +60,49 @@
 
 
 	<div class="row">
-		<h3 class="centered">VER DISEÑOS POR:</h3>
-		<div class="col-md-6 col-md-offset-3">
-			<a href="#designers"><div class="col-md-5 box" id="designer">DISEÑADOR</div></a>
-			<a href="#devices"><div class="col-md-5 box" id="device">EQUIPO</div></a>
+		<h3 class="centered">VER CASES POR:</h3>
+		<div class="col-md-8 col-md-offset-2">
+			<a href="#designers"><div class="col-md-3 box" id="designer">DISEÑADOR</div></a>
+			<a href="#devices"><div class="col-md-3 box" id="device">EQUIPO</div></a>
+			<a href="#designs"><div class="col-md-3 box" id="designs">DISEÑOS</div></a>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" id="designers">
-		<% @designers.each do |designer|%>
-			<a href="#cases"><div class="col-md-3 box showcases" id="<%=designer.id%>"><%= designer.name %> <%= designer.lastname%></div></a>
-		<% end %>
-		</div>
-		<div class="col-md-8 col-md-offset-2" id="devices">
-
-
-			<% @products.each do |prod| %>
-				<% prod.products.each do |pr|%>
-					<a href="#cases"><div class="col-md-3 box showcases"><%= pr.phonetype.modelName %></div></a>
-					
-					<%end%>
+			<% @designers.each do |designer|%>
+				<a href="#cases<%=designer.id%>">
+					<div class="col-md-3 box showcases" id="<%=designer.id%>">
+						<%= designer.name %> <%= designer.lastname%>
+					</div>
+				</a>
 			<% end %>
-				
-
-			
+		</div>
+		<div class="row cases" id="alldesigns">
+			<% @designers.each do |designer| %>
+				<% designer.designs.each do |design|%>
+					<% if design.products.length > 0 %>					
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<%= image_tag design.products[0].picture.url(:thumbBox), id: "hovertry" + design.id.to_s %>
+								<div class="caption">
+									<h3><%= design.name %></h3>
+									<% design.products.each do |product|%>
+										<%= image_tag product.picture.url(:thumb), class: "hoverforcase", id: product.phonetype.modelName , design_id: product.design_id.to_s %>
+									<% end %>
+									<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+											consequat.
+									</p>
+									<p class="centered">
+										<a href="#" class="btn btn-primary" role="button">Comprar</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					<% end %>	
+				<%end%>
+			<% end %>
 		</div>
 	</div>
 
@@ -91,25 +110,147 @@
 		<div class="container">
 			<div class="row cases" id="cases<%=designer.id%>">
 				<% designer.designs.each do |design| %>
-				<% design.products.each do |product| %>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<%= image_tag product.picture.url(:medium) %>
-						<div class="caption">
-							<h3><%= product.title%></h3>
-							<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-								<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
+					<% design.products.each do |product| %>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<%= image_tag product.picture.url(:thumbBox) %>
+								<div class="caption">
+									<h3><%= product.title.sub! 'Case', ''%></h3><h3 class="pull-rigth"><%= number_with_precision(product.price, :precision => 0, :delimiter => ',') %></h3>
+									<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+										consequat.</p>
+										<p class="centered"><a href="#" class="btn btn-primary" role="button">Comprar</a></p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<%end%>
+						<%end%>
 					<%end%>
 				</div>
 		</div>
 	<% end %>
 </div>
+<!-- <div class="row" style="background-color:black">
+	<p class="text-align:center" style="color:white">Hello</p>
+</div> -->
 
+<div class="modal fade" id="shoppingcart">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<p class="pull-right text-primary"><b>4 items</b></p>
+				<h4 class="modal-title text-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Tus compras </h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>Serie</th>
+						<th>Item Name</th>
+						<th>Unit Price </th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Apple iPhone 6</td>
+						<td>$399</td>
+						<td><input type="text" class="form-control" value="1" placeholder="Enter Quantity" style="width:50px;"></td>
+						<td>$399</td>
+						<td><a href="#" class="btn btn-danger btn-sm">Eliminar</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Apple iPhone 6</td>
+						<td>$399</td>
+						<td><input type="text" class="form-control" value="1" placeholder="Enter Quantity" style="width:50px;"></td>
+						<td>$399</td>
+						<td><a href="#" class="btn btn-danger btn-sm">Eliminar</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Apple iPhone 6</td>
+						<td>$399</td>
+						<td><input type="text" class="form-control" value="1" placeholder="Enter Quantity" style="width:50px;"></td>
+						<td>$399</td>
+						<td><a href="#" class="btn btn-danger btn-sm">Eliminar</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Apple iPhone 6</td>
+						<td>$399</td>
+						<td><input type="text" class="form-control" value="1" placeholder="Enter Quantity" style="width:50px;"></td>
+						<td>$399</td>
+						<td><a href="#" class="btn btn-danger btn-sm">Eliminar</a></td>
+					</tr>
+					<tr class="active lead">
+						<td colspan="4">Total</td>
+						<td>$1,096</td>
+						<td><a href="#" class="btn btn-danger btn-sm">Limpiar carrito</a></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-success pull-right" data-target="#payment" data-toggle="modal">Pagar<span class="glyphicon glyphicon-chevron-right"></span></a>
+				<a href="#" class="btn btn-default pull-left" data-dismiss="modal">Seguir comprando</a>
+			</div>
+		</div>
+	</div>
+</div>
 
+<div class="modal fade" id="payment">
+	<div class="modal-dialog payment">
+		<div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3>
+                </div>
+                <div class="modal-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expMonth">EXPIRATION DATE</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">CV CODE</label>
+                                    <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-success btn-lg btn-block" type="submit">Pagar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
