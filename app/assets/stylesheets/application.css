@@ -27,6 +27,13 @@
   src: url("century_gothic.ttf");
 }
 
+@font-face {
+  font-family: 'Kitsune Udon';
+  src: url("KitsuneUdon.otf") format("opentype");
+}
+
+
+
 body{
   font-family: 'Century Gothic'
 }
@@ -159,15 +166,18 @@ footer ul {
   height:60px;
 }
 
-.navbar {
+.navbar, .navbar-default {
   background:none; 
   border-radius: 0px;
   border:0px;
   box-shadow: none;
-  background-color:white;
-  font-family: 'Asap', sans-serif;
+  /*  background-color:white;*/
+  font-family: 'Century Gothic', sans-serif;
   margin-bottom: 0px !important;
-  /*  color: none;*/
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: black;
 }
 
 .navbar-nav{
@@ -189,10 +199,12 @@ footer ul {
   }*/
 
   .welcomeText{
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.9);
     color:white;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
+    margin: 15px;
+    border: solid white 4px;
   }
 
 
@@ -281,3 +293,88 @@ footer ul {
     text-align: center;
   }
 
+  .rightPart {
+    margin: 10px 0;
+    border-left: solid white 4px;
+    border-radius: 1px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  .marca {
+    font-family: 'Kitsune Udon';
+    font-size: 60px;
+    line-height: 50px;
+    padding:40px;
+  }
+
+  #content2 h4{
+    color:rgba(0,169,255,1);
+  }
+
+  #content2{
+    margin-top: 20px;
+    padding:50px;
+  }
+
+  #banner2 h3, #banner1 h3{
+    color:black;
+  }
+
+  #banner1{
+      position: relative;
+      height: 40vh;
+      z-index: 5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+  }
+
+  #banner1::before {
+      content: "";
+      position: absolute;
+      height: 40vh;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('pics/hero.jpg');
+      background-size: cover;
+      opacity: 0.3;
+    }
+
+
+    #banner2 {
+      position: relative;
+      height: 40vh;
+      z-index: 5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    #banner2::before {
+      content: "";
+      position: absolute;
+      height: 40vh;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('pics/GL_art.jpg');
+      background-size: cover;
+      opacity: 0.3;
+    }
+
+    .bannerHover{
+      background-color:rgba(0,0,0,0.9);
+    }
+
+.footer_title .marca{
+  font-size: 34px;
+}
