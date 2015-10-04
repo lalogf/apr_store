@@ -1,2 +1,0 @@
-class CaseInventoriesController < ApplicationController
-end

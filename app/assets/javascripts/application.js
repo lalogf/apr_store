@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
+//= require masonry/jquery.masonry
 //= require_tree .
 
 
@@ -26,8 +28,14 @@ var ready = function (){
 		console.log("hello error coleccion");
 	}
 	else if (($("form#new_designer .has-error").length) > 0) {
-			$("#crearDisenador").modal("show");
+		$("#crearDisenador").modal("show");
 	}
+
+	// $(".title").each(function(){
+	// 	if(($(this).html().length)>30){
+	// 		$(this).attr("style","font-size:18px;")
+	// 	}
+	// });
 
 };
 

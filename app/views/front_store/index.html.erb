@@ -1,70 +1,53 @@
+<%= render "navbar"%>
 
-
-
-
-<div class="container">
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		
-		<ol class="carousel-indicators">
-			<% @banners.each_with_index do |banner, x| %>
-				<% if banner.principal == true %>
-				<li data-target="#carousel-example-generic" data-slide-to="<%=x%>" class="active"></li>
-				<% else %>
-				<li data-target="#carousel-example-generic" data-slide-to="<%=x%>"></li>
-				<% end %>
-			<% end %>
-		</ol> 
-		<!-- Wrapper for slides -->
-
-		<div class="carousel-inner" role="listbox">
-			<% @banners.each do |banner|%>
-			<% if banner.principal == true %>
-			<div class="item active">
-				<%= image_tag banner.image.url(:original) %>
+<div class="row">
+	<div class="welcome">
+			<div class=" col-md-6 col-md-3-offset welcomeText">
+				<h1>ARTE APARTE</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</p>
+				<a href="" class="btn btn-lg btn-success">Learn More</a>
 			</div>
-			<% else%>
-			<div class="item">
-				<%= image_tag banner.image.url(:original) %>
-			</div>
-			<% end %>
-			<%end%>
+
 		</div>
-
-
 	</div>
 
-	<!-- Login Modal -->
-	<div class="modal fade" id="loginmodal">
-		<div class="modal-dialog login-logout">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Inicia sesión</h4>
-				</div>
-				<div class="modal-body">
-					<p>Email</p>
-					<input type="email" class="form-control" placeholder="mail@example.com">
-					<p>Password</p>
-					<input type="password" class="form-control" placeholder="Password">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	<div class="container">
+
+
+		<!-- Login Modal -->
+		<div class="modal fade" id="loginmodal">
+			<div class="modal-dialog login-logout">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Inicia sesión</h4>
+					</div>
+					<div class="modal-body">
+						<p>Email</p>
+						<input type="email" class="form-control" placeholder="mail@example.com">
+						<p>Password</p>
+						<input type="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 
 
 
 
-	<div class="row">
-		<h3 class="centered">VER CASES POR:</h3>
-		<div class="col-md-8 col-md-offset-2">
-			<a href="#designers"><div class="col-md-3 box" id="designer">DISEÑADOR</div></a>
-			<a href="#devices"><div class="col-md-3 box" id="device">EQUIPO</div></a>
-			<a href="#designs"><div class="col-md-3 box" id="designs">DISEÑOS</div></a>
+<!-- 	<div class="row">
+		<div class="row">
+			<a href="#devices"><div class="col-md-2 box" id="designer">DISEÑADOR</div></a>
+			<a href="#devices"><div class="col-md-4 box" id="device">EQUIPO</div></a>
+			<a href="#designs"><div class="col-md-4 box" id="designs">DISEÑOS</div></a>
+			<a href="#designs2"><div class="col-md-4 box" id="designs2">DISEÑOS</div></a>
 		</div>
 	</div>
 	<div class="row">
@@ -140,11 +123,9 @@
 				</div>
 		</div>
 	<% end %>
-</div>
-<!-- <div class="row" style="background-color:black">
-	<p class="text-align:center" style="color:white">Hello</p>
 </div> -->
 
+</div>
 <div class="modal fade" id="shoppingcart">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -212,56 +193,58 @@
 <div class="modal fade" id="payment">
 	<div class="modal-dialog payment">
 		<div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3>
-                </div>
-                <div class="modal-body">
-                    <form role="form" id="payment-form">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label for="cardNumber">CARD NUMBER</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
-                                    </div>
-                                </div>                            
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-7 col-md-7">
-                                <div class="form-group">
-                                    <label for="expMonth">EXPIRATION DATE</label>
-                                    <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
-                                    </div>
-                                    <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-5 col-md-5 pull-right">
-                                <div class="form-group">
-                                    <label for="cvCode">CV CODE</label>
-                                    <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label for="couponCode">COUPON CODE</label>
-                                    <input type="text" class="form-control" name="couponCode" />
-                                </div>
-                            </div>                        
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-success btn-lg btn-block" type="submit">Pagar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-        </div>
-    </div>
+			<div class="modal-header">
+				<h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Payment Details</h3>
+			</div>
+			<div class="modal-body">
+				<form role="form" id="payment-form">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+								<label for="cardNumber">CARD NUMBER</label>
+								<div class="input-group">
+									<input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
+									<span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+								</div>
+							</div>                            
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-7 col-md-7">
+							<div class="form-group">
+								<label for="expMonth">EXPIRATION DATE</label>
+								<div class="col-xs-6 col-lg-6 pl-ziro">
+									<input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+								</div>
+								<div class="col-xs-6 col-lg-6 pl-ziro">
+									<input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-5 col-md-5 pull-right">
+							<div class="form-group">
+								<label for="cvCode">CV CODE</label>
+								<input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+								<label for="couponCode">COUPON CODE</label>
+								<input type="text" class="form-control" name="couponCode" />
+							</div>
+						</div>                        
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-success btn-lg btn-block" type="submit">Pagar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
+
+<%= render "footer" %>

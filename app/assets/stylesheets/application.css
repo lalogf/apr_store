@@ -11,8 +11,25 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require 'masonry/transitions'
  *= require_self
  */
+
+ @import url(https://fonts.googleapis.com/css?family=Asap:400,400italic,700);
+
+ @font-face {
+  font-family: 'Century Gothic Stb Bold';
+  src: url("Century_Gothic_Std_Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url("century_gothic.ttf");
+}
+
+body{
+  font-family: 'Century Gothic'
+}
 
 .price{
   font-size: 140px
@@ -21,37 +38,35 @@
 .withBorder{
   border: solid 1px black;
 }
- .row {
- 	margin-top: 20px;
- }
 
- .margin-down{
+
+.margin-down{
   margin-bottom: 10px;
- }
+}
 
- .margin-10 {
+.margin-10 {
   margin-top: 10px;
- }
+}
 
- #c{
+#c{
   border: none
- }
+}
 
 span.glyphicon.bigIcon {
-    font-size: 5em;
+  font-size: 5em;
 }
 
 /* .thumb{
   height:100%;
   width:250px;
- }*/
+  }*/
 
-.sepia {
-	filter: sepia(1);
-	-webkit-filter: sepia(1)
-};
+  .sepia {
+   filter: sepia(1);
+   -webkit-filter: sepia(1)
+ };
 
-.contrast {
+ .contrast {
   -webkit-filter: contrast(4);
   filter: contrast(4);
 }
@@ -108,4 +123,161 @@ span.glyphicon.bigIcon {
 .alert-primary{
   background-color:rgba(52, 152, 219,0.8);
 }
+
+
+footer {
+  padding: 20px 0 30px 0;
+  background-color: rgb(26,26,26);
+  color: rgb(0,169,255);
+  font-family: "Century Gothic"; 
+  width: 100%;
+}
+
+footer .row{
+  margin: 0px;
+}
+
+.footer_title {
+  font-family: 'Century Gothic Stb Bold';
+  color:white;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+.social_networks_container{
+  padding-top: 50px;
+}
+
+.social_networks {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.logo{
+  height:60px;
+}
+
+.navbar {
+  background:none; 
+  border-radius: 0px;
+  border:0px;
+  box-shadow: none;
+  background-color:white;
+  font-family: 'Asap', sans-serif;
+  margin-bottom: 0px !important;
+  /*  color: none;*/
+}
+
+.navbar-nav{
+  padding-top:30px;
+}
+
+
+/*.welcome{
+  margin-top: 0px;
+  height: 100vh;
+  background-image: url("backgrounds/gallery.jpeg");
+  background-size: cover;
+  opacity : 0.6;
+  z-index: -1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position: relative;
+  }*/
+
+  .welcomeText{
+    background-color: rgba(0,0,0,0.7);
+    color:white;
+    text-align: center;
+    padding: 20px;
+  }
+
+
+
+  .welcome {
+    position: relative;
+    height: 100vh;
+    z-index: 5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .welcome::before {
+    content: "";
+    position: absolute;
+    height: 100vh;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("backgrounds/gallery.jpeg");
+    background-size: cover;
+    opacity: .6;
+  }
+
+  h3 {
+    font-size: 18px;
+    color:white;
+    font-family: 'Century Gothic Stb Bold'
+  }
+
+  .title{
+    color:black
+  }
+
+  .thumbnail{
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+    border: solid black 3px;
+    margin:10px;
+  }
+
+  .btn-success{
+    background:none;
+    border-radius: 0px;
+    border: solid green 2px;
+    text-decoration: none;
+    text-shadow:none;
+    color: white;
+  }
+
+  .btn-success:hover, .btn-success:active, .btn-success:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid green 2px;
+    background:none;
+    background-color: green;
+    color: white;
+  }
+
+  .btn-primary, .btn-default{
+    background:none;
+    border-radius: 0px;
+    border: solid black 2px;
+    text-decoration: none;
+    text-shadow:none;
+    color: black;
+  }
+
+  .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-default:hover, .btn-default:active, .btn-default:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid black 2px;
+    background:none;
+    color: black;
+  }
+
+  .caption {
+    margin: 10px 0;
+    border-left: solid black 4px;
+    border-radius: 1px;
+    text-align: center;
+  }
 
