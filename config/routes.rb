@@ -18,6 +18,7 @@ namespace :admin do
     resources :designs, except: [:destroy]
   end
   resources :banners
+  resources :case_inventories
 end
 
 namespace :admin do

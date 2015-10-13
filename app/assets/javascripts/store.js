@@ -23,6 +23,25 @@ var ready2 = function(){
 		var DesignId = "#hovertry" + $(this).attr("design_id");
 		$(DesignId).attr("src",caseImage);
 	});
+	$(".navbar-default").hide();
+	var scroll_start = 0;
+	var startchange = $('#startchange');
+	var offset = startchange.offset();
+	if (startchange.length){
+		$(document).scroll(function() { 
+			scroll_start = $(this).scrollTop();
+			// if(scroll_start > offset.top) {
+			// 	$(".navbar-default").css('background-color', 'rgba(255,255,255,0.8)');
+			// } else {
+			// 	$('.navbar-default').css('background-color', 'transparent');
+			// }
+			if(scroll_start > offset.top) {
+				$(".navbar-default").show().css('background-color','rgba(255,255,255,1)');
+			} else {
+				$('.navbar-default').hide();
+			}
+		});
+	}
 
 
 };

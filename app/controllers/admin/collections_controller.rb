@@ -54,6 +54,7 @@ class Admin::CollectionsController < ApplicationController
 	def pre_requisites
 		@designer = Designer.new 
 		@products = Product.all.paginate(:page => params[:page], :per_page => 5)
+		@inventory = CaseInventory.all
 	end
 
 	private
