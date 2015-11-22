@@ -3,6 +3,8 @@ var imgElement;
 var imgInstance;
 var butn;
 var cod;
+var line_for_print;
+var caseImage;
 
 
 
@@ -46,27 +48,60 @@ var ready = function(){
       $('#newcaseimage').val(canvas.toDataURL('image/png'));
     }); 
   });
+
+  // canvas.on('mouse:over', function(e) {
+  //   canvas.add(line_for_print);
+  //   canvas.setOverlayImage(null);
+  //   console.log("hover")
+  // });
+  // canvas.on('mouse:out', function(e) {
+  //   canvas.remove(line_for_print);
+  //   canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas));
+  //   console.log("hover")
+  // });
+  $("canvas").mouseover(function(){
+    console.log("hello");
+    caseImage = canvas.overlayImage;
+    caseImage.selectable = false;
+    canvas.setActiveObject(canvas.item(1));
+    canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
+    canvas.add(line_for_print);
+    canvas.add(caseImage);
+    canvas.bringToFront(line_for_print);
+  });
+  $("canvas").mouseout(function(){
+    console.log("goodbye");
+    canvas.setOverlayImage(caseImage, canvas.renderAll.bind(canvas));
+    canvas.remove(line_for_print);
+  })
 };
 
 
 var createCanvas = function (){
   canvas = new fabric.Canvas('c');
   canvas.setHeight(600);
-  canvas.setWidth(400);
-  canvas.setOverlayImage('/assets/i4t.png', canvas.renderAll.bind(canvas));
+  canvas.setWidth(600);
+  canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas));
 }; 
+
 
 var createImage = function(cod){
   imgElement = $('.designtocase')[cod];
   imgInstance = new fabric.Image(imgElement, {
     // height: 600,
-    // width: 400,
+    // width: 600,
     // scaleY:300/imgElement.width,
     // scaleX:200/imgElement.width,
     left: 0,
     top: 0,
   },{ crossOrigin: 'anonymous' } );
 };
+
+var createLine = function(){
+  line_for_print = new fabric.Rect({ top: 10, left: 100, width: 400, height: 580, fill: 'rgba(255,255,255,0)', hasControls:false,strokeDashArray: [5, 5],
+    stroke: 'black',selectable: false})
+};
+createLine();
 
 // fabric.Image.fromURL(imgData, callbackFunc , { crossOrigin: 'anonymous' });
 

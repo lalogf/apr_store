@@ -2,6 +2,8 @@ class Admin::CaseInventoriesController < ApplicationController
 	layout "admin"
 	before_action :authenticate_admin!
 	before_action :set_banner, only:[:edit,:update,:destroy,:show]
+
+
 	def index
 		@inventory = CaseInventory.all
 	end

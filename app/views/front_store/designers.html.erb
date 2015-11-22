@@ -1,0 +1,24 @@
+<%= render "navbar"%>
+
+<div class="container">
+  <div class="row" style="margin-top:20px">
+    <% @designers.each do |el| %>
+    <div class="col-sm-12 col-lg-4 col-md-4">
+      <div class="thumbnail">
+          <div class="col-lg-6 left-side" style="height:280px; widht:280px; padding:0; ">
+          	<img src="<%=el.designs.first.picture(:thumb) %>">
+          </div>
+          <div class="col-lg-6 right-side">
+            <div class="caption">
+              <h3 class="title"><%=el.name%></h3>
+              <h3 class="title"><%=el.lastname%></h3>
+              <p>Diseñador</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "footer"%>

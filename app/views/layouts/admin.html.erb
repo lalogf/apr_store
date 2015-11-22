@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<% if admin_signed_in? %>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -35,12 +36,8 @@
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<% if admin_signed_in? %>
 					<li><%= link_to current_admin.email, edit_admin_registration_path %></li>
 					<li><%= link_to "Cerrar sesión admin", destroy_admin_session_path, method: :delete %></li>
-					<% else %>
-					<li><a href="" data-toggle="modal" data-target="#loginmodal">Iniciar sesión</a></li>
-					<% end %>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -55,6 +52,22 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	<% else %>
+		<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/admin">Admin console</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<%end%>
 
 	<% if flash[:notice].present? %>
 	<div class="container text-center alert alert-primary">

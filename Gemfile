@@ -40,6 +40,10 @@ gem 'will_paginate-bootstrap'
 gem 'ransack'
 
 gem 'masonry-rails', '~> 0.2.0'
+
+gem "smart_listing"
+
+# gem 'rails_email_preview', '~> 0.2.29'
 # gem 'rb-readline'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

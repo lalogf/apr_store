@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  devise_for :users
+# devise_for :users
 devise_for :admins
 
 as :admin do
@@ -33,6 +35,7 @@ end
   get 'iphone6' => 'front_store#iphone6'
   get 'iphone5' => 'front_store#iphone5'
   get 'motog' => 'front_store#motog'
+  get 'designers' => 'front_store#designers'
   get 'admin/designs' => 'admin/designs#adminDesigns'
 
   # The priority is based upon order of creation: first created -> highest priority.

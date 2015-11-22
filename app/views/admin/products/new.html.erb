@@ -1,19 +1,19 @@
 
 
-<h1>Working</h1>
+<h1 class="century uppercase">Crea un nuevo Case</h1>
 <div class="row">
 	<div class="col-md-8">
 		<canvas id="c"></canvas>
 	</div>
 	<div class="col-md-4">
-		<%= bootstrap_form_for [:admin, @design, @product] do |f|%>
-		<%=f.text_field :title, :readonly => true, value: @design.name %>
-		<%= f.text_field :price %>
-		<%= f.number_field :stock %>
-		<%= f.select :phonetype_id, @phonetypes, {id: "myselect"}, value: 6 %>
-		<%= image_tag @design.picture(:medium), id: "0", class: 'designtocase'%>
-		<input id="newcaseimage" name="newcaseimage" type="hidden" type="text">
-		<%= f.submit "Guardar case", class: "btn btn-success", id:"create" %>
+		<%= bootstrap_form_for [:admin, @design, @product]  do |f|%>
+			<%=f.text_field :title, :readonly => true, value: @design.name %>
+			<%= f.text_field :price %>
+			<%= f.number_field :stock %>
+			<%= f.select :phonetype_id, @phonetypes, {id: "myselect"}, value: 6 %>
+			<%= image_tag @design.picture(:medium), id: "0", class: 'designtocase'%>
+			<input id="newcaseimage" name="newcaseimage" type="hidden" type="text">
+			<%= f.submit "Guardar case", class: "btn btn-success", id:"create" %>
 		<%end%>
 	</div>
 
