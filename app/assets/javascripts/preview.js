@@ -5,7 +5,8 @@ var butn;
 var cod;
 var line_for_print;
 var caseImage;
-
+var overIm;
+var preOverIm;
 
 
 
@@ -63,11 +64,14 @@ var ready = function(){
     console.log("hello");
     caseImage = canvas.overlayImage;
     caseImage.selectable = false;
-    canvas.setActiveObject(canvas.item(1));
     canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
     canvas.add(line_for_print);
-    canvas.add(caseImage);
-    canvas.bringToFront(line_for_print);
+    preOverIm = $("#pruebadeimagen")[0];
+    overIm = new fabric.Image(preOverIm,{selectable:false,top:42, left:170});
+    canvas.add(overIm);
+    line_for_print.bringToFront();
+    imgInstance.sendToBack();
+    imgInstance.setActiveObject();
   });
   $("canvas").mouseout(function(){
     console.log("goodbye");
