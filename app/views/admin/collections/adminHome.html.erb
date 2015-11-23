@@ -104,13 +104,12 @@
 
 				<%= f.text_field :name, label:"Nombre", placeholder: "Nombre", autofocus: true %>
 				<%= f.text_field :lastname, label:"Apellido", placeholder: "Apellido" %>
-
-
-				
+				<%= f.text_field :type_Of_Artist, label:"Tipo de Artista", placeholder: "Ilustrador" %>
+				<%= f.file_field :avatar %>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<%= f.submit "Crear", class: "btn btn-success" %>
+				<button type="button" class="btn btn-pink" data-dismiss="modal">Close</button>
+				<%= f.submit "Crear", class: "btn btn-lightBlue" %>
 
 			</div>
 			<%end%>

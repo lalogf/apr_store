@@ -749,10 +749,10 @@ a, a:active, a:hover{
     background-size: cover;
   }
 
-    #artist1 {
+/*    #artist1 {
     background-image: url('bg/artist1.png');
     background-size: cover;
-  }
+  }*/
       #artist2 {
     background-image: url('bg/artist2.png');
     background-size: cover;

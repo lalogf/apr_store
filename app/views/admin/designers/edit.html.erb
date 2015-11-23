@@ -4,10 +4,12 @@
 
 	<%= el.text_field :name, label:"Nombre" %>
 	<%= el.text_field :lastname, label:"Apellido" %>
+	<%= el.text_field :type_Of_Artist, label:"Tipo de Artista", placeholder: "Ilustrador" %>
+	<%= el.file_field :avatar %>
 
 </div>
 <div>
-	<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
-	<%= el.submit "Editar", class: "btn btn-success" %>
+	<a href="javascript:history.back()" class="btn btn-pink">Cancelar</a>
+	<%= el.submit "Editar", class: "btn btn-lightBlue" %>
 </div>
 <%end%>
