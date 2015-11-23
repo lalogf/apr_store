@@ -5,10 +5,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(admin)
-    admin_path
+  # def after_sign_in_path_for(admin)
+  #   admin_path
+  # end
+  def after_sign_in_path_for(resource)
+    if resource.instance_of? User
+      root_path
+    elsif resource.instance_of? Admin
+      admin_path     
+    end
   end
-
   # layout :layout_by_resource
 
   # protected

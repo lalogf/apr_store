@@ -1,6 +1,3 @@
-<%= render "navbar"%>
-
-
 	<section class="home section supercenter">
 		<div class="row">
 			<svg id="svg" width="325" height="165" style="padding:2px">
@@ -30,11 +27,16 @@
 									<input type="text" class="form-control century" placeholder="Search" aria-describedby="sizing-addon2">
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group">
 									<span class="input-group-addon" id="sizing-addon2"><img src="assets/iconos/case.svg" style="height:2vh"></span>
 									<input type="text" class="form-control century" value="Español/PEN" aria-describedby="sizing-addon2">
 								</div>
+							</div>
+							<div class="col-md-3">
+							<% if user_signed_in?%>
+								<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+							<%end%>
 							</div>
 						</div>
 					</div>

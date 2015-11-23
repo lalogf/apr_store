@@ -28,8 +28,8 @@ module Espacioc
     config.active_record.raise_in_transactional_callbacks = true
 
     config.to_prepare do
-        Devise::SessionsController.layout "admin"
-        # Devise::RegistrationsController.layout "your_layout_name"
+        # Devise::SessionsController.layout "admin"
+        # Devise::RegistrationsController.layout ""
         # Devise::ConfirmationsController.layout "your_layout_name"
         # Devise::UnlocksController.layout "your_layout_name"
         # Devise::PasswordsController.layout "your_layout_name"

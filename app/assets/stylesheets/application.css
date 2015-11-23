@@ -841,6 +841,48 @@ a, a:active, a:hover{
     font-size: 25px;
   }
 
+  /*Button Pink*/
+.btn-pink{
+  background-color: rgba(229,69,140,1);
+  border-radius: 0px;
+  border: solid rgba(229,69,140,1) 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: white;
+  font-size: 25px;
+}
+
+  .btn-pink:hover, .btn-pink:active, .btn-pink:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid rgba(229,69,140,1) 2px;
+    background:none;
+    background-color: rgba(229,69,140,1);
+    color: white;
+    font-size: 25px;
+  }
+
+    /*Button LightBlue*/
+.btn-lightBlue{
+  background-color: rgba(64,160,191,1);;
+  border-radius: 0px;
+  border: solid rgba(64,160,191,1); 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: white;
+  font-size: 25px;
+}
+
+  .btn-lightBlue:hover, .btn-lightBlue:active, .btn-lightBlue:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid rgba(64,160,191,1); 2px;
+    background:none;
+    background-color: rgba(64,160,191,1);;
+    color: white;
+    font-size: 25px;
+  }
+
 
 /*-------------------buttons-------------------*/
 
@@ -852,6 +894,16 @@ a, a:active, a:hover{
     border-left: 2px solid #000;
     border-radius: 2px
 }
+
+.divider-h {
+    display: inline-block;
+    height: 0;
+    width:100%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 2px
+}
+
 .artists{
   margin: 37.5px 0;
 }
