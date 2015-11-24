@@ -1,4 +1,6 @@
 class FrontStoreController < ApplicationController
+	before_action :set_designer , only: [:artist_profile]
+
 	def index
 		@banners = Banner.where("active=true AND type_of_banner='Portada'")
 		@designers = Designer.all
@@ -18,5 +20,16 @@ class FrontStoreController < ApplicationController
 
 	def designers
 		@designers = Designer.all
+	end
+	def collections
+		@collections = Collection.all
+	end
+	def artist_profile
+	
+	end
+
+	private
+	def set_designer
+		@designer = Designer.find(params[:id])
 	end
 end
