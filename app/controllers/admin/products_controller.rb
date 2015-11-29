@@ -61,7 +61,7 @@ class Admin::ProductsController < ApplicationController
 	end
 	private
 	def product_params
-		params.require(:product).permit(:title,:price,:stock,:picture,:phonetype_id)
+		params.require(:product).permit(:title,:price,:stock,:picture,:phonetype_id,:active)
 	end
 	def set_product
 		@product = Product.find(params[:id])

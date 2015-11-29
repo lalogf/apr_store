@@ -28,6 +28,11 @@ class FrontStoreController < ApplicationController
 	
 	end
 
+	def products_index
+    	@products = Product.all
+    	@order_item = current_order.order_items.new
+  	end
+
 	private
 	def set_designer
 		@designer = Designer.find(params[:id])

@@ -1,6 +1,9 @@
 class Product < ActiveRecord::Base
 	belongs_to :design
 	belongs_to :phonetype
+	has_many :order_items
+
+	default_scope { where(active: true) }
 
 	has_attached_file :picture, 
 	:styles => { 

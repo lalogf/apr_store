@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
 
   devise_for :users
-# devise_for :users
-devise_for :admins
+  devise_for :admins
 
 as :admin do
   get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
@@ -37,6 +45,7 @@ end
   get 'motog' => 'front_store#motog'
   get 'artistas' => 'front_store#designers'
   get 'colecciones' => 'front_store#collections'
+  get 'productos' => 'front_store#products_index'
   get 'artista/:id' => 'front_store#artist_profile'
   get 'admin/designs' => 'admin/designs#adminDesigns'
 

@@ -11,6 +11,7 @@
 			<%= f.text_field :price %>
 			<%= f.number_field :stock %>
 			<%= f.select :phonetype_id, @phonetypes, {id: "myselect"}, value: 6 %>
+			<%= f.check_box :active, label: "Activo" %>
 			<%= image_tag @design.picture(:medium), id: "0", class: 'designtocase'%>
 			<input id="newcaseimage" name="newcaseimage" type="hidden" type="text">
 			<%= f.submit "Guardar case", class: "btn btn-success", id:"create" %>
