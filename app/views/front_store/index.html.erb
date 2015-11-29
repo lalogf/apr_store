@@ -28,10 +28,11 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<div class="input-group">
+<!-- 								<div class="input-group">
 									<span class="input-group-addon" id="sizing-addon2"><img src="assets/iconos/case.svg" style="height:2vh"></span>
 									<input type="text" class="form-control century" value="Español/PEN" aria-describedby="sizing-addon2">
-								</div>
+								</div> -->
+							<a href="#" class="btn-lg"data-target="#shoppingcart" data-toggle="modal"><span aria-hidden="true"><img src="assets/iconos/cart.svg" style="height:3vh"></span><span class="badge">4</span></a>
 							</div>
 							<div class="col-md-3">
 							<% if user_signed_in?%>
@@ -129,5 +130,5 @@
 			</div>
 		</section>
 		
-
+		<%= render 'carts/shopping_cart_modal'%>
 		<%= render "footer" %>
