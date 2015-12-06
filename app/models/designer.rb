@@ -1,6 +1,13 @@
 class Designer < ActiveRecord::Base
 	has_many :designs
 	has_many :products, through: :designs
+
+	extend FriendlyId
+  	friendly_id :store_name, use: :slugged
+
+	def store_name
+		"#{name} #{lastname}"
+	end  
 	
 	validates :name,
 	presence: { message: "Este campo no puede estar vacío"},

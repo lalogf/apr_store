@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'friendly_id', '~> 5.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -35,6 +35,8 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem "devise"
 
+gem 'omniauth-facebook'
+
 gem 'will_paginate-bootstrap'
 
 gem 'ransack'
@@ -43,7 +45,13 @@ gem 'masonry-rails', '~> 0.2.0'
 
 gem "smart_listing"
 
-# gem 'rails_email_preview', '~> 0.2.29'
+gem 'mandrill-api'
+
+gem 'figaro'
+
+gem 'awesome_print'
+
+gem 'rails_email_preview', '~> 0.2.29'
 # gem 'rb-readline'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

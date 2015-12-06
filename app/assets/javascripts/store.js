@@ -91,6 +91,16 @@ var ready2 = function(){
 		$(this).siblings().show();
 		$(this).css("background-image",firstBg);
 	})
+
+	var uploading = function (){
+		var widget = uploadcare.Widget('[role=uploadcare-uploader]');
+		widget.onUploadComplete(function(info) {
+			$("#wuju").append('<img id="my-image">');
+			$("#my-image").attr("src", info.cdnUrl);
+			$("#picture_url").val(info.cdnUrl);
+		})
+	};
+	uploading();
 };
 
 $(document).ready(ready2);

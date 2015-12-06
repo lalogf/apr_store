@@ -1,0 +1,36 @@
+<%= render "front_store/navbar" %>
+<div class="container">
+	<h1 class="century uppercase">Crea un nuevo Case</h1>
+	<div class="row">
+		<div class="col-md-8">
+			<canvas id="c"></canvas>
+		</div>
+		<div class="col-md-4">
+
+		</div>
+
+		<div>
+			<form id="my-form">
+				<input type="hidden" role="uploadcare-uploader"
+				data-crop="disabled"
+				data-preview-step="true"							data-images-only="true"/>
+			</form>
+			<div id="wuju">
+				<img src="http://www.ucarecdn.com/da3ed54d-f05f-4805-a4eb-9a65593a8155/17.jpg" id="my-image" style="height:80px">
+				<!-- <input id="picture_url" name="picture_url"> -->
+				<%= bootstrap_form_for @picture do |f|%>
+					<%= f.text_field :picture , id:"picture_url", name: "picture_url" %>
+					<%= f.submit "Crear", class: "btn btn-lightBlue" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+					<script>
+						UPLOADCARE_LOCALE = "es";
+						UPLOADCARE_TABS = "file url facebook dropbox instagram";
+						UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
+						UPLOADCARE_LIVE = false;
+					</script>
+					<script charset="utf-8" src="https://ucarecdn.com/widget/2.0.6/uploadcare/uploadcare.full.min.js"></script>

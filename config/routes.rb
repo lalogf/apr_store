@@ -11,32 +11,40 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_for :admins
 
-as :admin do
-  get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
-  put 'admins/:id' => 'devise/registrations#update', :as => 'admin_registration'            
-end
+  # devise_scope :user do
+  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
+  # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-root 'front_store#index'
 
-namespace :admin do
-  get "/" => "collections#adminHome"
-  resources :collections, except: [:destroy]
-  resources :designers, except: [:destroy] do
-    resources :designs, except: [:destroy]
+  as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
+    put 'admins/:id' => 'devise/registrations#update', :as => 'admin_registration'            
   end
-  resources :banners
-  resources :case_inventories
-end
 
-namespace :admin do
-  resources :designs, except:[:new,:create,:show,:edit,:update,:destroy,:index] do
-    resources :products, only:[:new, :create, :edit, :update]
+  root 'front_store#index'
+
+  namespace :admin do
+    get "/" => "collections#adminHome"
+    resources :collections, except: [:destroy]
+    resources :designers, except: [:destroy] do
+      resources :designs, except: [:destroy]
+    end
+    resources :banners
+    resources :case_inventories
   end
-  resources :products, only:[:show]
-end
+
+  namespace :admin do
+    resources :designs, except:[:new,:create,:show,:edit,:update,:destroy,:index] do
+      resources :products, only:[:new, :create, :edit, :update]
+    end
+    resources :products, only:[:show]
+  end
+
+  resources :picture_for_customs
 
 
 
@@ -46,8 +54,10 @@ end
   get 'artistas' => 'front_store#designers'
   get 'colecciones' => 'front_store#collections'
   get 'productos' => 'front_store#products_index'
-  get 'artista/:id' => 'front_store#artist_profile'
+  # get 'crea' => 'users#creatucase'
+  get '/:id' => 'front_store#artist_profile'
   get 'admin/designs' => 'admin/designs#adminDesigns'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -23,6 +23,9 @@ Devise.setup do |config|
 
   config.scoped_views = true
 
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

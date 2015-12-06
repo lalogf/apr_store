@@ -5,7 +5,8 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-6 col-md-offset-3">
       <div class="col-md-12">
-        <a class="col-md-12 supercenter" style="background-color:#3b5998"><img style="height:50px" src="/assets/iconos/facebook_white.svg"></a>
+        <%= link_to image_tag("iconos/facebook_white.svg", :border => 0 , style: "height:50px"), user_omniauth_authorize_path(:facebook), class: "col-md-12 supercenter", style: "background-color:#3b5998" %>
+        <!-- <a class="col-md-12 supercenter" style="background-color:#3b5998"><img style="height:50px" src="/assets/iconos/facebook_white.svg"></a> -->
         <a class="col-md-12 supercenter" style="background-color:#2e5e86; margin:10px 0"><img style="height:50px" src="/assets/iconos/instagram_white.svg"></a>
       </div>
 

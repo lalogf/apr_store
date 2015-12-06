@@ -1,15 +1,17 @@
 class Admin::CaseInventoriesController < ApplicationController
 	layout "admin"
 	before_action :authenticate_admin!
-	before_action :set_banner, only:[:edit,:update,:destroy,:show]
+	# include SmartListing::Helper::ControllerExtensions
+	# helper  SmartListing::Helper
 
 
 	def index
 		@inventory = CaseInventory.all
+		 # @case_inventories = smart_listing_create(:case_inventories, CaseInventory.all, partial: "case_inventories/listing")
 	end
 
 	# def show
-		
+
 	# end
 	# def new
 	# 	@inventory = CaseInventory.new
@@ -27,7 +29,7 @@ class Admin::CaseInventoriesController < ApplicationController
 	# 			format.html {render :new }
 	# 		end
 	# 	end
-		
+
 	# end
 
 	# private

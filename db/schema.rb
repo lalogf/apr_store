@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127041934) do
+ActiveRecord::Schema.define(version: 20151206064948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 20151127041934) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "custom_products", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "phonetype_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "custom_products", ["phonetype_id"], name: "index_custom_products_on_phonetype_id", using: :btree
+  add_index "custom_products", ["user_id"], name: "index_custom_products_on_user_id", using: :btree
+
   create_table "designers", force: :cascade do |t|
     t.string   "name"
     t.string   "lastname"
@@ -74,7 +88,10 @@ ActiveRecord::Schema.define(version: 20151127041934) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "quote"
+    t.string   "slug"
   end
+
+  add_index "designers", ["slug"], name: "index_designers_on_slug", unique: true, using: :btree
 
   create_table "designs", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +104,19 @@ ActiveRecord::Schema.define(version: 20151127041934) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -126,6 +156,18 @@ ActiveRecord::Schema.define(version: 20151127041934) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "picture_for_customs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "picture_for_customs", ["user_id"], name: "index_picture_for_customs_on_user_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.decimal  "price"
@@ -155,12 +197,20 @@ ActiveRecord::Schema.define(version: 20151127041934) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "custom_products", "phonetypes"
+  add_foreign_key "custom_products", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"
+  add_foreign_key "picture_for_customs", "users"
 end

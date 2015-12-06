@@ -35,6 +35,6 @@ class FrontStoreController < ApplicationController
 
 	private
 	def set_designer
-		@designer = Designer.find(params[:id])
+		@designer = Designer.friendly.find(params[:id])
 	end
 end
