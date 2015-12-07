@@ -54,3 +54,10 @@ admin = Admin.create([
 	{email:"lalo@soulutions.com.pe",password:"password",god_mode:true},
 	{email:"lalo@laboratoria.la",password:"password",god_mode:false},
 	])
+
+
+File.open("flatcolors3.txt").each do |line|
+	line.split("\r").each do |dp|
+		FlatColor.create(color_code: dp.gsub(/\s+/, ""))
+	end
+end

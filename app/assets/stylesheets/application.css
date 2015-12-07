@@ -54,6 +54,9 @@ body{
 .margin-10 {
   margin-top: 10px;
 }
+.margin-20 {
+  margin-top: 20px;
+}
 
 #c{
   border: none
@@ -924,5 +927,12 @@ canvas {
 .designtocase{
   height: 150px;
   width: 150px;
+}
+
+.color_button{
+  height:30px;
+  width:30px; 
+  border-radius:20px;
+  display:inline-block;
 }
     

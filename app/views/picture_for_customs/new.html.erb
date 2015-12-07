@@ -6,33 +6,47 @@
 			<canvas id="c"></canvas>
 		</div>
 		<div class="col-md-4">
-
-		</div>
-
-		<div>
-			<form id="my-form">
-				<input type="hidden" role="uploadcare-uploader"
-				data-crop="disabled"
-				data-preview-step="true"							data-images-only="true"/>
-			</form>
-			<div id="wuju">
-				<img src="http://www.ucarecdn.com/da3ed54d-f05f-4805-a4eb-9a65593a8155/17.jpg" id="my-image" style="height:80px">
-				<!-- <input id="picture_url" name="picture_url"> -->
-
-				<%= bootstrap_form_for @picture do |f|%>
-					<input id="picture_url" name="picture_url" >
-					<%= f.submit "Crear", class: "btn btn-pink"%>
-					
-				<% end %>
+			<div class="col-md-12" id="myTabs">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
+					<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
+					<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
+					<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="A">
+						<form id="my-form">
+							<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
+						</form>
+						<div id="wuju">
+							<img src="http://www.ucarecdn.com/da3ed54d-f05f-4805-a4eb-9a65593a8155/17.jpg" id="my-image" style="height:80px">
+						</div>
+					</div>
+					<div class="tab-pane fade" id="B">
+						<div class="margin-10">
+							<% @colors.each do |color|%>
+								<div class="color_button" style="background-color:<%= color.color_code%>"></div>
+							<% end %>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="C">Content inside tab C</div>
+					<div class="tab-pane fade" id="D">
+						<input type="text" id="newtext">
+					</div>
+				</div>
 			</div>
+			<%= bootstrap_form_for @picture do |f|%>
+				<input id="picture_url" name="picture_url" >
+				<%= f.submit "Crear", class: "btn btn-pink"%>
+			<% end %>
 		</div>
 	</div>
 </div>
 
-					<script>
-						UPLOADCARE_LOCALE = "es";
-						UPLOADCARE_TABS = "file url facebook dropbox instagram";
-						UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
-						UPLOADCARE_LIVE = false;
-					</script>
+<script>
+	UPLOADCARE_LOCALE = "es";
+	UPLOADCARE_TABS = "file url facebook dropbox instagram";
+	UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
+	UPLOADCARE_LIVE = false;
+</script>
 					

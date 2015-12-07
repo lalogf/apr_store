@@ -50,16 +50,6 @@ var ready = function(){
     }); 
   });
 
-  // canvas.on('mouse:over', function(e) {
-  //   canvas.add(line_for_print);
-  //   canvas.setOverlayImage(null);
-  //   console.log("hover")
-  // });
-  // canvas.on('mouse:out', function(e) {
-  //   canvas.remove(line_for_print);
-  //   canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas));
-  //   console.log("hover")
-  // });
   $("canvas").mouseover(function(){
     console.log("hello");
     caseImage = canvas.overlayImage;
@@ -77,6 +67,15 @@ var ready = function(){
     console.log("goodbye");
     canvas.setOverlayImage(caseImage, canvas.renderAll.bind(canvas));
     canvas.remove(line_for_print);
+  });
+
+  $(".color_button").click(function(){
+    var color = $(this).css("background-color");
+    canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
+  });
+  $('#newtext').emojiPicker({
+    height: '300px',
+    width: '450px'
   })
 };
 

@@ -6,6 +6,7 @@ class PictureForCustomsController < ApplicationController
 	
 	def new
 		@picture = PictureForCustom.new
+		@colors = FlatColor.all
 	end
 
 

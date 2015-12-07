@@ -1,4 +1,8 @@
-<h1>Prueba</h1>
-<% @pictures.each do |pic|%>
-	<%= image_tag pic.picture.url(:medium)%>
-<% end %>
+<%= render "front_store/navbar" %>
+<div class="container" style="min-height:80vh">
+	<h1>Prueba</h1>
+	<% @pictures.each do |pic|%>
+	<%= image_tag pic.picture.url(:medium), style: "height:200px"%>
+	<% end %>
+</div>
+<%= render "front_store/footer" %>
