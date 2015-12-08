@@ -51,7 +51,6 @@ var ready = function(){
   });
 
   $("canvas").mouseover(function(){
-    console.log("hello");
     caseImage = canvas.overlayImage;
     caseImage.selectable = false;
     canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
@@ -64,7 +63,6 @@ var ready = function(){
     imgInstance.setActiveObject();
   });
   $("canvas").mouseout(function(){
-    console.log("goodbye");
     canvas.setOverlayImage(caseImage, canvas.renderAll.bind(canvas));
     canvas.remove(line_for_print);
   });
@@ -73,11 +71,33 @@ var ready = function(){
     var color = $(this).css("background-color");
     canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
   });
-  $('#newtext').emojiPicker({
+  $("#back_color").change(function(){
+    var color = $(this).val();
+    canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
+  });
+  var cont_width = $(".tab-content").width();
+  $("#newtext").emojiPicker({
     height: '300px',
-    width: '450px'
+    width: cont_width
+  });
+  $(".emoji").click(function(e){
+    var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
+    var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:150, left:250});
+    canvas.add(text);
   })
 };
+
+
+    // emojiClicked: function(e) {
+    //   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
+    //   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+    //   // var emo = $(e.target).css('background-image').split("\"")[1];
+    //   // $('#my-image').attr('src', emo);
+    //   insertAtCaret(this.element, emojiUnicode);
+    // },
+
+
 
 
 var createCanvas = function (){
@@ -116,7 +136,20 @@ createLine();
 //         transparentCorners: false
 //       });
 // }
-
+  function toUnicode(code) {
+    var codes = code.split('-').map(function(value, index) {
+      return parseInt(value, 16);
+    });
+    return String.fromCodePoint.apply(null, codes);
+  }
+    function findEmoji(emojiShortcode) {
+    var emojis = $.fn.emojiPicker.emojis;
+    for (var i = 0; i < emojis.length; i++) {
+      if (emojis[i].shortcode == emojiShortcode) {
+        return emojis[i];
+      }
+    }
+  }
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

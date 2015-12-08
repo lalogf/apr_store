@@ -14,8 +14,14 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
+//= require jquery.emojipicker.js
+//= require jquery.emojipicker.a.js
 //= require masonry/jquery.masonry
-//= require_tree .
+//= require fabric
+//= requier snap.svg
+//= require preview
+//= require front_store
+//= require_self
 
 
 

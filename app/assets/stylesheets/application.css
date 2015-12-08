@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery.emojipicker
+ *= requier jquery.emojipicker.a
  *= require_tree .
  *= require 'masonry/transitions'
  *= require_self
@@ -935,4 +937,10 @@ canvas {
   border-radius:20px;
   display:inline-block;
 }
-    
+
+#newtext{
+  width:100px;
+}
+.tab-content{
+  min-height: 400px;
+}    

@@ -56,7 +56,7 @@
       this.active = false;
       this.addPickerIcon();
       this.createPicker();
-      // this.show();
+      this.show();
       this.listen();
     },
 
@@ -88,7 +88,7 @@
 
       // Show template
       this.$picker = $( getPickerHTML() )
-        .appendTo( this.$container )
+        .appendTo( $("#emojiskeyboard"))
         .width(this.settings.width)
         .height(this.settings.height)
         .css('z-index',10000);
@@ -100,7 +100,11 @@
       // Tab size based on width
       if (this.settings.width < 240) {
         this.$picker.find('.emoji').css({'width':'1em', 'height':'1em'});
-      }
+      };
+      // this.$picker.css({
+      //     top: $(".tab-content").offset().top + 10,
+      //     left: $(".tab-content").offset().left
+      // });
 
     },
 
@@ -130,28 +134,9 @@
           left = this.$el.offset().left;
       }
       else {
-          top = this.$el.position().top + this.$el.height();
-          left = this.$el.position().left;
+          top = this.$el.offset().top + this.$el.height();
+          left = this.$el.offset().left;
       }
-
-      // Picker position
-      // switch(this.settings.position) {
-      //   case 'top':
-      //     var top = parseInt(this.settings.height) + 20;
-      //     this.$pickerWrap.css({'top': -top + 'px', 'right':'0'});
-      //     break;
-      //   case 'bottom':
-      //     this.$pickerWrap.css({'right':'0'});
-      //     break;
-      //   case 'left':
-      //     var left = this.$icon.width() + 10;
-      //     this.$pickerWrap.css({'top':'-10px', 'right': left + 'px'});
-      //     break;
-      //   case 'right':
-      //     var right = parseInt(this.settings.width) + this.$icon.width() - 30;
-      //     this.$pickerWrap.css({'top':'-10px', 'right': -right + 'px'});
-      //     break;
-      // }
 
       this.$picker.css({
           top: top + 15,
@@ -160,15 +145,15 @@
       return this;
     },
 
-    hide: function() {
-      this.$picker.hide(this.settings.fadeTime, 'linear', function() {
-        this.active = false;
-      }.bind(this));
-    },
+    // hide: function() {
+    //   this.$picker.hide(this.settings.fadeTime, 'linear', function() {
+    //     this.active = false;
+    //   }.bind(this));
+    // },
 
     show: function() {
       this.$el.focus();
-      this.updatePosition();
+      // this.updatePosition();
       this.$picker.show(this.settings.fadeTime, 'linear', function() {
         this.active = true;
       }.bind(this));
@@ -186,13 +171,13 @@
       }
     },
 
-    emojiClicked: function(e) {
-      var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
-      var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
-      // var emo = $(e.target).css('background-image').split("\"")[1];
-      // $('#my-image').attr('src', emo);
-      insertAtCaret(this.element, emojiUnicode);
-    },
+    // emojiClicked: function(e) {
+    //   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
+    //   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+    //   // var emo = $(e.target).css('background-image').split("\"")[1];
+    //   // $('#my-image').attr('src', emo);
+    //   insertAtCaret(this.element, emojiUnicode);
+    // },
 
     emojiCategoryClicked: function(e) {
       var section = '';
@@ -214,13 +199,13 @@
 
     pickerClicked: function(e) {
       e.stopPropagation();
-    },
-
-    clickOutside: function(e) {
-      if ( this.active ) {
-        this.hide();
-      }
     }
+
+    // clickOutside: function(e) {
+    //   if ( this.active ) {
+    //     this.hide();
+    //   }
+    // }
 
   });
 

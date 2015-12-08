@@ -27,18 +27,22 @@
 							<% @colors.each do |color|%>
 								<div class="color_button" style="background-color:<%= color.color_code%>"></div>
 							<% end %>
+							<input type="color" id="back_color" class="form-control"  value="#ff0000">
 						</div>
 					</div>
 					<div class="tab-pane fade" id="C">Content inside tab C</div>
 					<div class="tab-pane fade" id="D">
-						<input type="text" id="newtext">
+						<input type="text" id="newtext" style="display:none">
+						<div id="emojiskeyboard"></div>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-12">
 			<%= bootstrap_form_for @picture do |f|%>
 				<input id="picture_url" name="picture_url" >
 				<%= f.submit "Crear", class: "btn btn-pink"%>
 			<% end %>
+			</div>
 		</div>
 	</div>
 </div>
