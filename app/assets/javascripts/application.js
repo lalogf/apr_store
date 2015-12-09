@@ -18,9 +18,10 @@
 //= require jquery.emojipicker.a.js
 //= require masonry/jquery.masonry
 //= require fabric
-//= requier snap.svg
+//= require snap.svg.js
 //= require preview
 //= require front_store
+//= require svgs.js
 //= require_self
 
 

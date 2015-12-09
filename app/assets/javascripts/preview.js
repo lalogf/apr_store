@@ -10,7 +10,6 @@ var preOverIm;
 
 
 
-
 var ready = function(){
   createCanvas();
   $('#product_phonetype_id').change(function(){
@@ -38,11 +37,11 @@ var ready = function(){
     canvas.add(imgInstance);
     canvas.controlsAboveOverlay = true;
     canvas.item(0).set({
-        borderColor: 'black',
-        cornerColor: 'black',
-        cornerSize: 20,
-        transparentCorners: false
-      });
+      borderColor: 'black',
+      cornerColor: 'black',
+      cornerSize: 20,
+      transparentCorners: false
+    });
     canvas.setActiveObject(canvas.item(0));    
     $('#create').click(function(){
       canvas.deactivateAll().renderAll();
@@ -69,8 +68,10 @@ var ready = function(){
 
   $(".color_button").click(function(){
     var color = $(this).css("background-color");
-    canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
-  });
+    var hexColor = rgb2hex(color);
+     $("#back_color").attr("value",hexColor);
+     canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
+   });
   $("#back_color").change(function(){
     var color = $(this).val();
     canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
@@ -80,12 +81,44 @@ var ready = function(){
     height: '300px',
     width: cont_width
   });
-  $(".emoji").click(function(e){
+  $("section .emoji").click(function(e){
     var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
     var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
-    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:150, left:250});
+    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:150, left:250, selectable:true});
     canvas.add(text);
-  })
+  });
+  $('#scale-control').change(function() {
+    canvas.setActiveObject(canvas.item(0));
+    var scaleThisImage = canvas.getActiveObject();
+    scaleThisImage.scale(parseFloat(this.value)).setCoords();
+    canvas.renderAll();
+  });
+  $('#angle-control').change(function() {
+    canvas.setActiveObject(canvas.item(0));
+    var rotateThisImage = canvas.getActiveObject();
+    rotateThisImage.setAngle(parseInt(this.value, 10)).setCoords();
+    canvas.renderAll();
+  });
+  $("#fontSizeDropDown li a").click(function(e){
+    var clickedValue = $(e.target).text();
+    $("#dropdownMenu1").html(clickedValue)
+    .width(40)
+    .append("<span class='caret'></span>");
+  });
+
+  $("#fontFamilyDropDown li a").click(function(e){
+    var clickedValue = $(e.target).text();
+    $("#dropdownMenu2").html(clickedValue)
+    .width(300)
+    .append("<span class='caret'></span>");
+  });
+  $("#textCreation").click(function(){
+    var newtext = $("#text_to_canvas").val();
+    var font_size = $("#dropdownMenu1").html().split("<")[0];
+    var font_family = $("#dropdownMenu2").html().split("<")[0];
+    var text = new fabric.Text(newtext, {fontFamily: font_family,top:150, left:250,fill: "black", fontSize: font_size});
+    canvas.add(text);
+  });
 };
 
 
@@ -100,17 +133,17 @@ var ready = function(){
 
 
 
-var createCanvas = function (){
-  canvas = new fabric.Canvas('c');
-  canvas.setHeight(600);
-  canvas.setWidth(600);
-  canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas));
-}; 
+    var createCanvas = function (){
+      canvas = new fabric.Canvas('c');
+      canvas.setHeight(600);
+      canvas.setWidth(600);
+      canvas.setOverlayImage('/assets/i6t.png', canvas.renderAll.bind(canvas));
+    }; 
 
 
-var createImage = function(cod){
-  imgElement = $('.designtocase')[cod];
-  imgInstance = new fabric.Image(imgElement, {
+    var createImage = function(cod){
+      imgElement = $('.designtocase')[cod];
+      imgInstance = new fabric.Image(imgElement, {
     // height: 600,
     // width: 600,
     // scaleY:300/imgElement.width,
@@ -118,13 +151,13 @@ var createImage = function(cod){
     left: 0,
     top: 0,
   },{ crossOrigin: 'anonymous' } );
-};
+    };
 
-var createLine = function(){
-  line_for_print = new fabric.Rect({ top: 10, left: 100, width: 400, height: 580, fill: 'rgba(255,255,255,0)', hasControls:false,strokeDashArray: [5, 5],
-    stroke: 'black',selectable: false})
-};
-createLine();
+    var createLine = function(){
+      line_for_print = new fabric.Rect({ top: 10, left: 100, width: 400, height: 580, fill: 'rgba(255,255,255,0)', hasControls:false,strokeDashArray: [5, 5],
+        stroke: 'black',selectable: false})
+    };
+    createLine();
 
 // fabric.Image.fromURL(imgData, callbackFunc , { crossOrigin: 'anonymous' });
 
@@ -136,20 +169,27 @@ createLine();
 //         transparentCorners: false
 //       });
 // }
-  function toUnicode(code) {
-    var codes = code.split('-').map(function(value, index) {
-      return parseInt(value, 16);
-    });
-    return String.fromCodePoint.apply(null, codes);
-  }
-    function findEmoji(emojiShortcode) {
-    var emojis = $.fn.emojiPicker.emojis;
-    for (var i = 0; i < emojis.length; i++) {
-      if (emojis[i].shortcode == emojiShortcode) {
-        return emojis[i];
-      }
+function toUnicode(code) {
+  var codes = code.split('-').map(function(value, index) {
+    return parseInt(value, 16);
+  });
+  return String.fromCodePoint.apply(null, codes);
+}
+function findEmoji(emojiShortcode) {
+  var emojis = $.fn.emojiPicker.emojis;
+  for (var i = 0; i < emojis.length; i++) {
+    if (emojis[i].shortcode == emojiShortcode) {
+      return emojis[i];
     }
   }
+}
+    function rgb2hex(orig){
+     var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+       return (rgb && rgb.length === 4) ? "#" +
+       ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
+     }
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
