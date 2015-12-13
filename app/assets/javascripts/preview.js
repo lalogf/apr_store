@@ -7,6 +7,7 @@ var line_for_print;
 var caseImage;
 var overIm;
 var preOverIm;
+var imgData;
 
 
 
@@ -30,12 +31,29 @@ var ready = function(){
     }
   });
   
-  $(".designtocase").click(function(){
-    //cod = (parseInt(this.id));
-    cod = 0;
-    createImage(cod);
-    event.preventDefault();
-    canvas.add(imgInstance);
+  // $(".designtocase").click(function(){
+  //   //cod = (parseInt(this.id));
+  //   cod = 0;
+  //   createImage(cod);
+  //   event.preventDefault();
+  //   canvas.add(imgInstance);
+  //   canvas.controlsAboveOverlay = true;
+  //   canvas.item(0).set({
+  //     borderColor: 'black',
+  //     cornerColor: 'black',
+  //     cornerSize: 20,
+  //     transparentCorners: false
+  //   });
+  //   canvas.setActiveObject(canvas.item(0));    
+  // });
+
+$(".designtocase").click(function(e){
+  imgData = e.target.src;
+  fabric.Image.fromURL(imgData,  function (img) {
+    canvas.add(img.set({
+        left: 0,
+        top: 0,
+    }));
     canvas.controlsAboveOverlay = true;
     canvas.item(0).set({
       borderColor: 'black',
@@ -43,8 +61,13 @@ var ready = function(){
       cornerSize: 20,
       transparentCorners: false
     });
-    canvas.setActiveObject(canvas.item(0));    
-  });
+    canvas.setActiveObject(canvas.item(0)); 
+} , { crossOrigin: 'anonymous' });
+});
+  
+
+
+
 
   // $("canvas").mouseover(function(){
   //   caseImage = canvas.overlayImage;
@@ -138,7 +161,7 @@ var ready = function(){
       // scaleX:200/imgElement.width,
     left: 0,
     top: 0,
-  },{ crossOrigin: 'anonymous' } );
+  },{ crossOrigin: 'Anonymous' } );
     };
 
     var createLine = function(){

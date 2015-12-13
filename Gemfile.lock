@@ -147,6 +147,7 @@ GEM
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     rack (1.6.4)
+    rack-cors (0.2.9)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -264,6 +265,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip!
   pg
+  rack-cors
   rails (= 4.2.0)
   rails_email_preview (~> 0.2.29)
   ransack
