@@ -31,7 +31,8 @@ var ready = function(){
   });
   
   $(".designtocase").click(function(){
-    cod = (parseInt(this.id));
+    //cod = (parseInt(this.id));
+    cod = 0;
     createImage(cod);
     event.preventDefault();
     canvas.add(imgInstance);
@@ -43,28 +44,24 @@ var ready = function(){
       transparentCorners: false
     });
     canvas.setActiveObject(canvas.item(0));    
-    $('#create').click(function(){
-      canvas.deactivateAll().renderAll();
-      $('#newcaseimage').val(canvas.toDataURL('image/png'));
-    }); 
   });
 
-  $("canvas").mouseover(function(){
-    caseImage = canvas.overlayImage;
-    caseImage.selectable = false;
-    canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
-    canvas.add(line_for_print);
-    preOverIm = $("#pruebadeimagen")[0];
-    overIm = new fabric.Image(preOverIm,{selectable:false,top:42, left:170});
-    canvas.add(overIm);
-    line_for_print.bringToFront();
-    imgInstance.sendToBack();
-    imgInstance.setActiveObject();
-  });
-  $("canvas").mouseout(function(){
-    canvas.setOverlayImage(caseImage, canvas.renderAll.bind(canvas));
-    canvas.remove(line_for_print);
-  });
+  // $("canvas").mouseover(function(){
+  //   caseImage = canvas.overlayImage;
+  //   caseImage.selectable = false;
+  //   canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
+  //   canvas.add(line_for_print);
+  //   preOverIm = $("#pruebadeimagen")[0];
+  //   overIm = new fabric.Image(preOverIm,{selectable:false,top:42, left:170});
+  //   canvas.add(overIm);
+  //   line_for_print.bringToFront();
+  //   imgInstance.sendToBack();
+  //   imgInstance.setActiveObject();
+  // });
+  // $("canvas").mouseout(function(){
+  //   canvas.setOverlayImage(caseImage, canvas.renderAll.bind(canvas));
+  //   canvas.remove(line_for_print);
+  // });
 
   $(".color_button").click(function(){
     var color = $(this).css("background-color");
@@ -88,13 +85,11 @@ var ready = function(){
     canvas.add(text);
   });
   $('#scale-control').change(function() {
-    canvas.setActiveObject(canvas.item(0));
     var scaleThisImage = canvas.getActiveObject();
     scaleThisImage.scale(parseFloat(this.value)).setCoords();
     canvas.renderAll();
   });
   $('#angle-control').change(function() {
-    canvas.setActiveObject(canvas.item(0));
     var rotateThisImage = canvas.getActiveObject();
     rotateThisImage.setAngle(parseInt(this.value, 10)).setCoords();
     canvas.renderAll();
@@ -119,18 +114,11 @@ var ready = function(){
     var text = new fabric.Text(newtext, {fontFamily: font_family,top:150, left:250,fill: "black", fontSize: font_size});
     canvas.add(text);
   });
+  $('#generar').click(function(){
+    canvas.deactivateAll().renderAll();
+    $('#picture_url').val(canvas.toDataURL('image/png'));
+  }); 
 };
-
-
-    // emojiClicked: function(e) {
-    //   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
-    //   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
-    //   // var emo = $(e.target).css('background-image').split("\"")[1];
-    //   // $('#my-image').attr('src', emo);
-    //   insertAtCaret(this.element, emojiUnicode);
-    // },
-
-
 
 
     var createCanvas = function (){
@@ -144,10 +132,10 @@ var ready = function(){
     var createImage = function(cod){
       imgElement = $('.designtocase')[cod];
       imgInstance = new fabric.Image(imgElement, {
-    // height: 600,
-    // width: 600,
-    // scaleY:300/imgElement.width,
-    // scaleX:200/imgElement.width,
+      // height: 600,
+      // width: 600,
+      // scaleY:300/imgElement.width,
+      // scaleX:200/imgElement.width,
     left: 0,
     top: 0,
   },{ crossOrigin: 'anonymous' } );
@@ -174,7 +162,7 @@ function toUnicode(code) {
     return parseInt(value, 16);
   });
   return String.fromCodePoint.apply(null, codes);
-}
+};
 function findEmoji(emojiShortcode) {
   var emojis = $.fn.emojiPicker.emojis;
   for (var i = 0; i < emojis.length; i++) {
@@ -182,14 +170,21 @@ function findEmoji(emojiShortcode) {
       return emojis[i];
     }
   }
-}
-    function rgb2hex(orig){
-     var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-       return (rgb && rgb.length === 4) ? "#" +
-       ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
-     }
+};
+function rgb2hex(orig){
+ var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+   return (rgb && rgb.length === 4) ? "#" +
+   ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+   ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+   ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
+ };
+
+//  var delete_from_canvas = function () {
+//   window.deleteObject = function() {
+//     canvas.getActiveObject().remove();
+//   }
+//   console.log("working");
+// };
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

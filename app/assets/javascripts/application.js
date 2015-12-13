@@ -20,6 +20,7 @@
 //= require fabric
 //= require snap.svg.js
 //= require preview
+//= require store
 //= require front_store
 //= require svgs.js
 //= require_self

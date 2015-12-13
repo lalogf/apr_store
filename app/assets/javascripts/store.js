@@ -97,7 +97,7 @@ var ready2 = function(){
 		widget.onUploadComplete(function(info) {
 			$("#wuju").append('<img id="my-image">');
 			$("#my-image").attr("src", info.cdnUrl);
-			$("#picture_url").val(info.cdnUrl);
+			// $("#picture_url").val(info.cdnUrl);
 		})
 	};
 	uploading();
