@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require jquery.emojipicker.js
 //= require jquery.emojipicker.a.js
-//= require masonry/jquery.masonry
 //= require fabric
 //= require snap.svg.js
 //= require preview
@@ -28,9 +27,6 @@
 
 
 var ready = function (){
-	// if ($("form#new_collection .form-group").attr("class") == "form-group has-error has-feedback"){
-	// 	$("#crearColeccion").modal("show");
-	// }
 	if ((($("form#new_collection .has-error")).length > 0)) {
 		$("#crearColeccion").modal("show");
 		console.log("hello error coleccion");
@@ -38,15 +34,15 @@ var ready = function (){
 	else if (($("form#new_designer .has-error").length) > 0) {
 		$("#crearDisenador").modal("show");
 	};
-$(".banner").hover(function(){
-	$(this).addClass('bannerHover');
-	$(".marca", this).css('color','white');
-	$(".ver", this).toggle();
-}, function(){
-	$(this).removeClass('bannerHover');
-	$(".marca",this).css('color','black');
-	$(".ver", this).toggle();
-});
+	$(".banner").hover(function(){
+		$(this).addClass('bannerHover');
+		$(".marca", this).css('color','white');
+		$(".ver", this).toggle();
+	}, function(){
+		$(this).removeClass('bannerHover');
+		$(".marca",this).css('color','black');
+		$(".ver", this).toggle();
+	});
 
 
 };

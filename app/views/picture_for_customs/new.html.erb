@@ -6,6 +6,19 @@
 			<canvas id="c"></canvas>
 		</div>
 		<div class="col-md-4">
+			<div class="col-md-12 margin-10" style="margin-bottom:20px">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100%">
+						<p name="tipo_de_equipo">Elige el equipo</p>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" id="phoneTypeDropDown" aria-labelledby="dropdownMenu3" style="height:auto;max-height:200px;overflow-x:hidden">
+						<% Phonetype.all.each do |n|%>
+						<li><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
 			<div class="col-md-12" id="myTabs">
 				<ul class="nav nav-tabs nav-justified">
 					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
@@ -15,11 +28,12 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="A" >
-						<form id="my-form">
-							<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
-						</form>
-						<div id="wuju">
-							<img src="http://www.ucarecdn.com/da3ed54d-f05f-4805-a4eb-9a65593a8155/17.jpg" id="my-image" class="designtocase" style="height:80px">
+						<div class="margin-10">
+							<form id="my-form">
+								<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
+							</form>
+							<div id="wuju" class="margin-10">
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="B">

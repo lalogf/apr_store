@@ -930,8 +930,9 @@ canvas {
 }
 
 .designtocase{
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
+  margin-left: 5px;
 }
 
 .color_button{

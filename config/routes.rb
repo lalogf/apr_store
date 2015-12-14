@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
 
   resources :picture_for_customs
+  resources :custom_products
 
 
 

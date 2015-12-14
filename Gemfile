@@ -53,7 +53,7 @@ gem 'awesome_print'
 
 gem 'rails_email_preview', '~> 0.2.29'
 
-gem 'rack-cors', :require => 'rack/cors'
+# gem 'rack-cors', :require => 'rack/cors'
 # gem 'rb-readline'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
