@@ -35,22 +35,6 @@ var ready = function(){
     }
   });
 
-  // $(".designtocase").click(function(){
-  //   //cod = (parseInt(this.id));
-  //   cod = 0;
-  //   createImage(cod);
-  //   event.preventDefault();
-  //   canvas.add(imgInstance);
-  //   canvas.controlsAboveOverlay = true;
-  //   canvas.item(0).set({
-  //     borderColor: 'black',
-  //     cornerColor: 'black',
-  //     cornerSize: 20,
-  //     transparentCorners: false
-  //   });
-  //   canvas.setActiveObject(canvas.item(0));    
-  // });
-
 if (window.location.pathname.split("/")[1] !== "admin"){
   $("#phoneTypeDropDown li a").click(function(e){
     var clickedValue = $(e.target).text();
