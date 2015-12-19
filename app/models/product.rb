@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
 		:croppable => '600x600' 
 		},
 		:storage => :s3,
-		:bucket  => ENV['MY_BUCKET_NAME']
+		:bucket  => ENV['S3_BUCKET_NAME']
 
 	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 	# validates_with AttachmentSizeValidator, :attributes => :picture, :greater_than => 0.megabytes
