@@ -49,6 +49,9 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     awesome_print (1.6.1)
+    aws-sdk-v1 (1.59.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -248,6 +251,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  aws-sdk-v1
   better_errors
   bootstrap_form
   byebug

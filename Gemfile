@@ -33,6 +33,8 @@ gem 'better_errors', group: :development
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
+gem 'aws-sdk-v1'
+
 gem "devise"
 
 gem 'omniauth-facebook'
