@@ -9,7 +9,9 @@ class CustomProduct < ActiveRecord::Base
 		:thumb => ["100x100>", :png],
 		:thumbBox => ["250x250", :png],
 		:croppable => '600x600' 
-	}
+	},	
+		:storage => :s3,
+		:bucket  => ENV['S3_BUCKET_NAME']
 
 	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 

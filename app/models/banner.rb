@@ -8,7 +8,9 @@ class Banner < ActiveRecord::Base
 	has_attached_file :image, 
 	:styles => {  
 			:thumb => ["100x100>", :png],
-		}
+		},	
+		:storage => :s3,
+		:bucket  => ENV['S3_BUCKET_NAME']
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	validates_with AttachmentSizeValidator, :attributes => :image, :greater_than => 0.megabytes
 
