@@ -371,7 +371,7 @@ footer {
 }
 
 .footer_title {
-  font-size:;
+  /*font-size:;*/
   color:white;
 
 }
@@ -676,7 +676,7 @@ position: relative;
 }
 
 .white{
-  color:rgba(255,255,255,);
+  color:rgba(255,255,255,1);
   position:absolute;
   bottom:0;
   right:0;
@@ -872,9 +872,9 @@ a, a:active, a:hover{
 
     /*Button LightBlue*/
 .btn-lightBlue{
-  background-color: rgba(64,160,191,1);;
+  background-color: rgba(64,160,191,1);
   border-radius: 0px;
-  border: solid rgba(64,160,191,1); 2px;
+  border: solid rgba(64,160,191,1) 2px;
   text-decoration: none;
   text-shadow:none;
   color: white;
@@ -884,9 +884,9 @@ a, a:active, a:hover{
   .btn-lightBlue:hover, .btn-lightBlue:active, .btn-lightBlue:focus{
     background:none;
     border-radius: 0px;
-    border: solid rgba(64,160,191,1); 2px;
+    border: solid rgba(64,160,191,1) 2px;
     background:none;
-    background-color: rgba(64,160,191,1);;
+    background-color: rgba(64,160,191,1);
     color: white;
     font-size: 25px;
   }
