@@ -19,7 +19,7 @@
 /public/system/picture_for_customs
 public/system/banners/images
 
-/app/assets/cases
+
 
 # Ignore application configuration
 /config/application.yml
