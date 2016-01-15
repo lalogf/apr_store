@@ -56,7 +56,7 @@ gem 'figaro'
 gem 'awesome_print'
 
 gem 'rails_email_preview', '~> 0.2.29'
-gem 'sprockets_better_errors'
+# gem 'sprockets_better_errors'
 
 # gem 'rack-cors', :require => 'rack/cors'
 # gem 'rb-readline'
