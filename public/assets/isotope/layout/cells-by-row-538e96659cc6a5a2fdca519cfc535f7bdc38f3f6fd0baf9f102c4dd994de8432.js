@@ -1,0 +1,5 @@
+/*!
+ * cellsByRows layout mode for Isotope
+ * http://isotope.metafizzy.co
+ */
+!function(t){"use strict";function e(t){var e=t.create("cellsByRow");return e.prototype._resetLayout=function(){this.itemIndex=0,this.getColumnWidth(),this.getRowHeight(),this.cols=Math.floor(this.isotope.size.innerWidth/this.columnWidth),this.cols=Math.max(this.cols,1)},e.prototype._getItemLayoutPosition=function(t){t.getSize();var e=this.itemIndex%this.cols,i=Math.floor(this.itemIndex/this.cols),n=(e+.5)*this.columnWidth-t.size.outerWidth/2,o=(i+.5)*this.rowHeight-t.size.outerHeight/2;return this.itemIndex++,{x:n,y:o}},e.prototype._getContainerSize=function(){return{height:Math.ceil(this.itemIndex/this.cols)*this.rowHeight}},e}"function"==typeof define&&define.amd?define(["isotope/js/layout-mode"],e):e(t.Isotope.LayoutMode)}(window);

@@ -36,6 +36,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.assets.raise_production_errors = true
+
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
 #   config.paperclip_defaults = {

@@ -1,0 +1,1 @@
+var ready=function(){var t,e=$("#product_title").val();$("#product_title").val("Case "+e+" iPhone 4 Tough"),$("#product_phonetype_id").change(function(){t=$("#product_phonetype_id option:selected").text(),$("#product_title").val("Case "+e+" "+t)})};$(document).ready(ready),$(document).on("page:load",ready);
