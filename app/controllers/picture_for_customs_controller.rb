@@ -15,7 +15,9 @@ class PictureForCustomsController < ApplicationController
 
 
 	def create
-		file_name = "nuevo_case_" + current_user.id.to_s + "_" + Phonetype.first.modelName.split(" ").join("_")
+
+		case_random_code = SecureRandom.hex(4)
+		file_name = "case_" + case_random_code + "_" + Phonetype.find(params[:phone_type_name]).modelName.delete(' ') + Phonetype.find(params[:phone_type_name]).type_of_case
 		base_64_string = params[:picture_url].split('data:image/png;base64,')[1]
 		File.open(file_name, 'wb') do |f|
 			f.write(Base64.decode64(base_64_string))
@@ -25,7 +27,7 @@ class PictureForCustomsController < ApplicationController
 		respond_to do |format| 
 			if @picture.save
 				flash[:success] = "La foto se guardó con éxito"
-			format.html {redirect_to root_path}
+			format.html {redirect_to picture_for_customs_path}
 			end
 		end
 	end

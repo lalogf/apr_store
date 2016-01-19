@@ -42,39 +42,48 @@ if (window.location.pathname.split("/")[1] !== "admin"){
     if(e.target.id === "2"){
       canvas.setOverlayImage('/assets/cases/i5.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i5.png';
-      overlay_line = '/assets/cases/i5_l.png'
+      overlay_line = '/assets/cases/i5_l.png';
+      $("#phone_type_name").val("2")
     } else if (e.target.id === "3") {
       canvas.setOverlayImage('/assets/cases/i5t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i5t.png';
-      overlay_line = '/assets/cases/i5t_l.png'
+      overlay_line = '/assets/cases/i5t_l.png';
+      $("#phone_type_name").val("3")
     } else if (e.target.id === "7") {
       canvas.setOverlayImage('/assets/cases/gs5t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/gs5t.png';
-      overlay_line = '/assets/cases/gs5t_l.png'
+      overlay_line = '/assets/cases/gs5t_l.png';
+      $("#phone_type_name").val("7");
     } else if (e.target.id === "9") {
       canvas.setOverlayImage('/assets/cases/gs6t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/gs6t.png';
-      overlay_line = '/assets/cases/gs6t_l.png'
+      overlay_line = '/assets/cases/gs6t_l.png';
+      $("#phone_type_name").val("9");
     } else if (e.target.id === "8") {
       canvas.setOverlayImage('/assets/cases/motog.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/motog.png';
-      overlay_line = '/assets/cases/motog_l.png'
+      overlay_line = '/assets/cases/motog_l.png';
+      $("#phone_type_name").val("8");
     } else if (e.target.id === "4") {
       canvas.setOverlayImage('/assets/cases/i6.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6.png';
-      overlay_line = '/assets/cases/i6_l.png'
+      overlay_line = '/assets/cases/i6_l.png';
+      $("#phone_type_name").val("4")
     } else if (e.target.id === "5") {
       canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6t.png';
-      overlay_line = '/assets/cases/i6t_l.png'
+      overlay_line = '/assets/cases/i6t_l.png';
+      $("#phone_type_name").val("5")
     } else if (e.target.id === "6") {
       canvas.setOverlayImage('/assets/cases/i6pt.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6pt.png';
-      overlay_line = '/assets/cases/i6pt_l.png'
+      overlay_line = '/assets/cases/i6pt_l.png';
+      $("#phone_type_name").val("6")
     } else if (e.target.id === "1") {
       canvas.setOverlayImage('/assets/cases/i4t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i4t.png';
-      overlay_line = '/assets/cases/i4t_l.png'
+      overlay_line = '/assets/cases/i4t_l.png';
+      $("#phone_type_name").val("1")
     }
   });
 
