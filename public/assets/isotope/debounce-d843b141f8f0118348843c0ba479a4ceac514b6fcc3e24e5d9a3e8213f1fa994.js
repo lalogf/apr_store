@@ -1,0 +1,1 @@
+!function(t,e){var i=function(t,e,i){var n;return function(){function r(){i||t.apply(o,s),n=null}var o=this,s=arguments;n?clearTimeout(n):i&&t.apply(o,s),n=setTimeout(r,e||100)}};jQuery.fn[e]=function(t){return t?this.bind("resize",i(t)):this.trigger(e)}}(jQuery,"smartresize");
