@@ -161,7 +161,8 @@ $("#textCreation").click(function(){
   var newtext = $("#text_to_canvas").val();
   var font_size = $("#dropdownMenu1").html().split("<")[0];
   var font_family = $("#dropdownMenu2").html().split("<")[0];
-  var text = new fabric.Text(newtext, {fontFamily: font_family,top:150, left:250,fill: "black", fontSize: font_size});
+  var text_color = $("#text_color").val();
+  var text = new fabric.IText(newtext, {fontFamily: font_family,top:150, left:250,fill: text_color, fontSize: font_size});
   canvas.add(text);
 });
 $('#generar').click(function(){
