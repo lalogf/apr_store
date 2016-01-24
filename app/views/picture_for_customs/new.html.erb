@@ -106,8 +106,8 @@
 			<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
 			
 			<%= bootstrap_form_for @picture do |f|%>
-				<input id="picture_url" name="picture_url" style="display:none">
-				<input id="phone_type_name" name="phone_type_name" style="display:none" value="5">
+				<%= hidden_field_tag 'picture_url'%>
+				<%= hidden_field_tag 'phone_type_name', '5'%>
 				<%= f.submit "Crear", class: "btn btn-pink", id: "generar" %>
 			<% end %>
 			</div>
