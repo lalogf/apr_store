@@ -1,0 +1,32 @@
+<%= render "front_store/navbar" %>
+<div class="container">
+	<div class="row">
+		<h2>Mira tu creación</h2>
+		<div class="col-md-6">
+			<%= image_tag @case.picture.url(:medium), style: "height:500px"  %>
+		</div>
+		<div class="col-md-6">
+			<h4>Artista: </h4>
+			<h3>Lalo González</h3>
+			<h2 class="lightblue-text"> S/. 90</h2>
+			<%= form_tag charges_path do %>
+			<article>
+				<% if flash[:error].present? %>
+				<div id="error_explanation">
+					<p><%= flash[:error] %></p>
+				</div>
+				<% end %>
+			</article>
+
+			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY']%>"
+			data-description="Case personalizado"
+			data-currency="pen"
+			data-amount="9000"
+			data-locale="es"
+			></script>
+			<% end %>
+		</div>
+	</div>
+</div>	
+<%= render "front_store/footer" %>

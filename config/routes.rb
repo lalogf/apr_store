@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :products, only:[:show]
   end
 
-  resources :picture_for_customs
+  resources :picture_for_customs, only:[:new, :create, :show]
   resources :custom_products
 
 
@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   # get 'crea' => 'users#creatucase'
   get '/:id' => 'front_store#artist_profile'
   get 'admin/designs' => 'admin/designs#adminDesigns'
+
+  #Suppor stripe payments through charges
+  resources :charges
 
 
   # The priority is based upon order of creation: first created -> highest priority.

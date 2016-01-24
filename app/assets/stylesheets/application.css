@@ -410,6 +410,9 @@ footer ul {
   }
 }
 
+.lightblue-text{
+  color: rgba(64,160,191,1);
+}
 
 .lightblue-aa{
   background-color: rgba(64,160,191,1);
@@ -938,6 +941,13 @@ canvas {
 .color_button{
   height:30px;
   width:30px; 
+  border-radius:20px;
+  display:inline-block;
+}
+
+.color_button2{
+  height:20px;
+  width:20px; 
   border-radius:20px;
   display:inline-block;
 }

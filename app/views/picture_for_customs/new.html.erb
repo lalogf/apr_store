@@ -81,7 +81,10 @@
 							</div>
 						</div>
 						<div class="col-md-12 margin-10">
-							<input type="color" id="text_color" class="form-control"  value="#000000">
+							<!-- <input type="color" id="text_color" class="form-control"  value="#000000"> -->
+							<% @colors.each do |color|%>
+								<div class="color_button2" style="background-color:<%= color.color_code%>"></div>
+							<% end %>
 						</div>
 
 
@@ -101,10 +104,10 @@
 			</div>
 			<div class="col-md-12">
 			<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
+			
 			<%= bootstrap_form_for @picture do |f|%>
 				<input id="picture_url" name="picture_url" style="display:none">
-				<input id="phone_type_name" name="phone_type_name" style="display:none">
-				
+				<input id="phone_type_name" name="phone_type_name" style="display:none" value="5">
 				<%= f.submit "Crear", class: "btn btn-pink", id: "generar" %>
 			<% end %>
 			</div>

@@ -26,9 +26,13 @@ class PictureForCustomsController < ApplicationController
 		@picture = PictureForCustom.create(user_id: current_user.id, picture: new_file)
 		respond_to do |format| 
 			if @picture.save
-				flash[:success] = "La foto se guardó con éxito"
-			format.html {redirect_to picture_for_customs_path}
+				flash[:success] = "Mira el case que creaste"
+			format.html {redirect_to picture_for_custom_path(@picture.id)}
 			end
 		end
 	end
+	def show
+		@case = PictureForCustom.find(params[:id])
+	end
+
 end
