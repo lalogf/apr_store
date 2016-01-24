@@ -38,7 +38,7 @@ Rails.application.configure do
 
   config.assets.raise_production_errors = true
 
-  Paperclip.options[:command_path] = "/usr/local/bin/"
+  # Paperclip.options[:command_path] = "/usr/local/bin/"
 
 #   config.paperclip_defaults = {
 #   :storage => :s3,

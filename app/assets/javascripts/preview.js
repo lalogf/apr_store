@@ -165,11 +165,18 @@ $("#textCreation").click(function(){
   var text = new fabric.IText(newtext, {fontFamily: font_family,top:150, left:250,fill: text_color, fontSize: font_size});
   canvas.add(text);
 });
-$('#generar').click(function(){
+$('#generar').click(function(e){
       // canvas.overlayImage = null;
       // canvas.renderAll.bind(canvas);
+      var overlay = canvas.overlayImage;
+      canvas.overlayImage = null;
+      canvas.deactivateAll().renderAll();
+      $('#image_to_print').val(canvas.toDataURL('image/png'));
+
+      canvas.overlayImage = overlay;
       canvas.deactivateAll().renderAll();
       $('#picture_url').val(canvas.toDataURL('image/png'));
+
     });
 } else {
   $(".designtocase").click(function(e){

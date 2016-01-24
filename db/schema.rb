@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207172308) do
+ActiveRecord::Schema.define(version: 20160124054541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,18 +64,14 @@ ActiveRecord::Schema.define(version: 20151207172308) do
   end
 
   create_table "custom_products", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "phonetype_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "picture_for_customs_id"
   end
-
-  add_index "custom_products", ["phonetype_id"], name: "index_custom_products_on_phonetype_id", using: :btree
-  add_index "custom_products", ["user_id"], name: "index_custom_products_on_user_id", using: :btree
 
   create_table "designers", force: :cascade do |t|
     t.string   "name"
@@ -170,6 +166,7 @@ ActiveRecord::Schema.define(version: 20151207172308) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "uuid"
   end
 
   add_index "picture_for_customs", ["user_id"], name: "index_picture_for_customs_on_user_id", using: :btree
@@ -213,8 +210,6 @@ ActiveRecord::Schema.define(version: 20151207172308) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
-  add_foreign_key "custom_products", "phonetypes"
-  add_foreign_key "custom_products", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"

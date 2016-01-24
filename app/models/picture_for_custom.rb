@@ -1,7 +1,7 @@
 require 'open-uri' 
 class PictureForCustom < ActiveRecord::Base
   belongs_to :user
-
+  has_one :custom_product 
 
   attr_reader :picture_remote_url
   has_attached_file :picture, 
@@ -19,5 +19,8 @@ class PictureForCustom < ActiveRecord::Base
 
 	def picture_from_url(url)
 		self.picture = open(url)
-  	end
+  end
+  def to_param
+   uuid
+ end
 end

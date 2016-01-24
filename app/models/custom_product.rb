@@ -1,6 +1,5 @@
 class CustomProduct < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :phonetype
+  belongs_to :picture_for_custom
 
 
   	has_attached_file :picture, 
