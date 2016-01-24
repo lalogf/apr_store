@@ -33,6 +33,7 @@ class PictureForCustomsController < ApplicationController
 		@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
 		respond_to do |format| 
 			if @picture.save
+				UserMailer.purchase_confirmation(current_user).deliver
 				flash[:success] = "Mira el case que creaste"
 				format.html {redirect_to picture_for_custom_path(@picture.uuid)}
 			end
@@ -45,4 +46,5 @@ class PictureForCustomsController < ApplicationController
 			@case.save
 		end
 	end
+	private
 end
