@@ -1,5 +1,5 @@
 class PictureForCustomsController < ApplicationController
-
+	before_action :authenticate_user! , only: [:show]
 	def index
 		@pictures = PictureForCustom.all
 	end
@@ -23,7 +23,7 @@ class PictureForCustomsController < ApplicationController
 			f.write(Base64.decode64(base_64_string))
 		end
 		new_file = File.open(file_name)
-		@picture = PictureForCustom.create(user_id: current_user.id, picture: new_file)
+		@picture = PictureForCustom.create(picture: new_file)
 		respond_to do |format| 
 			if @picture.save
 				flash[:success] = "Mira el case que creaste"
@@ -33,6 +33,9 @@ class PictureForCustomsController < ApplicationController
 	end
 	def show
 		@case = PictureForCustom.find(params[:id])
+		if !@case.user_id
+			@case.user_id = current_user.id
+			@case.save
+		end
 	end
-
 end
