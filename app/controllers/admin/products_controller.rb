@@ -16,8 +16,8 @@ class Admin::ProductsController < ApplicationController
 	def create
 		
 		upc = SecureRandom.hex(4)
-
-		file_name = "app/assets/cases/" + params[:product][:title]+'.png'
+		# "app/assets/cases/" +
+		file_name =  params[:product][:title]+'.png'
 
 		base_64_string = params[:newcaseimage].split('data:image/png;base64,')[1]
 
