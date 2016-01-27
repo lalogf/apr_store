@@ -8,12 +8,12 @@
 		<div class="col-md-6">
 			<h4>Artista: </h4>
 			<h3>Lalo González</h3>
-			<h2 class="lightblue-text"> S/. 90</h2>
+			<h2 class="lightblue-text"> S/. <%= @case.phonetype.base_price %> </h2>
 			<%= form_tag charges_path, id: 'chargeForm' do %>
 				<script src="https://checkout.stripe.com/checkout.js"></script>
 				<%= hidden_field_tag 'stripeToken' %>
 				<%= hidden_field_tag 'stripeEmail' %>
-				<%= hidden_field_tag 'amount', 9000 %>
+				<%= hidden_field_tag 'amount', "#{@case.phonetype.base_price*100}" %>
 				<button id="btn-buy" type="button" class="btn btn-lightBlue">LO QUIERO</button>
 				<script>
 					var handler = StripeCheckout.configure({
@@ -27,7 +27,7 @@
 					document.getElementById('btn-buy').addEventListener('click', function(e) {
 						handler.open({
 							name: 'Arte Aparte',
-							description: '   (S/. 90)',
+							description: '   (S/. <%= @case.phonetype.base_price %>)',
 							amount: document.getElementById("amount").value,
 							currency:'pen'
 						});

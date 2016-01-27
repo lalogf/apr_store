@@ -29,7 +29,7 @@ class PictureForCustomsController < ApplicationController
 		end
 		new_file = File.open(file_name)
 		new_file_for_printing = File.open(file_name_to_print)
-		@picture = PictureForCustom.create(picture: new_file, uuid: case_random_code)
+		@picture = PictureForCustom.create(picture: new_file, uuid: case_random_code,phonetype_id:Phonetype.find(params[:phone_type_name]).id )
 		@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
 		respond_to do |format| 
 			if @picture.save

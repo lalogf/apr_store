@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   get 'artistas' => 'front_store#designers'
   get 'colecciones' => 'front_store#collections'
   get 'productos' => 'front_store#products_index'
+  get 'terminos-y-condiciones' => 'front_store#terminos'
   # get 'crea' => 'users#creatucase'
   get '/:id' => 'front_store#artist_profile'
   get 'admin/designs' => 'admin/designs#adminDesigns'

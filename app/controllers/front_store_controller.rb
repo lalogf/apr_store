@@ -25,7 +25,8 @@ class FrontStoreController < ApplicationController
 		@collections = Collection.all
 	end
 	def artist_profile
-	
+	end
+	def terminos
 	end
 
 	def products_index
