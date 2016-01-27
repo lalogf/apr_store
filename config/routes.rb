@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :products, only:[:show]
   end
 
-  resources :picture_for_customs, only:[:new, :create, :show]
+  resources :picture_for_customs, only:[:new, :create, :show],:path => "crea-tu-case"
   resources :custom_products
 
 
