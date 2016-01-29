@@ -33,6 +33,7 @@ class PictureForCustomsController < ApplicationController
 		@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
 		respond_to do |format| 
 			if @picture.save
+				# TODO cambiar posición de mail de confirmación 
 				UserMailer.purchase_confirmation(current_user, @picture).deliver
 				flash[:success] = "Mira el case que creaste"
 				format.html {redirect_to picture_for_custom_path(@picture.uuid)}

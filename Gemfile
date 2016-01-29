@@ -59,8 +59,6 @@ gem 'rails_email_preview', '~> 0.2.29'
 
 gem 'stripe', git: "https://github.com/stripe/stripe-ruby"
 
-# gem 'sprockets_better_errors'
-
 # gem 'rack-cors', :require => 'rack/cors'
 # gem 'rb-readline'
 # Use ActiveModel has_secure_password

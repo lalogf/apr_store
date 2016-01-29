@@ -77,7 +77,6 @@ var ready2 = function(){
 		var widget = uploadcare.Widget('[role=uploadcare-uploader]');
 		widget.onUploadComplete(function(info) {
 			var imageForCaseId = "my-image-" + ($(".designtocase").length + 1)
-			console.log(info.cdnUrl);
 			$("#wuju").append('<img class="designtocase" id="'+ imageForCaseId +'" src="'+ info.cdnUrl +'">');
 			makeDesignsClickable();
 		});

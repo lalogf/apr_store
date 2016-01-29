@@ -8,6 +8,7 @@ var caseImage;
 var overIm;
 var preOverIm;
 var imgData;
+var im2;
 var overlay = '/assets/cases/i6t.png'
 var overlay_line = '/assets/cases/i6t_l.png'
 
@@ -19,9 +20,9 @@ var ready = function(){
     if(($(this).val()) == 2 || ($(this).val()) == 3){
       canvas.setOverlayImage('/assets/cases/i5.png', canvas.renderAll.bind(canvas));
     } else if (($(this).val()) == 7) {
-      canvas.setOverlayImage('/assets/cases/s5t.png', canvas.renderAll.bind(canvas))
+      canvas.setOverlayImage('/assets/cases/gs5t.png', canvas.renderAll.bind(canvas))
     } else if (($(this).val()) == 9) {
-      canvas.setOverlayImage('/assets/cases/s6t.png', canvas.renderAll.bind(canvas))
+      canvas.setOverlayImage('/assets/cases/gs6t.png', canvas.renderAll.bind(canvas))
     } else if (($(this).val()) == 8) {
       canvas.setOverlayImage('/assets/cases/motog.png', canvas.renderAll.bind(canvas))
     } else if (($(this).val()) == 4){
@@ -96,23 +97,24 @@ $("canvas").mouseout(function(){
   canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
   canvas.deactivateAll().renderAll();
 });
-$(".designtocase").click(function(e){
-  imgData = e.target.src;
-  fabric.Image.fromURL(imgData,  function (img) {
-    canvas.add(img.set({
-      left: 0,
-      top: 0,
-    }));
-    canvas.controlsAboveOverlay = true;
-    canvas.item(0).set({
-      borderColor: 'black',
-      cornerColor: 'black',
-      cornerSize: 20,
-      transparentCorners: false
-    });
-    canvas.setActiveObject(canvas.item(0)); 
-  } , { crossOrigin: 'anonymous' });
-});
+// $(".designtocase").click(function(e){
+//   imgData = e.target.src;
+//   console.log(imgData.crossOrigin);
+//   fabric.Image.fromURL(imgData,  function (img) {
+//     canvas.add(img.set({
+//       left: 0,
+//       top: 0,
+//     }));
+//     canvas.controlsAboveOverlay = true;
+//     canvas.item(0).set({
+//       borderColor: 'black',
+//       cornerColor: 'black',
+//       cornerSize: 20,
+//       transparentCorners: false
+//     });
+//     canvas.setActiveObject(canvas.item(0)); 
+//   } , { crossOrigin: 'anonymous' });
+// });
 $(".color_button").click(function(){
   var color = $(this).css("background-color");
   var hexColor = rgb2hex(color);
