@@ -55,7 +55,7 @@ class Admin::ProductsController < ApplicationController
 	def pre_requisites
 		@product = Product.new
 		@phonetypes = []
-		Phonetype.all.each do |el, index|
+		Phonetype.all.order(id: :asc).each do |el, index|
 			@phonetypes << [el.modelName + " " + el.type_of_case, el.id]
 		end
 	end

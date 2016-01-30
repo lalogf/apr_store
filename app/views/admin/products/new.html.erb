@@ -10,7 +10,7 @@
 			<%=f.text_field :title, :readonly => true, value: @design.name %>
 			<%= f.text_field :price %>
 			<%= f.number_field :stock %>
-			<%= f.select :phonetype_id, @phonetypes, {id: "myselect"}, value: 6 %>
+			<%= f.select :phonetype_id, options_for_select(@phonetypes, selected = 5), {id: "myselect"} %>
 			<%= f.check_box :active, label: "Activo" %>
 			<%= image_tag @design.picture(:medium), id: "0", class: 'designtocase', crossOrigin:"anonymous"%>
 			<input id="newcaseimage" name="newcaseimage" type="hidden" type="text">
