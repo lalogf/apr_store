@@ -298,4 +298,4 @@ var createImage = function(cod){
 /* TODO : 
 1. si eliges una foto luego del texto, enviar la foto al frente
 2. Poder poner solo un texto 
-
+*/
