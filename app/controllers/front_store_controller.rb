@@ -2,7 +2,6 @@ class FrontStoreController < ApplicationController
 	before_action :set_designer , only: [:artist_profile]
 
 	def index
-		@banners = Banner.where("active=true AND type_of_banner='Portada'")
 		@designers = Designer.all
 		@products = Product.all
 	end
