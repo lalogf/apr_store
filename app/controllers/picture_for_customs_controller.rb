@@ -47,8 +47,6 @@ class PictureForCustomsController < ApplicationController
 			@case.user_id = current_user.id
 			@case.save
 		end
-
-		encryptor = Culqi::Encryptor.new
 		
 		culqi = Culqi.default_client
 		datos_venta = {
