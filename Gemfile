@@ -10,7 +10,7 @@ gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+# gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem 'friendly_id', '~> 5.1.0'
@@ -31,8 +31,9 @@ gem 'bootstrap_form'
 
 gem 'better_errors', group: :development
 
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", '~> 4.3.6'
 
+# gem 'aws-sdk', '~> 2'
 gem 'aws-sdk-v1'
 
 gem 'rails_12factor', group: :production
@@ -45,13 +46,13 @@ gem 'will_paginate-bootstrap'
 
 gem 'ransack'
 
-gem 'masonry-rails', '~> 0.2.0'
-
 gem "smart_listing"
 
 gem 'mandrill-api'
 
 gem 'figaro'
+
+gem 'culqi', git: "https://github.com/augustosamame/culqiruby"
 
 gem 'awesome_print'
 

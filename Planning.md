@@ -64,5 +64,24 @@ rails g model product
 
 ~~~
  
-rails g model banner caption:string type:string
-image:attachment
+## User
+
+id
+name
+last_name
+email 
+address
+city
+country_code
+phone
+
+## Order
+
+order_number
+amount
+currency
+
+# Product
+
+description
+

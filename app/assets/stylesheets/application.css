@@ -13,7 +13,6 @@
  *= require jquery.emojipicker
  *= requier jquery.emojipicker.a
  *= require_tree .
- *= require 'masonry/transitions'
  *= require_self
  */
 
@@ -357,8 +356,9 @@ span.glyphicon.bigIcon {
     }*/
 
 .home{
-  background: url('bg/mainbg.jpg');
-  background-size: cover;}
+  background: url('bg/mainbg2.png');
+  height:65vh;
+}
 
 footer {
   padding: 20px 0 30px 0;
@@ -686,6 +686,11 @@ position: relative;
   padding-right: 10px
 }
 
+.white-text{
+  color: rgba(255,255,255,1)
+}
+
+
 .whiteBg{
   background-color: rgba(255,255,255,1)
 }
@@ -834,8 +839,9 @@ a, a:active, a:hover{
 /*Button Red*/
 .btn-danger{
   background:none;
+  background-color: rgba(229,69,140,1)
   border-radius: 0px;
-  border: solid red 2px;
+  border: solid rgba(229,69,140,1) 2px;
   text-decoration: none;
   text-shadow:none;
   color: black;

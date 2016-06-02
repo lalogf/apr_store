@@ -1,7 +1,7 @@
 <%= render "front_store/navbar" %>
 <div class="container" style="margin-bottom:20px">
 	<h1 class="century uppercase">Crea un nuevo Case</h1>
-	<div class="row" id="rowtospin">
+	<div class="row">
 		<div class="col-md-8">
 			<canvas id="c"></canvas>
 		</div>
@@ -114,17 +114,41 @@
 					</div>
 				</div>
 			</div>
+			<div class="row margin-20" >
+				<div class="col-md-8 col-md-offset-2" style="background-color:gray;padding:0px">
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Fuente</p>
+						<select>
+							<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
+							<option><%= n %></option>
+							<%end%>
+						</select>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Tamaño</p>
+						<select>
+							<%(10..100).each do |n|%>
+								<option><%=n%></option>
+							<%end%>
+						</select>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Color</p>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Decoración</p>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<script>
 			UPLOADCARE_LOCALE = "es";
 			UPLOADCARE_TABS = "file url facebook instagram dropbox";
-	// TODO - ADD PUBLIC KEY TO HEROKU AN FIGARO
-	UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
-	UPLOADCARE_LIVE = false;
-</script>
+			// TODO - ADD PUBLIC KEY TO HEROKU AN FIGARO
+			UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
+			UPLOADCARE_LIVE = false;
+		</script>
 <script type="text/javascript">
 	mixpanel.track("Ingresó a Crea tu case");
-</script>
-
-<%= render "front_store/footer"%>		
+</script>	

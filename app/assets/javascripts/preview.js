@@ -233,7 +233,8 @@ $('#generar').click(function(e){
     canvas.deactivateAll().renderAll();
     $('#newcaseimage').val(canvas.toDataURL('image/png'));
   });
-} 
+}
+$(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen"
 };
 
 
@@ -256,6 +257,7 @@ var createImage = function(cod){
       top: 0,
     },{ crossOrigin: 'Anonymous' } );
 };
+
 
 // var hoverCase = function (overlay , overlay_line) {
 //   $("canvas").mouseover(function(){

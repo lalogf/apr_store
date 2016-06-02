@@ -1,132 +1,58 @@
 	<section class="home section supercenter">
 		<div class="row">
-			<svg id="svg" width="325" height="165" style="padding:2px">
-			</svg>
+			<div class="col-md-6 col-md-offset-3 center">
+				<img src="assets/logo_arteaparte.png" style="height:100px">
+				<br>
+				<h1 class="uppercase century center white-text">CREA EL CASE  MÁS DIVERTIDO PARA TU CELULAR</h1>
+				<br>
+				<a href="/crea-tu-case/new" class="btn btn-pink uppercase">Empezar</a>
+			</div>
 		</div>
 	</section>	
-	<section class="section" id="infoBar">
-		<div style="height:15vh" role="navigation" class=" whiteBg">
-			<div class="container-fluid">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div id="card-2" class="card" style="perspective: 600px; position: relative; transform-style: preserve-3d;"> 
-								<div class="front" style="height: 100%; width: 100%; backface-visibility: hidden; transform-style: preserve-3d; position: absolute; z-index: 1; transition: all 0.5s ease-out; transform: rotateX(0deg);"> 
-									<img id="logo" src="assets/logo_arteaparte.png" height="100px" class="pull-left" id="logo" style="padding:10px" style="backface-visibility: hidden;">
-								</div> 
-								<div class="back noPadding" style="transform: rotateX(-180deg); height: 173; width: 100px; backface-visibility: hidden; transform-style: preserve-3d; position: absolute; z-index: 0; transition: all 0.5s ease-out;">
-									<a href="http://www.facebook.com"><svg id="svgMenu" width="173px" height="100px"></svg></a>
-								</div> 
+	<section class="section" id="conocenos">
+		<div class="col-md-12" style="height:10vh">
+			<h2 class="century uppercase" style="text-align:center">Conócenos</h2>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. </h3>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img style="height:250px" src="/assets/bg/datos3.png" alt="Imagen caracteristica 1">
+							<div class="caption">
+								<h3>Mejor acabado</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
 							</div>
 						</div>
-
-						<div class="col-md-6 navbar-right">
-							<div class="col-md-6">
-								<div class="input-group">
-									<span class="input-group-addon" id="sizing-addon2"><img src="assets/iconos/lupa.svg" style="height:2vh"></span>
-									<input type="text" class="form-control century" placeholder="Search" aria-describedby="sizing-addon2">
-								</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img style="height:250px" src="/assets/bg/datos1.png" alt="Imagen caracteristica 2">
+							<div class="caption">
+								<h3>Mejor protección</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
 							</div>
-							<div class="col-md-3">
-<!-- 								<div class="input-group">
-									<span class="input-group-addon" id="sizing-addon2"><img src="assets/iconos/case.svg" style="height:2vh"></span>
-									<input type="text" class="form-control century" value="Español/PEN" aria-describedby="sizing-addon2">
-								</div> -->
-							<a href="#" class="btn-lg"data-target="#shoppingcart" data-toggle="modal"><span aria-hidden="true"><img src="assets/iconos/cart.svg" style="height:3vh"></span><span class="badge">4</span></a>
-							</div>
-							<div class="col-md-3">
-							<% if user_signed_in?%>
-								<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
-							<%end%>
-					
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img style="height:250px" src="/assets/bg/home3.png" alt="Imagen caracteristica 3">
+							<div class="caption">
+								<h3>Emojis</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div style="background-color:black; height:15vh">
-			<div class="container noPadding">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-4">
-							<img style="height:8vh;margin-top:2vh;text-align:center"src="assets/iconos/otros/Group.svg">
-							<h4 class="century uppercase" style="color:white; text-align:center">Todos</h4>
-						</div>
-						<div class="col-md-4">
-							<img style="height:8vh;margin-top:2vh" src="assets/iconos/otros/Group.svg">
-							<h4 class="century uppercase" style="color:white; text-align:center">iPhone</h4>
-						</div>
-						<div class="col-md-4">
-							<img style="height:8vh;margin-top:2vh"src="assets/iconos/otros/Group.svg">
-							<h4 class="century uppercase" style="color:white; text-align:center">Android</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 datos1 noPadding" style="height:70vh">
-			<img src="assets/bg/rombo.svg" class="datos-b pull-right">
-			<p style="width:30%; bottom:0; right:0; position:absolute; z-index:500">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat.</p>
-			</div>
-			<div class="col-md-6 noPadding">
-				<div class="col-md-12 datos2 noPadding" style="height:35vh">
-					<img src="assets/bg/rombo2.svg" class="datos-b pull-right">
-					<p style="width:13%; bottom:0; right:0; position:absolute; z-index:500">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-				</div>
-
-				<div class="col-md-12 datos3 noPadding" style="height:35vh">
-					<img src="assets/bg/rombo.svg" class="datos-b pull-right">
-					<p style="width:13%; bottom:0; right:0; position:absolute; z-index:500">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-				</div>
-			</div>
-
-		</section>
-		<section class="section" id="conocenos">
-			<div class="col-md-12" style="height:10vh">
-				<h1 class="century uppercase" style="text-align:center">Conócenos</h1>
-			</div>	
-			<div class="col-md-3 home1 hvr-wobble-vertical supercenter" style="height:45vh;">
-				<div class="stripe supercenter">
-					<h2 class="century uppercase">Kate Ohara</h2>
-				</div>
-			</div>
-			<div class="col-md-3 pink-aa hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="supercenter">
-					<a href="" class="btn btn-default century uppercase">Novedades</a>
-				</div>
-			</div>
-			<div class="col-md-3 home2 hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="stripe supercenter">
-					<h2 class="century uppercase">Kate Ohara</h2>
-				</div>
-			</div>
-			<div class="col-md-3 black-aa hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="supercenter">
-					<%= link_to "Colecciones", colecciones_path , class: "btn btn-default century uppercase" %>
-				</div>
-			</div>
-			<div class="col-md-3 hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="supercenter">
-					<%= link_to "Artistas", artistas_path , class: "btn btn-success century uppercase" %>
-				</div>
-			</div>
-			<div class="col-md-3 home4 hvr-bounce-to-top" style="height:45vh">
-				<a href="artistas.html" target="_blank"><h3 class="century uppercase white hideButton" style="display:none">Ver mas</h3></a>
-			</div>
-			<div class="col-md-3 lightblue-aa hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="supercenter">
-					<%= link_to "Crea tu Case",new_picture_for_custom_path ,class: "btn btn-default century uppercase", style: "font-size:30px" %>
-				</div>
-			</div>    
-			<div class="col-md-3 home5 hvr-wobble-vertical supercenter" style="height:45vh">
-				<div class="stripe supercenter">
-					<h2 class="century uppercase">Kate Ohara</h2>
-				</div>
+			<div class="supercenter">
+				<a href="/crea-tu-case/new" class="btn btn-pink uppercase">Empezar</a>
 			</div>
 		</section>
 		

@@ -19,12 +19,6 @@ var ready = function(){
 		stroke: "#000",
 	})
 
-// var social_networks = Snap("#facebook");
-
-// social_networks.attr({
-// 	"fill": "#fff"
-// })
-
 
 text1.attr({
 	"font-family": "KitsuneUdon",

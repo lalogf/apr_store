@@ -9,6 +9,7 @@
 			<h4>Artista: </h4>
 			<h3>Lalo González</h3>
 			<h2 class="lightblue-text"> S/. <%= @case.phonetype.base_price %> </h2>
+			<%=@venta%>
 			<%= form_tag charges_path, id: 'chargeForm' do %>
 				<script src="https://checkout.stripe.com/checkout.js"></script>
 				<%= hidden_field_tag 'stripeToken' %>
@@ -36,6 +37,44 @@
 				</script>
 			<% end %>
 		</div>
+		<button id="btn_pago">Pagar</button>
+
+<script type="text/javascript"
+src='https://integ-pago.culqi.com/api/v1/culqi.js'>
+</script>
+
+<script>
+
+checkout.codigo_comercio = "<%= ENV['CULQI_CODIGO_COMERCIO'] %>";
+checkout.informacion_venta = "<%= @informacion_venta %>";
+
+
+$('#btn_pago').on('click', function(e) {
+
+// Abre el formulario de pago de Culqi.
+checkout.abrir();
+
+e.preventDefault();
+
+});
+
+//Esta función es llamada al terminar el proceso de pago.
+//Debe de ser usada siempre, para poder obtener la respuesta.
+function culqi (checkout) {
+
+//Aquí recibes la respuesta del formulario de pago.
+//Si el usuario cierra el formulario de pago
+//checkout.respuesta tendrá en valor "checkout_cerrado"
+//También puede tener el valor: "error", "parametro_invalido"
+//Y si ha expirado, "venta_expirada"
+console.log(checkout.respuesta);
+
+// Cierra el formulario de pago de Culqi.
+checkout.cerrar();
+
+};
+
+</script>
 	</div>
 </div>	
 <%= render "front_store/footer" %>

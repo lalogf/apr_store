@@ -1,32 +1,23 @@
-<div style="height:15vh" role="navigation" class=" whiteBg">
+<div style="height:20vh" role="navigation" class="whiteBg">
 	<div class="container-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<div id="card-2" class="card" style="perspective: 600px; position: relative; transform-style: preserve-3d;"> 
-						<div class="front" style="height: 100%; width: 100%; backface-visibility: hidden; transform-style: preserve-3d; position: absolute; z-index: 1; transition: all 0.5s ease-out; transform: rotateX(0deg);"> 
-							<img id="logo" src="/assets/logo_arteaparte.png" height="100px" class="pull-left" id="logo" style="padding:10px" style="backface-visibility: hidden;">
-						</div> 
-						<div class="back noPadding" style="transform: rotateX(-180deg); height: 173; width: 100px; backface-visibility: hidden; transform-style: preserve-3d; position: absolute; z-index: 0; transition: all 0.5s ease-out;">
-							<a href="http://www.facebook.com"><svg id="svgMenu" width="173px" height="100px"></svg></a>
+					<div> 
+						<div class="front" style="height: 100%; width: 100%;"> 
+							<img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px">
 						</div> 
 					</div>
 				</div>
 
 				<div class="col-md-6 navbar-right">
-					<div class="col-md-6">
+<!-- 					<div class="col-md-3">
 						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2"><img src="/assets/iconos/lupa.svg" style="height:2vh"></span>
-							<input type="text" class="form-control century" placeholder="Search" aria-describedby="sizing-addon2">
-						</div>
-					</div>
-					<div class="col-md-3">
-<!-- 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2"><img src="/assets/iconos/case.svg" style="height:2vh"></span>
 							<input type="text" class="form-control century" value="Español/PEN" aria-describedby="sizing-addon2">
-						</div> -->
+						</div>
 						<a href="#" class="btn-lg"data-target="#shoppingcart" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">4</span></a>
-					</div>
+					</div> -->
 					<div class="col-md-3">
 						<% if user_signed_in?%>
 						<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
