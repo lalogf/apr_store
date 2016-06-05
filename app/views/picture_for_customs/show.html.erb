@@ -9,13 +9,14 @@
 			<h4>Artista: </h4>
 			<h3>Lalo González</h3>
 			<h2 class="lightblue-text"> S/. <%= @case.phonetype.base_price %> </h2>
-			<%=@venta%>
+			<button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button>
+			
 			<%= form_tag charges_path, id: 'chargeForm' do %>
 				<script src="https://checkout.stripe.com/checkout.js"></script>
 				<%= hidden_field_tag 'stripeToken' %>
 				<%= hidden_field_tag 'stripeEmail' %>
 				<%= hidden_field_tag 'amount', "#{@case.phonetype.base_price*100}" %>
-				<button id="btn-buy" type="button" class="btn btn-lightBlue">LO QUIERO</button>
+<!-- 				<button id="btn-buy" type="button" class="btn btn-lightBlue">LO QUIERO</button> -->
 				<script>
 					var handler = StripeCheckout.configure({
 						key: "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>",
@@ -37,7 +38,6 @@
 				</script>
 			<% end %>
 		</div>
-		<button id="btn_pago">Pagar</button>
 
 <script type="text/javascript"
 src='https://integ-pago.culqi.com/api/v1/culqi.js'>
@@ -67,7 +67,42 @@ function culqi (checkout) {
 //checkout.respuesta tendrá en valor "checkout_cerrado"
 //También puede tener el valor: "error", "parametro_invalido"
 //Y si ha expirado, "venta_expirada"
+
 console.log(checkout.respuesta);
+$.ajax({
+            url: '/charges/',
+            type: 'POST',
+            data: {
+            	"charge": {
+            		"response": checkout.respuesta
+            	}
+            },
+            success: function(data){
+            	console.log(data);
+            	window.location = "/charges/" + data.id
+                // var obj = data;
+                // console.log(data);
+                // var tipo_respuesta_venta = obj['codigo_respuesta'];
+                // if (tipo_respuesta_venta == "venta_exitosa") {
+                //   checkout.cerrar();
+                //   window.location = "/charges/4"
+                // } 
+                // // else if (tipo_respuesta_venta == "venta_expirada") {
+
+                // } else if (tipo_respuesta_venta == "error") {
+
+                // } else if (tipo_respuesta_venta == "parametro_invalido") {
+
+                // } else {
+                //     // Brindale un mensaje amigable al cliente
+                //     // Puedes usar el mensaje que Culqi recomienda
+                //     checkout.cerrar();
+                // }
+            },
+            error:function( ){
+            	alert("Something went wrong");
+            }
+        });
 
 // Cierra el formulario de pago de Culqi.
 checkout.cerrar();

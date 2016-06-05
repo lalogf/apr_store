@@ -1,0 +1,9 @@
+<%if @response %>
+
+<h1><%= @response.select{|key, hash| key["mensaje_respuesta_usuario"]}.first[1] %></h1>
+<p>Numero de pedido</p><%= @response.select{|key, hash| key["numero_pedido"]}.first[1] %>
+<p>Numero de ticket</p><%= @response.select{|key, hash| key["ticket"]}.first[1] %>
+<%=@response%>
+<%else%>
+<h1><%= @charge.response%></h1>
+<%end %>

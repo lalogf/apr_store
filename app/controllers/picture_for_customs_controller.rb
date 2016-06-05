@@ -53,20 +53,23 @@ class PictureForCustomsController < ApplicationController
 			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],
 			numero_pedido: SecureRandom.hex(4),
 			moneda: 'PEN',
-			monto: 9000,
-			descripcion: @case.picture_content_type,
+			monto: @case.phonetype.base_price*100,
+			descripcion: "Case personalizado para " + @case.phonetype.modelName + " en acabado " + @case.phonetype.type_of_case,
 			correo_electronico: current_user.email,
 			cod_pais: 'PE',
 			ciudad: 'Lima',
 			direccion: 'Av Javier Prado 2320, San Borja',
 			num_tel: '986976309',
 			id_usuario_comercio: current_user.id,
-			nombres: 'Augusto',
-			apellidos: 'Samame'
+			nombres: current_user.name,
+			apellidos: current_user.name
 		}
 
 		@venta = culqi.crear_venta(datos_venta)
 		@informacion_venta = @venta['informacion_venta']
+
 	end
+
+
 	private
 end

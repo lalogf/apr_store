@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     resources :designers, except: [:destroy] do
       resources :designs, except: [:destroy]
     end
-    resources :banners
     resources :case_inventories
   end
 
@@ -44,7 +43,7 @@ Rails.application.routes.draw do
     resources :products, only:[:show]
   end
 
-  resources :picture_for_customs, only:[:new, :create, :show],:path => "crea-tu-case"
+  resources :picture_for_customs, only:[:new, :create, :payment, :show],:path => "crea-tu-case"
 
 
 
@@ -61,7 +60,7 @@ Rails.application.routes.draw do
   get 'admin/designs' => 'admin/designs#adminDesigns'
 
   #Suppor stripe payments through charges
-  resources :charges
+  resources :charges, only: [:create,:show]
 
 
 
