@@ -53,7 +53,7 @@ class PictureForCustomsController < ApplicationController
 			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],
 			numero_pedido: SecureRandom.hex(4),
 			moneda: 'PEN',
-			monto: 90,
+			monto: 9000,
 			descripcion: @case.picture_content_type,
 			correo_electronico: current_user.email,
 			cod_pais: 'PE',
@@ -64,7 +64,7 @@ class PictureForCustomsController < ApplicationController
 			nombres: 'Augusto',
 			apellidos: 'Samame'
 		}
-		
+
 		@venta = culqi.crear_venta(datos_venta)
 		@informacion_venta = @venta['informacion_venta']
 	end
