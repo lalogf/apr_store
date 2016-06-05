@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/augustosamame/culqiruby
-  revision: f23c4a8cf5562346f654d0ba305e17291bd28a25
+  revision: 1dd67163dea48ad7204c46560544891c7c561768
   specs:
-    culqi (1.2.5)
+    culqi (1.2.7)
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
@@ -252,7 +252,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.4)
+    tilt (2.0.5)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)

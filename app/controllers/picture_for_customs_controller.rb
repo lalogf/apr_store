@@ -64,7 +64,7 @@ class PictureForCustomsController < ApplicationController
 			nombres: 'Augusto',
 			apellidos: 'Samame'
 		}
-
+		
 		@venta = culqi.crear_venta(datos_venta)
 		@informacion_venta = @venta['informacion_venta']
 	end
