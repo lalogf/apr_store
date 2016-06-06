@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+
 before_action :set_charge, only: [:show]
 
 def create
