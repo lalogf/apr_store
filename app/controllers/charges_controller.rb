@@ -1,17 +1,16 @@
 class ChargesController < ApplicationController
-
+before_action :authenticate_user! , only: [:show]
 before_action :set_charge, only: [:show]
 
 def create
   @charge = Charge.new(charge_params)
   respond_to do |format|
     if @charge.save
-      format.json { render json: @charge, status: :created, location: @charge, id:@charge.id }
+      format.json { render json: @charge, status: :created, location: user_charge_path(current_user.id, @charge.uuid)}
     else
       format.json { render json: @charge.errors, status: :unprocessable_entity }
     end
   end
-
 
 
 
@@ -42,15 +41,13 @@ def show
   if @charge.response.length >= 30
       @response = JSON.parse(encryptor.decrypt(@charge.response))
   end
-
-
 end
 
 private
     def set_charge
-      @charge = Charge.find(params[:id])
+      @charge = Charge.find_by_uuid(params[:id])
     end
     def charge_params
-      params.require(:charge).permit(:response)
+      params.require(:charge).permit(:response,:uuid,:user_id)
     end
   end

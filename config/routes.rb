@@ -59,9 +59,9 @@ Rails.application.routes.draw do
   get '/:id' => 'front_store#artist_profile'
   get 'admin/designs' => 'admin/designs#adminDesigns'
 
-  #Suppor stripe payments through charges
-  resources :charges, only: [:create,:show]
-
+  resources :users do 
+    resources :charges, only: [:create,:show]
+  end
 
 
 end

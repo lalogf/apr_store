@@ -1,5 +1,5 @@
 class PictureForCustomsController < ApplicationController
-	# before_action :authenticate_user! , only: [:show]
+	before_action :authenticate_user! , only: [:show]
 	def index
 		@pictures = PictureForCustom.all
 	end
