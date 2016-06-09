@@ -21,10 +21,8 @@
 		<script src="//load.sumome.com/" data-sumo-site-id="0b661a40e76a1a26db7054b3aa4da87a81d769d1711cf9ddbf85233c0215d440" async="async"></script>
 		<!-- end Mixpanel -->
 	</head>
-	<body>
+	<body class="site">
 
-
-		<div class="container">
 			<% if flash[:notice].present? %>
 			<div class="container text-center alert alert-primary">
 				<%= flash[:notice] %>
@@ -47,9 +45,9 @@
 				<%= flash[:error] %>
 			</div>
 			<% end %>
-		</div>
 
 		<%= yield %>
+		
 
 		<script type="text/javascript">
 			mixpanel.track("Visitó la web");

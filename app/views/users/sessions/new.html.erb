@@ -11,7 +11,9 @@
       </div>
 
       <div class="col-md-12" style="border-top:solid black 1px">
-       <%= f.password_field :email, autofocus: true, class: "col-md-12 century margin-10", type: "email", placeholder:"email", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %>      
+       <label class="col-md-12 century margin-10">Nombre</label>
+       <%= f.text_field :email, autofocus: true, class: "col-md-12 century margin-10", type: "email", placeholder:"email", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %> 
+       <label class="col-md-12 century margin-10">Password</label>     
        <%= f.password_field :password, autocomplete: "off", class: "col-md-12 century margin-10", type: "password", placeholder:"password", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %>
        <% if devise_mapping.rememberable? -%>
        <div class="field margin-10">

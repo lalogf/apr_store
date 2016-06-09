@@ -8,13 +8,19 @@ var caseImage;
 var overIm;
 var preOverIm;
 var imgData;
-var overlay = '/assets/cases/i6t.png'
-var overlay_line = '/assets/cases/i6t_l.png'
+var overlay = '/assets/cases/i6t.png';
+var overlay_line = '/assets/cases/i6t_l.png';
+var overlay_mobile;
+var overlay_line_mobile;
 var text;
 
 
 
 var ready = function(){
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    overlay = '/assets/cases/i6t_mobile.png'
+    overlay_line = '/assets/cases/i6t_l_mobile.png'
+  }
   createCanvas();
   $('#product_phonetype_id').change(function(){
     if(($(this).val()) == 2 || ($(this).val()) == 3){
@@ -74,6 +80,8 @@ if (window.location.pathname.split("/")[1] !== "admin"){
       canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6t.png';
       overlay_line = '/assets/cases/i6t_l.png';
+      overlay_mobile = '/assets/cases/i6t_mobile.png';
+      overlay_line_mobile = '/assets/cases/i6t_l_mobile.png';
       $("#phone_type_name").val("5")
     } else if (e.target.id === "6") {
       canvas.setOverlayImage('/assets/cases/i6pt.png', canvas.renderAll.bind(canvas));
@@ -91,31 +99,16 @@ if (window.location.pathname.split("/")[1] !== "admin"){
 $("canvas").mouseover(function(){
   canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
   canvas.setOverlayImage(overlay_line, canvas.renderAll.bind(canvas));
-
 });
 $("canvas").mouseout(function(){
-  canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    canvas.setOverlayImage(overlay_mobile, canvas.renderAll.bind(canvas));
+  }else{
+    canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
+  }
   canvas.deactivateAll().renderAll();
 });
 
-// $(".designtocase").click(function(e){
-//   imgData = e.target.src;
-//   console.log(imgData.crossOrigin);
-//   fabric.Image.fromURL(imgData,  function (img) {
-//     canvas.add(img.set({
-//       left: 0,
-//       top: 0,
-//     }));
-//     canvas.controlsAboveOverlay = true;
-//     canvas.item(0).set({
-//       borderColor: 'black',
-//       cornerColor: 'black',
-//       cornerSize: 20,
-//       transparentCorners: false
-//     });
-//     canvas.setActiveObject(canvas.item(0)); 
-//   } , { crossOrigin: 'anonymous' });
-// });
 $(".color_button").click(function(){
   var color = $(this).css("background-color");
   var hexColor = rgb2hex(color);
@@ -240,36 +233,41 @@ $(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen"
 
 var createCanvas = function (){
   canvas = new fabric.Canvas('c');
+  if (window.matchMedia('(max-width: 767px)').matches) {
+  canvas.setHeight(300);
+  canvas.setWidth(300);
+  canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
+  } else {
   canvas.setHeight(600);
   canvas.setWidth(600);
   canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
+  }
+  
 }; 
 
 
 var createImage = function(cod){
   imgElement = $('.designtocase')[cod];
+  if (window.matchMedia('(max-width: 767px)').matches) {
   imgInstance = new fabric.Image(imgElement, {
-      // height: 600,
-      // width: 600,
-      // scaleY:300/imgElement.width,
-      // scaleX:200/imgElement.width,
+      height: 300,
+      width: 300,
+      scaleY:150/imgElement.width,
+      scaleX:100/imgElement.width,
       left: 0,
       top: 0,
     },{ crossOrigin: 'Anonymous' } );
+  } else {
+  imgInstance = new fabric.Image(imgElement, {
+      height: 600,
+      width: 600,
+      scaleY:300/imgElement.width,
+      scaleX:200/imgElement.width,
+      left: 0,
+      top: 0,
+    },{ crossOrigin: 'Anonymous' } );
+  }
 };
-
-
-// var hoverCase = function (overlay , overlay_line) {
-//   $("canvas").mouseover(function(){
-//     canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
-//     canvas.setOverlayImage(overlay_line, canvas.renderAll.bind(canvas));
-
-//   });
-//   $("canvas").mouseout(function(){
-//     canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
-//     canvas.deactivateAll().renderAll();
-//   });
-// };
 
 
     function toUnicode(code) {
