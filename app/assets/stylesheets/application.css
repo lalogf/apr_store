@@ -42,6 +42,10 @@ body{
   font-family: 'Century Gothic'
 }
 
+h1{
+  font-size: 50px;
+}
+
 .site {
   display: flex;
   min-height: 100vh;
@@ -148,8 +152,9 @@ span.glyphicon.bigIcon {
 }
 
 .home{
-  background: url('bg/mainbg2.png');
-  height:65vh;
+  background: url('bg/mainbg3.png');
+  background-size: cover;
+
 }
 
 footer {
@@ -501,49 +506,49 @@ a, a:active, a:hover{
     background:none;
     background-color: rgba(255,255,255,0);
     color: black;
-    font-size: 25px;
+    font-size: 20px;
   }
 
   /*Button Pink*/
 .btn-pink{
   background-color: rgba(229,69,140,1);
-  border-radius: 0px;
+  border-radius: 50px;
   border: solid rgba(229,69,140,1) 2px;
   text-decoration: none;
   text-shadow:none;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
 }
 
   .btn-pink:hover, .btn-pink:active, .btn-pink:focus{
     background:none;
-    border-radius: 0px;
+    border-radius: 50px;
     border: solid rgba(229,69,140,1) 2px;
     background:none;
     background-color: rgba(229,69,140,1);
     color: white;
-    font-size: 25px;
+    font-size: 20px;
   }
 
     /*Button LightBlue*/
 .btn-lightBlue{
   background-color: rgba(64,160,191,1);
-  border-radius: 0px;
+  border-radius: 50px;
   border: solid rgba(64,160,191,1) 2px;
   text-decoration: none;
   text-shadow:none;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
 }
 
   .btn-lightBlue:hover, .btn-lightBlue:active, .btn-lightBlue:focus{
     background:none;
-    border-radius: 0px;
+    border-radius: 50px;
     border: solid rgba(64,160,191,1) 2px;
     background:none;
     background-color: rgba(64,160,191,1);
     color: white;
-    font-size: 25px;
+    font-size: 18px;
   }
 
 
