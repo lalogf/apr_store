@@ -5,15 +5,16 @@
 	<%= f.text_field :name %>
 </div>
 <div class="col-md-7">
-	<%= f.file_field :picture%>
+<%= f.file_field :picture%>
+<!-- 	<input type="text" placeholder="imagen" name="design_picture" id="design_picture"> -->
 </div>
 <div class="col-md-7">
 	<%= f.select :collection_id, @collections %>
 </div>
 
 <div class="col-md-6">
-<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
-<%= f.submit "Guardar diseño" %>
+<a href="javascript:history.back()" class="btn btn-pink">Cancelar</a>
+<%= f.submit "Guardar diseño", class: "btn btn-lightBlue" %>
 </div>
 </div>
 <%end%>

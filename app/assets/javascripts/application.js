@@ -12,22 +12,37 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
-//= require_tree .
+//= require jquery.emojipicker.js
+//= require jquery.emojipicker.a.js
+//= require fabric
+//= require snap.svg.js
+//= require preview
+//= require store
+//= require svgs.js
+//= require_self
 
 
 
 var ready = function (){
-	// if ($("form#new_collection .form-group").attr("class") == "form-group has-error has-feedback"){
-	// 	$("#crearColeccion").modal("show");
-	// }
 	if ((($("form#new_collection .has-error")).length > 0)) {
 		$("#crearColeccion").modal("show");
 		console.log("hello error coleccion");
 	}
 	else if (($("form#new_designer .has-error").length) > 0) {
-			$("#crearDisenador").modal("show");
-	}
+		$("#crearDisenador").modal("show");
+	};
+	$(".banner").hover(function(){
+		$(this).addClass('bannerHover');
+		$(".marca", this).css('color','white');
+		$(".ver", this).toggle();
+	}, function(){
+		$(this).removeClass('bannerHover');
+		$(".marca",this).css('color','black');
+		$(".ver", this).toggle();
+	});
+
 
 };
 

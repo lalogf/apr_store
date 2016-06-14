@@ -1,0 +1,6 @@
+/*!
+ * Packery layout mode v1.0.0
+ * sub-classes Packery
+ * http://packery.metafizzy.co
+ */
+!function(t){"use strict";function e(t,e){for(var i in e)t[i]=e[i];return t}function i(t,i,n){var o=t.create("packery"),r=o.prototype._getElementOffset,s=o.prototype._getMeasurement;e(o.prototype,i.prototype),o.prototype._getElementOffset=r,o.prototype._getMeasurement=s;var a=o.prototype._resetLayout;o.prototype._resetLayout=function(){this.packer=this.packer||new i.Packer,a.apply(this,arguments)};var c=o.prototype._getItemLayoutPosition;o.prototype._getItemLayoutPosition=function(t){return t.rect=t.rect||new i.Rect,c.call(this,t)};var h=o.prototype._manageStamp;return o.prototype._manageStamp=function(){this.options.isOriginLeft=this.isotope.options.isOriginLeft,this.options.isOriginTop=this.isotope.options.isOriginTop,h.apply(this,arguments)},o.prototype.needsResizeLayout=function(){var t=n(this.element),e=this.size&&t,i=this.options.isHorizontal?"innerHeight":"innerWidth";return e&&t[i]!==this.size[i]},o}"function"==typeof define&&define.amd?define(["isotope/js/layout-mode","packery/js/packery","get-size/get-size"],i):i(t.Isotope.LayoutMode,t.Packery,t.getSize)}(window);

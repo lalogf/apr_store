@@ -1,0 +1,30 @@
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		
+		<ol class="carousel-indicators">
+			<% @banners.each_with_index do |banner, x| %>
+				<% if banner.principal == true %>
+				<li data-target="#carousel-example-generic" data-slide-to="<%=x%>" class="active"></li>
+				<% else %>
+				<li data-target="#carousel-example-generic" data-slide-to="<%=x%>"></li>
+				<% end %>
+			<% end %>
+		</ol> 
+		<!-- Wrapper for slides -->
+
+		<div class="carousel-inner" role="listbox">
+			<% @banners.each do |banner|%>
+			<% if banner.principal == true %>
+			<div class="item active">
+				<%= image_tag banner.image.url(:original) %>
+			</div>
+			<% else%>
+			<div class="item">
+				<%= image_tag banner.image.url(:original) %>
+			</div>
+			<% end %>
+			<%end%>
+		</div>
+
+
+	</div>

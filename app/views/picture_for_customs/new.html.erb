@@ -1,0 +1,154 @@
+<%= render "front_store/navbar" %>
+<div class="container" style="margin-bottom:20px">
+	<h1 class="century uppercase">Crea un nuevo Case</h1>
+	<div class="row">
+		<div class="col-md-8 col-sm-12" >
+			<canvas id="c"></canvas>
+		</div>
+		<div class="col-md-4">
+			<div class="col-md-12 margin-10" style="margin-bottom:20px">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100%">
+						<p name="tipo_de_equipo">Elige el equipo</p>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" id="phoneTypeDropDown" aria-labelledby="dropdownMenu3" style="height:auto;max-height:200px;overflow-x:hidden">
+						<% Phonetype.all.each do |n|%>
+						<li><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-12" id="myTabs">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
+					<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
+					<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
+					<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="A" >
+						<div class="margin-10">
+							<form id="my-form">
+								<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
+							</form>
+							<div id="wuju" class="margin-10">
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="B">
+						<div class="margin-10 margin-left-10">
+							<% @colors.each do |color|%>
+							<div class="color_button" style="background-color:<%= color.color_code%>"></div>
+							<% end %>
+							<p class="margin-10">Busca otro color:</p>
+							<input type="color" id="back_color" class="form-control"  value="#ff0000">
+						</div>
+					</div>
+					<div class="tab-pane fade" id="C">
+						<div class="margin-10">
+							<a id="textCreation" class="btn btn-lightBlue margin-10">Agregar Texto</a>
+						</div>
+						<div class="text-edition-box" style="display:none">
+							<div class="margin-10">
+								<p>Ingresa un texto:<p> 
+									<textarea type="text" id="text_to_canvas" cols="40" rows="5" style="width=100%">
+									</textarea>
+									<p>Tamaño:<p> 
+									</div>
+									<div class="margin-10 col-md-4">
+										<div class="dropdown">
+											<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+												Tamaño
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" id="fontSizeDropDown" aria-labelledby="dropdownMenu1" style="height:auto;max-height:200px;overflow-x:hidden">
+												<% [*4..9].each do |n|%>
+												<li><a href="#"><%= n*2 %></a></li>
+												<% end %>
+												<% [*4..25].each do |n|%>
+												<li><a href="#"><%= n*5 %></a></li>
+												<% end %>
+											</ul>
+										</div>
+									</div>
+									<div class="col-md-4 margin-10 ">
+										<div class="dropdown">
+											<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:300px">
+												Fuente
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu"  id="fontFamilyDropDown"aria-labelledby="dropdownMenu2" style="height:auto;max-height:200px;overflow-x:hidden">
+												<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
+												<li><a style="font-family:<%=n%>;font-size:20px"><%= n %></a></li>
+												<% end %>
+											</ul>
+										</div>
+									</div>
+									<div class="col-md-12 margin-10">
+										<% @colors.each do |color|%>
+										<div class="color_button2" style="background-color:<%= color.color_code%>"></div>
+										<% end %>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="D">
+								<input type="text" id="newtext" style="display:none">
+								<div id="emojiskeyboard"></div>
+							</div>
+						</div>
+					</div>
+					<div class="margin-20">
+						<p><strong>Rotar:</strong></p><br><input type="range" id="angle-control" value="0" min="-90" max="90">
+						<p><strong>Zoom:</strong></p><br><input type="range" id="scale-control" value="1" min="0.1" max="3" step="0.1">
+					</div>
+					<div class="col-md-12">
+						<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
+
+						<%= bootstrap_form_for @picture do |f|%>
+						<%= hidden_field_tag 'picture_url'%>
+						<%= hidden_field_tag 'phone_type_name', '5'%>
+						<%= hidden_field_tag 'image_to_print'%>
+						<%= f.submit "Crear", class: "btn btn-pink", id: "generar" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-20" >
+				<div class="col-md-8 col-md-offset-2" style="background-color:gray;padding:0px">
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Fuente</p>
+						<select>
+							<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
+							<option><%= n %></option>
+							<%end%>
+						</select>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Tamaño</p>
+						<select>
+							<%(10..100).each do |n|%>
+								<option><%=n%></option>
+							<%end%>
+						</select>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Color</p>
+					</div>
+					<div class="col-md-3" style="border-right: 1px solid white">
+						<p>Decoración</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			UPLOADCARE_LOCALE = "es";
+			UPLOADCARE_TABS = "file url facebook instagram dropbox";
+			// TODO - ADD PUBLIC KEY TO HEROKU AN FIGARO
+			UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
+			UPLOADCARE_LIVE = false;
+		</script>
+<script type="text/javascript">
+	mixpanel.track("Ingresó a Crea tu case");
+</script>	

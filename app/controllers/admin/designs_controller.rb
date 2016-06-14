@@ -9,11 +9,12 @@ class Admin::DesignsController < ApplicationController
 		pre_requisites
 	end
 	def create
-		@design = Design.create(design_params.merge(designer_id: (params[:designer_id])))
+		@design = Design.create(design_params.merge(designer_id: @designer.id))
+		# @design.picture_from_url(params[:design_picture])
 		respond_to do |format|
 			if @design.save
 				flash[:success] = "El diseño " + @design.name + " se ha creado con éxito"
-				format.html {redirect_to admin_designer_path(@design.designer_id) }
+				format.html {redirect_to admin_designer_path(@design.designer.slug) }
 			else
 				pre_requisites
 				format.html {render :new, message: "El diseño no se pudo guardar"}
@@ -48,6 +49,6 @@ class Admin::DesignsController < ApplicationController
 		@design = Design.find(params[:id])
 	end
 	def set_designer
-		@designer = Designer.find(params[:designer_id])
+		@designer = Designer.friendly.find(params[:designer_id])
 	end
 end

@@ -1,3 +1,3 @@
 class CaseInventory < ActiveRecord::Base
-	has_many :phonetypes
+	belongs_to :phonetype
 end

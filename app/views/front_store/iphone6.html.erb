@@ -1,19 +1,23 @@
+<%= render "navbar"%>
 
-
-
-<div class="row">
-<% @casesi6.each do |el| %>
-	
-
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <%= image_tag el.picture(:thumbBox)%>
-      <div class="caption">
-        <h3><%=el.title%></h3>
-        <p><%= el.price%></p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
+<div class="container">
+  <div class="row" style="margin-top:20px">
+    <% @casesi6.each do |el| %>
+    <div class="col-sm-12 col-lg-4 col-md-4">
+      <div class="thumbnail">
+          <div class="col-lg-6 left-side" style="height:280px; widht:280px; padding:0; ">
+          <%= image_tag el.picture(:thumbBox), style: "height:250px" %>
+          </div>
+          <div class="col-lg-6 right-side">
+            <div class="caption">
+              <h3 class="title"><%=el.title%></h3>
+              <p><%= el.price%></p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+            </div>
+          </div>
+        </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+<%= render "footer"%>

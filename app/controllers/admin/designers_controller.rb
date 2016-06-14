@@ -55,10 +55,10 @@ class Admin::DesignersController < ApplicationController
 	end
 
 	def set_designer
-		@designer = Designer.find(params[:id])
+		@designer = Designer.friendly.find(params[:id])
 	end
 	def designer_params
-		params.require(:designer).permit(:name,:lastname)
+		params.require(:designer).permit(:name,:lastname,:avatar,:type_Of_Artist)
 	end
 
 end

@@ -1,0 +1,44 @@
+<%= render "navbar"%>
+
+<div class="row supercenter" style="margin:0;height:40vh;width:100%;background-size:cover;background-image:url(<%= @designer.designs.first.picture.url (:medium)%>);">
+	<div class="col-md-4 artist_profile thumbnail supercenter" style="height:30vh">
+		<div class="col-sm-6 center">
+			<div class="col-md-12" style="height:120px;margin:37.5px 20px; background-image:url(<%= @designer.avatar.url(:thumb) %>);background-size:cover;">
+			</div>
+			<div class="col-md-12" style="margin:-30px 20px 0 20px">
+				<h5 class="title century uppercase center"><%=@designer.name%> <%=@designer.lastname%></h5>
+				<p class="century center"><%=@designer.type_Of_Artist%></p>
+			</div>
+		</div>
+		<span class="divider"></span>
+		<div class="col-sm-6">
+			<div class="caption">
+				<p class="century"><%= @designer.quote%></p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="height:80vh">
+	<% @designer.designs.each do |design|%>
+		<% design.products.each do |prod|%>
+		<div class="col-md-6 thumbnail supercenter">
+			<div class="col-sm-6">
+				<%= image_tag prod.picture.url (:thumbBox)%>
+			</div>
+			<span class="divider"></span>
+			<div class="col-sm-6">
+				<div class="caption">
+					<h3 class="title century">S/. <%= prod.price%></h3>
+					<p class="century"><%= prod.design.name %></p>
+					<img style="margin-top:-20px;margin-right:10px;height:30px;"src="/assets/iconos/cart.svg">
+					<span style="display: inline-block;width: 0;border-right: 2px solid #000;border-left: 2px solid #000;border-radius: 2px; height:40px;margin-top:20px"></span>
+					<img style="margin-top:-20px;margin-left:10px;height:30px"src="/assets/iconos/megusta.svg">
+				</div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+</div>
+
+
+<%= render "footer"%>

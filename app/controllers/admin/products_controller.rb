@@ -16,8 +16,8 @@ class Admin::ProductsController < ApplicationController
 	def create
 		
 		upc = SecureRandom.hex(4)
-
-		file_name = "app/assets/cases/" + params[:product][:title]+'.png'
+		# "app/assets/cases/" +
+		file_name =  params[:product][:title]+'.png'
 
 		base_64_string = params[:newcaseimage].split('data:image/png;base64,')[1]
 
@@ -55,13 +55,13 @@ class Admin::ProductsController < ApplicationController
 	def pre_requisites
 		@product = Product.new
 		@phonetypes = []
-		Phonetype.all.each do |el, index|
+		Phonetype.all.order(id: :asc).each do |el, index|
 			@phonetypes << [el.modelName + " " + el.type_of_case, el.id]
 		end
 	end
 	private
 	def product_params
-		params.require(:product).permit(:title,:price,:stock,:picture,:phonetype_id)
+		params.require(:product).permit(:title,:price,:stock,:picture,:phonetype_id,:active)
 	end
 	def set_product
 		@product = Product.find(params[:id])

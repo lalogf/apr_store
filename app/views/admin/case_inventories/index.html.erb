@@ -1,0 +1,29 @@
+<div class="row">
+	<h1>Inventario</h1>
+
+	<table class="table table-striped">
+		<thead >
+			<tr class="info">
+			<th>ID</th>
+				<th> Modelo </th>
+				<th> Tipo de case </th>
+				<th> Tipo de acabado </th>
+				<th> Stock </th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @inventory.each do |inv| %>
+			<tr>
+			<td><%= inv.id %></td>
+				<td><%=inv.phonetype.modelName %></td>
+				<td><%=inv.phonetype.type_of_case%></td>
+				<td><%=inv.finish%></td>
+				<td><%=inv.stock%></td>
+			</tr>
+			<% end %>
+
+		</tbody>
+
+	</table>
+
+</div>

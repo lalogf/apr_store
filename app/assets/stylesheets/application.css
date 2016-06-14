@@ -10,9 +10,47 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery.emojipicker
+ *= requier jquery.emojipicker.a
  *= require_tree .
  *= require_self
  */
+
+ @import url(https://fonts.googleapis.com/css?family=Asap:400,400italic,700);
+
+ @font-face {
+  font-family: 'Century Gothic Stb Bold';
+  src: url("Century_Gothic_Std_Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url("century_gothic.ttf");
+}
+
+@font-face {
+  font-family: 'KitsuneUdon';
+  src: url("KitsuneUdon.otf") format("opentype");
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #000;
+}
+
+
+body{
+  font-family: 'Century Gothic'
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
 
 .price{
   font-size: 140px
@@ -21,37 +59,37 @@
 .withBorder{
   border: solid 1px black;
 }
- .row {
- 	margin-top: 20px;
- }
 
- .margin-down{
+
+.margin-down{
   margin-bottom: 10px;
- }
-
- .margin-10 {
-  margin-top: 10px;
- }
-
- #c{
-  border: none
- }
-
-span.glyphicon.bigIcon {
-    font-size: 5em;
 }
 
-/* .thumb{
-  height:100%;
-  width:250px;
- }*/
+.margin-10 {
+  margin-top: 10px;
+}
+.margin-20 {
+  margin-top: 20px;
+}
+.margin-left-10{
+  margin-left: 10px;
+}
 
-.sepia {
-	filter: sepia(1);
-	-webkit-filter: sepia(1)
-};
+#c{
+  border: none
+}
 
-.contrast {
+span.glyphicon.bigIcon {
+  font-size: 5em;
+}
+
+
+  .sepia {
+   filter: sepia(1);
+   -webkit-filter: sepia(1)
+ };
+
+ .contrast {
   -webkit-filter: contrast(4);
   filter: contrast(4);
 }
@@ -109,3 +147,484 @@ span.glyphicon.bigIcon {
   background-color:rgba(52, 152, 219,0.8);
 }
 
+.home{
+  background: url('bg/mainbg2.png');
+  height:65vh;
+}
+
+footer {
+  padding: 20px 0 30px 0;
+  background-color: rgb(26,26,26);
+  color: rgb(0,169,255);
+  font-family: 'Century Gothic';
+  font-weight: 300;
+/*  margin-top: 20px;*/
+  
+}
+
+.footer_title {
+  /*font-size:;*/
+  color:white;
+
+}
+
+.footer-brand{
+  font-size: 30px;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+.social_networks_container{
+  padding-top: 50px;
+}
+
+.social_networks {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo {
+  height: 70px;
+}
+
+
+.rectangulo {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 2s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.lightblue-text{
+  color: rgba(64,160,191,1);
+}
+
+.lightblue-aa{
+  background-color: rgba(64,160,191,1);
+}
+
+.pink-aa{
+  background-color: rgba(229,69,140,1);
+}
+
+.white-aa {
+  background-color: rgba(255,255,255,1);
+}
+
+.pink-aa, .lightblue-aa, .black-aa, .white-aa {
+  padding: 0px;
+}
+
+.datos1{
+  background: url('bg/datos1.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  color:white;
+}
+
+.datos-b{
+  position: relative;
+/*  background-size: cover;*/
+  height:80%;
+  z-index: -1;
+  top:20%;
+  left: 0;
+  bottom: 0;
+/*  background: url('assets/bg/rombo.svg');
+  background-repeat: no-repeat;*/
+}
+
+.datos2{
+  background: url('bg/datos2.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  color:white;
+}
+
+.datos3{
+  background: url('bg/datos3.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  color:white;
+}
+
+.home1{
+  background: url('bg/home1.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  padding-right:0px;
+  padding-left:0px;
+  color:white;
+}
+
+.home2{
+  background: url('bg/home2.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  padding-right:0px;
+  padding-left:0px;
+  color:white;
+}
+
+.home3{
+  background: url('bg/home3.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  padding-right:0px;
+  padding-left:0px;
+/*  color:white;*/
+}
+
+.home4{
+  background: url('bg/home4.png');
+  background-size: cover;
+  padding-right:0px;
+  padding-left:0px;
+  color:white;
+}
+
+.home5{
+  background: url('bg/home5.png');
+  background-size: cover;
+  -webkit-filter: brightness(120%);
+  padding-right:0px;
+  padding-left:0px;
+  color:white;
+}
+
+.century{
+  font-family: 'Century Gothic';
+}
+
+.kitsuneUdon{
+  font-family: 'KitsuneUdon';
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.section{
+  height: 100vh;
+}
+
+.noPadding{
+  padding: 0px;
+}
+
+
+.supercenter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.stripe{
+  background-color: rgba(29,29,27,1);
+/*  border-top: 300px solid transparent;
+border-bottom: 300px solid rgba(29,29,27,1);*/
+left:0;
+right:0;
+width:100%;
+position: relative;
+}
+
+.white{
+  color:rgba(255,255,255,1);
+  position:absolute;
+  bottom:0;
+  right:0;
+  padding-right: 10px
+}
+
+.white-text{
+  color: rgba(255,255,255,1)
+}
+
+
+.whiteBg{
+  background-color: rgba(255,255,255,1)
+}
+
+.black-aa{
+  background-color: rgba(0,0,0,1)
+}
+
+a, a:active, a:hover{
+ color: inherit; 
+}
+
+.input-group-addon{
+  background:none;
+  border-radius: 0px;
+  border:1px solid #000;
+  border-right: none;
+}
+
+.form-control{
+  border-radius: 0px;
+  border:1px solid #000;
+  /*border-left: none;*/
+  box-shadow:none
+}
+
+
+
+    .right-side {
+    border-radius: 1px;
+    text-align: center;
+    padding: 0px;
+  }
+  .caption {
+    /*margin: 22px 0;*/
+    padding-top: 22px;
+/*    border-left: solid black 4px;*/
+    text-align: center;
+  }
+
+  .thumbnail .caption {
+    padding: 22px 20px 22px 0px;
+  }
+
+    .title{
+    color:black
+  }
+
+    .thumbnail{
+    border: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+/*    border: solid black 3px;*/
+    margin:10px 0;
+  }
+
+#artist3, #artist4, #artist5, #artist6, #artist7 {
+    background-image: url('pics/kate.png');
+    background-size: cover;
+  }
+
+/*    #artist1 {
+    background-image: url('bg/artist1.png');
+    background-size: cover;
+  }*/
+      #artist2 {
+    background-image: url('bg/artist2.png');
+    background-size: cover;
+  }
+/*-------------------buttons-------------------*/
+
+
+/*button black regular*/
+  .btn-primary{
+    background:none;
+    border-radius: 0px;
+    border: solid black 2px;
+    text-decoration: none;
+    text-shadow:none;
+    color: black;
+  }
+
+  .btn-primary:hover, .btn-primary:active, .btn-primary:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid black 2px;
+    background:none;
+    color: black;
+  }
+
+/*Button black big*/
+.btn-success{
+  background:none;
+  border-radius: 0px;
+  border: solid black 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: black;
+  font-size: 25px;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus{
+  background:none;
+  border-radius: 0px;
+  border: solid black 2px;
+  background:none;
+  background-color: rgba(255,255,255,0);
+  color: black;
+  font-size: 25px;
+}
+
+/*Button white*/
+.btn-default{
+  background:none;
+  border-radius: 0px;
+  border: solid white 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: white;
+  font-size: 25px;
+}
+
+.btn-default:hover, .btn-default:active, .btn-default:focus{
+  background:none;
+  border-radius: 0px;
+  border: solid white 2px;
+  background:none;
+  background-color: rgba(255,255,255,0);
+  color: white;
+  font-size: 25px;
+}
+
+/*Button Red*/
+.btn-danger{
+  background:none;
+  background-color: rgba(229,69,140,1);
+  border-radius: 0px;
+  border: solid rgba(229,69,140,1) 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: black;
+  font-size: 25px;
+}
+
+  .btn-danger:hover, .btn-danger:active, .btn-danger:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid red 2px;
+    background:none;
+    background-color: rgba(255,255,255,0);
+    color: black;
+    font-size: 25px;
+  }
+
+  /*Button Pink*/
+.btn-pink{
+  background-color: rgba(229,69,140,1);
+  border-radius: 0px;
+  border: solid rgba(229,69,140,1) 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: white;
+  font-size: 25px;
+}
+
+  .btn-pink:hover, .btn-pink:active, .btn-pink:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid rgba(229,69,140,1) 2px;
+    background:none;
+    background-color: rgba(229,69,140,1);
+    color: white;
+    font-size: 25px;
+  }
+
+    /*Button LightBlue*/
+.btn-lightBlue{
+  background-color: rgba(64,160,191,1);
+  border-radius: 0px;
+  border: solid rgba(64,160,191,1) 2px;
+  text-decoration: none;
+  text-shadow:none;
+  color: white;
+  font-size: 25px;
+}
+
+  .btn-lightBlue:hover, .btn-lightBlue:active, .btn-lightBlue:focus{
+    background:none;
+    border-radius: 0px;
+    border: solid rgba(64,160,191,1) 2px;
+    background:none;
+    background-color: rgba(64,160,191,1);
+    color: white;
+    font-size: 25px;
+  }
+
+
+/*-------------------buttons-------------------*/
+
+.divider {
+    margin-left: 40px;
+    display: inline-block;
+    width: 0;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    border-radius: 2px
+}
+
+.divider-h {
+    display: inline-block;
+    height: 0;
+    width:100%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 2px
+}
+
+.artists{
+  margin: 37.5px 0;
+}
+
+canvas {
+  border: 1px rgba(39,39,39,1) solid;
+  padding:10px;
+}
+
+.artist_profile {
+  background-color: rgba(255,255,255,0.9)
+}
+
+.center {
+  text-align: center;
+}
+
+.designtocase{
+  height: 100px;
+  width: 100px;
+  margin-left: 5px;
+}
+
+.color_button{
+  height:30px;
+  width:30px; 
+  border-radius:20px;
+  display:inline-block;
+}
+
+.color_button2{
+  height:20px;
+  width:20px; 
+  border-radius:20px;
+  display:inline-block;
+}
+
+#newtext{
+  width:100px;
+}
+.tab-content{
+  min-height: 400px;
+}    
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+.section {
+  height: auto;
+  padding: 20px;
+}
+
+#home-main{
+  height:100vh;
+}
+
+}

@@ -1,94 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Espacioc</title>
+	<title>Arte Aparte</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="/assets/iconos/rombo.png" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script charset="utf-8" src="https://ucarecdn.com/widget/2.0.6/uploadcare/uploadcare.full.min.js"></script>
+	<script type="text/javascript" src="https://fgnass.github.io/spin.js/spin.js"></script>
+	
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-</head>
-<body>
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/">Espacio C</a>
-				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="/iphone6">iPhone 6</a></li>
-						<li><a href="/iphone5">iPhone 5</a></li>
-						<li><a href="/motog">Moto G</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="btn-lg"data-target="#shoppingcart" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">4</span></a></li>
-						<li><a href="">Facebook</a></li>
-						<li><a href="" data-toggle="modal" data-target="#loginmodal">Iniciar sesión</a></li>
+	<!-- start Mixpanel -->
+	<script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+		for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+			mixpanel.init("7064f8549c057d40cbd5e923182b7688");
+		</script>
+		<script src="//load.sumome.com/" data-sumo-site-id="0b661a40e76a1a26db7054b3aa4da87a81d769d1711cf9ddbf85233c0215d440" async="async"></script>
+		<!-- end Mixpanel -->
+	</head>
+	<body class="site">
 
-<!-- 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-						</li> -->
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</div>
-	</nav>
-	<div class="container">
-		<% if flash[:notice].present? %>
-		<div class="container text-center alert alert-primary">
-			<%= flash[:notice] %>
-		</div>
-		<% end %>
+			<% if flash[:notice].present? %>
+			<div class="container text-center alert alert-primary">
+				<%= flash[:notice] %>
+			</div>
+			<% end %>
 
-		<% if flash[:alert].present? %>
-		<div class="container text-center alert alert-warning">
-			<%= flash[:alert] %>
-		</div>
-		<% end %>
+			<% if flash[:alert].present? %>
+			<div class="container text-center alert alert-warning">
+				<%= flash[:alert] %>
+			</div>
+			<% end %>
 
-		<% if flash[:success].present? %>
-		<div class="container text-center alert alert-success">
-			<%= flash[:success] %>
-		</div>
-		<%end%>
-		<% if flash[:error].present? %>
-		<div class="container text-center alert alert-danger">
-			<%= flash[:error] %>
-		</div>
-		<% end %>
-
-		<div class="row margin-down">
-			<div class="col-md-12">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Buscar</button>
-					</span>
-				</div><!-- /input-group -->
-			</div><!-- /.col-lg-6 -->
-		</div>
-
+			<% if flash[:success].present? %>
+			<div class="container text-center alert alert-success">
+				<%= flash[:success] %>
+			</div>
+			<%end%>
+			<% if flash[:error].present? %>
+			<div class="container text-center alert alert-danger">
+				<%= flash[:error] %>
+			</div>
+			<% end %>
 
 		<%= yield %>
-	</div>
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+		
+
+		<script type="text/javascript">
+			mixpanel.track("Visitó la web");
+		</script>
+		<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.16/dist/jquery.flip.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	</body>
+	</html>

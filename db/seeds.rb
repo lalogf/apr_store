@@ -8,8 +8,8 @@
 
 collections = Collection.create([
 	{name: "Lanzamiento"}, 
-	{name: "Día de la madre"},
-	{name: "Copa América 2015"} 
+	{name: "Navidad"},
+	{name: "Patterns"} 
 	])
 designers = Designer.create([
 	{name: "Tatiana", lastname: "De La Piedra"}, 
@@ -50,4 +50,14 @@ inventories = CaseInventory.create([
 	{finish:"Mate",phonetype_id:"8",stock:42},
 	])
 
-admin = Admin.create(email:"lalo@soulutions.com.pe",password:"@I9nstitut9o",god_mode:true)
+admin = Admin.create([
+	{email:"lalo@soulutions.com.pe",password:"password",god_mode:true},
+	{email:"lalo@laboratoria.la",password:"password",god_mode:false},
+	])
+
+
+File.open("flatcolors3.txt").each do |line|
+	line.split("\r").each do |dp|
+		FlatColor.create(color_code: dp.gsub(/\s+/, ""))
+	end
+end

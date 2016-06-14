@@ -1,0 +1,14 @@
+<%= form_for order_item, remote: true do |f| %>
+  <tr>
+    <td><%= product.upc %></td>
+    <td><%= product.title %></td>
+    <td><%= number_to_currency order_item.unit_price %></td>
+    <td><%= f.number_field :quantity, value: order_item.quantity.to_i, min: 1 %></td>
+    <td>Total Price: <span style="color: green"><%= number_to_currency order_item.total_price %></span></td>
+    <td>
+    <%= f.submit "Actualizar carrito" %>
+    <%= link_to "Eliminar", order_item, { data: { confirm: "¿Estás seguro que deseas elminar el '#{order_item.product.title}' de tu carrito?" }, method: :delete, remote: true } %>
+    </td>
+  </tr>
+<% end %>
+

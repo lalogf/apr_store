@@ -10,7 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'socilmedia@arteaparte.pe'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -20,6 +20,11 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+
+  config.scoped_views = true
+
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -228,6 +233,8 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
+
+  config.secret_key = '23dfaaacb1aded28659afa031469bdb13398e6ff27cb4d6fd039d6cbb12a3df77927f62d1bd3213a2c8e0e7272586daed1d95ca0da20e8438f000ccdbf2915f8'
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
