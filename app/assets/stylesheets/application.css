@@ -623,6 +623,11 @@ canvas {
 }
 .tab-content{
   min-height: 400px;
+}
+
+.infoContainer{
+  background-color:white;
+  margin-top:-100px;
 }    
 
 /* ----------- iPhone 6 ----------- */
@@ -641,4 +646,18 @@ canvas {
   height:100vh;
 }
 
+.infoContainer{
+  background-color:white;
+  margin: 10px 0;
+}
+
+h1{
+  font-size: 30px;
+}
+.home{
+  background-position: 25% 50%;
+}
+#home-main{
+  height:60vh;
+}
 }
