@@ -655,9 +655,9 @@ h1{
   font-size: 30px;
 }
 .home{
-  background-position: 25% 50%;
+  background-position: 15% 70%;
 }
 #home-main{
-  height:60vh;
+  height:100vh;
 }
 }
