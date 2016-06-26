@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-  resource :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy]
+  # resource :cart, only: [:show]
+  # resources :order_items, only: [:create, :update, :destroy]
 
-  get 'order_items/create'
+  # get 'order_items/create'
 
-  get 'order_items/update'
+  # get 'order_items/update'
 
-  get 'order_items/destroy'
+  # get 'order_items/destroy'
 
-  get 'carts/show'
+  # get 'carts/show'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_for :admins
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :products, only:[:show]
   end
 
-  resources :picture_for_customs, only:[:new, :create, :payment, :show],:path => "crea-tu-case"
+  resources :picture_for_customs, only:[:new, :new_2,:create, :show],:path => "crea-tu-case"
 
 
 

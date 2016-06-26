@@ -8,8 +8,8 @@ var caseImage;
 var overIm;
 var preOverIm;
 var imgData;
-var overlay = '/assets/cases/i6t.png';
-var overlay_line = '/assets/cases/i6t_l.png';
+var overlay = '/assets/cases/i6t_500.png';
+var overlay_line = '/assets/cases/i6t_l_500.png';
 var overlay_mobile;
 var overlay_line_mobile;
 var text;
@@ -34,7 +34,7 @@ var ready = function(){
     } else if (($(this).val()) == 4){
       canvas.setOverlayImage('/assets/cases/i6.png', canvas.renderAll.bind(canvas))
     } else if  (($(this).val()) == 5 ){
-      canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas))
+      canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas))
     } else if  (($(this).val()) == 6) {
       canvas.setOverlayImage('/assets/cases/i6pt.png', canvas.renderAll.bind(canvas))
     } else if(($(this).val()) == 1) {
@@ -78,8 +78,8 @@ if (window.location.pathname.split("/")[1] !== "admin"){
       $("#phone_type_name").val("4")
     } else if (e.target.id === "5") {
       canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
-      overlay = '/assets/cases/i6t.png';
-      overlay_line = '/assets/cases/i6t_l.png';
+      overlay = '/assets/cases/i6t_500.png';
+      overlay_line = '/assets/cases/i6t_l_500.png';
       overlay_mobile = '/assets/cases/i6t_mobile.png';
       overlay_line_mobile = '/assets/cases/i6t_l_mobile.png';
       $("#phone_type_name").val("5")
@@ -127,6 +127,7 @@ $("#newtext").emojiPicker({
 $("section .emoji").click(function(e){
   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+  console.log(emojiUnicode);
   var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:150, left:250, selectable:true});
   canvas.add(text);
 });
@@ -238,9 +239,9 @@ var createCanvas = function (){
   canvas.setWidth(300);
   canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
   } else {
-  canvas.setHeight(600);
-  canvas.setWidth(600);
-  canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
+  canvas.setHeight(500);
+  canvas.setWidth(500);
+  canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
   }
   
 }; 

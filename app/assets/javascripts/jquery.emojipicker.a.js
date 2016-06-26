@@ -2686,28 +2686,28 @@ if (window.location.pathname.split("/")[1] !== "admin") {
       "unicode": "1F3BD",
       "shortcode": "running_shirt_with_sash",
       "description": "RUNNING SHIRT WITH SASH",
-      "category": "thing"
+      "category": "sports"
     },
     {
       "name": "tennis",
       "unicode": "1F3BE",
       "shortcode": "tennis",
       "description": "TENNIS RACQUET AND BALL",
-      "category": "thing"
+      "category": "sports"
     },
     {
       "name": "ski",
       "unicode": "1F3BF",
       "shortcode": "ski",
       "description": "SKI AND SKI BOOT",
-      "category": "thing"
+      "category": "sports"
     },
     {
       "name": "basketball",
       "unicode": "1F3C0",
       "shortcode": "basketball",
       "description": "BASKETBALL AND HOOP",
-      "category": "thing"
+      "category": "sports"
     },
     {
       "name": "checkered_flag",
@@ -2721,56 +2721,56 @@ if (window.location.pathname.split("/")[1] !== "admin") {
       "unicode": "1F3C2",
       "shortcode": "snowboarder",
       "description": "SNOWBOARDER",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "runner",
       "unicode": "1F3C3",
       "shortcode": "runner",
       "description": "RUNNER",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "surfer",
       "unicode": "1F3C4",
       "shortcode": "surfer",
       "description": "SURFER",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "trophy",
       "unicode": "1F3C6",
       "shortcode": "trophy",
       "description": "TROPHY",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "horse_racing",
       "unicode": "1F3C7",
       "shortcode": "horse_racing",
       "description": "HORSE RACING",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "football",
       "unicode": "1F3C8",
       "shortcode": "football",
       "description": "AMERICAN FOOTBALL",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "rugby_football",
       "unicode": "1F3C9",
       "shortcode": "rugby_football",
       "description": "RUGBY FOOTBALL",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "swimmer",
       "unicode": "1F3CA",
       "shortcode": "swimmer",
       "description": "SWIMMER",
-      "category": "people"
+      "category": "sports"
     },
     {
       "name": "house",
@@ -5647,21 +5647,21 @@ if (window.location.pathname.split("/")[1] !== "admin") {
       "unicode": "1F6B4",
       "shortcode": "bicyclist",
       "description": "BICYCLIST",
-      "category": "travel"
+      "category": "sports"
     },
     {
       "name": "mountain_bicyclist",
       "unicode": "1F6B5",
       "shortcode": "mountain_bicyclist",
       "description": "MOUNTAIN BICYCLIST",
-      "category": "travel"
+      "category": "sports"
     },
     {
       "name": "walking",
       "unicode": "1F6B6",
       "shortcode": "walking",
       "description": "PEDESTRIAN",
-      "category": "travel"
+      "category": "sports"
     },
     {
       "name": "no_pedestrians",
@@ -5850,140 +5850,140 @@ if (window.location.pathname.split("/")[1] !== "admin") {
       "unicode": "1F1E8-1F1E6",
       "shortcode": "flag-ca",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS CA",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-ch",
       "unicode": "1F1E8-1F1ED",
       "shortcode": "flag-ch",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS CH",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-cl",
       "unicode": "1F1E8-1F1F1",
       "shortcode": "flag-cl",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS CL",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-cn",
       "unicode": "1F1E8-1F1F3",
       "shortcode": "flag-cn",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS CN",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-co",
       "unicode": "1F1E8-1F1F4",
       "shortcode": "flag-co",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS CO",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-de",
       "unicode": "1F1E9-1F1EA",
       "shortcode": "flag-de",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS DE",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-dk",
       "unicode": "1F1E9-1F1F0",
       "shortcode": "flag-dk",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS DK",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-es",
       "unicode": "1F1EA-1F1F8",
       "shortcode": "flag-es",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS ES",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-fi",
       "unicode": "1F1EB-1F1EE",
       "shortcode": "flag-fi",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS FI",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-fr",
       "unicode": "1F1EB-1F1F7",
       "shortcode": "flag-fr",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS FR",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-gb",
       "unicode": "1F1EC-1F1E7",
       "shortcode": "flag-gb",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS GB",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-id",
       "unicode": "1F1EE-1F1E9",
       "shortcode": "flag-id",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS ID",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-ie",
       "unicode": "1F1EE-1F1EA",
       "shortcode": "flag-ie",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS IE",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-il",
       "unicode": "1F1EE-1F1F1",
       "shortcode": "flag-il",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS IL",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-in",
       "unicode": "1F1EE-1F1F3",
       "shortcode": "flag-in",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS IN",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-it",
       "unicode": "1F1EE-1F1F9",
       "shortcode": "flag-it",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS IT",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-jp",
       "unicode": "1F1EF-1F1F5",
       "shortcode": "flag-jp",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS JP",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-kr",
       "unicode": "1F1F0-1F1F7",
       "shortcode": "flag-kr",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS KR",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-ru",
       "unicode": "1F1F7-1F1FA",
       "shortcode": "flag-ru",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS RU",
-      "category": "folderol"
+      "category": "flags"
     },
     {
       "name": "flag-us",
       "unicode": "1F1FA-1F1F8",
       "shortcode": "flag-us",
       "description": "REGIONAL INDICATOR SYMBOL LETTERS US",
-      "category": "folderol"
+      "category": "flags"
     }
     ]
   });

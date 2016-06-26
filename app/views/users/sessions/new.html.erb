@@ -1,5 +1,5 @@
 <%= render "front_store/navbar" %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class="container">
   <h1 class="century uppercase" style="text-align:center">Inicia Sesión</h1>
   <div class="row" style="margin-top:20px">
@@ -11,9 +11,7 @@
       </div>
 
       <div class="col-md-12" style="border-top:solid black 1px">
-       <label class="col-md-12 century margin-10">Nombre</label>
-       <%= f.text_field :email, autofocus: true, class: "col-md-12 century margin-10", type: "email", placeholder:"email", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %> 
-       <label class="col-md-12 century margin-10">Password</label>     
+       <%= f.text_field :email, autofocus: true, class: "col-md-12 century margin-10", type: "email", placeholder:"email", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %>    
        <%= f.password_field :password, autocomplete: "off", class: "col-md-12 century margin-10", type: "password", placeholder:"password", style:"line-height:50px;background-color:#d0d0d0; color:#000; width:100%" %>
        <% if devise_mapping.rememberable? -%>
        <div class="field margin-10">

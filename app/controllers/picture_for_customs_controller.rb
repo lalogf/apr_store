@@ -8,11 +8,9 @@ class PictureForCustomsController < ApplicationController
 		@picture = PictureForCustom.new
 		@colors = FlatColor.all
 		@custom_product = CustomProduct.new
-
 		# @user = current_user
 		@phonetype = Phonetype.find(3)
 	end
-
 
 	def create  
 	     	case_random_code = SecureRandom.hex(4)
@@ -31,6 +29,7 @@ class PictureForCustomsController < ApplicationController
 	     	new_file_for_printing = File.open(file_name_to_print)
 	     	@picture = PictureForCustom.create(picture: new_file, uuid: case_random_code,phonetype_id: @trial.id )
 	     	@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
+	     	@order = Order.create(order_status_id:1, subtotal: @trial.base_price.to_f)
 	     	respond_to do |format| 
 	     		if @picture.save
 					# TODO cambiar posición de mail de confirmación 
@@ -47,7 +46,7 @@ class PictureForCustomsController < ApplicationController
 			@case.user_id = current_user.id
 			@case.save
 		end
-		
+		@shipping = Shipping.new 
 		culqi = Culqi.default_client
 		datos_venta = {
 			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],

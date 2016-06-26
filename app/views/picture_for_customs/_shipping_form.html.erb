@@ -1,0 +1,77 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-success">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Datos Personales
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      	<%= bootstrap_form_tag do |f|  %>
+      		<div class="col-md-8">
+	      		<%= f.text_field(:nombre, value:current_user.name) %>
+	      	</div>
+	      	<div class="col-md-8">
+	      	<%= f.text_field(:apellido, placeholder:"Apellido") %>
+	      	</div>
+	      	<div class="col-md-8">
+	      		<%= f.text_field(:email,value:current_user.email) %>	
+	      	</div>
+	      	<div class="col-md-8">
+	      		<%= f.telephone_field(:celular, label:"Celular",placeholder:"987654321") %>
+      		</div>
+      	<% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Dirección de envío
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+      	<%= bootstrap_form_tag do |f|  %>
+      		<div class="col-md-12">
+      			<%= f.text_area(:address,label: "Dirección", placeholder:"Dirección") %>
+      		</div>
+	      	<div class="col-md-4">
+	      		<%= f.select(:departamento, ["Departamento"]) %>
+	      	</div>
+	      	<div class="col-md-4">
+	      		<%= f.select(:provincia, ["Provincia"]) %>
+	      	</div>
+	      	<div class="col-md-4">
+	      		<%= f.select(:distrito, ["Distrito"]) %>
+	      	</div>
+	      	<%= f.hidden_field(:country, value:"Perú") %>
+      	<% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Forma de pago
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+      	<%= bootstrap_form_tag do |f|  %>
+      		<%= f.check_box(:culqi,label:"Culqi")%>
+      	<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= bootstrap_form_tag do |f|  %>
+	<%= f.check_box(:terminos,label:"Acepto los términos y condiciones")%>
+<% end %>
+<button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button>

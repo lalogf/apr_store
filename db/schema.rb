@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607153013) do
+ActiveRecord::Schema.define(version: 20160625220609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,6 +200,20 @@ ActiveRecord::Schema.define(version: 20160607153013) do
     t.boolean  "active"
   end
 
+  create_table "shippings", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "address"
+    t.string   "district"
+    t.string   "province"
+    t.string   "department"
+    t.string   "country"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "shippings", ["order_id"], name: "index_shippings_on_order_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -228,4 +242,5 @@ ActiveRecord::Schema.define(version: 20160607153013) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "picture_for_customs", "users"
+  add_foreign_key "shippings", "orders"
 end

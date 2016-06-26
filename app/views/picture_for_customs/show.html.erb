@@ -1,22 +1,28 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "form.js" %>
+  <script type="text/javascript"
+  src='https://integ-pago.culqi.com/api/v1/culqi.js'>
+</script>
+<% end %>
+
 <%= render "front_store/navbar" %>
 <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 style="text-align:center"><%= current_user.name%>, tu case para <%= @case.phonetype.modelName %> quedó <span class="lightblue-text kitsuneUdon">alucinante</span></h2>
+        </div>
+    </div>
 	<div class="row">
-		<h2>Mira tu creación</h2>
+    <div class="col-md-10">
 		<div class="col-md-6">
-			<%= image_tag @case.picture.url(:medium), style: "height:500px"  %>
+			<%= image_tag @case.picture.url(:medium), class:"showCase"  %>
+            <h2 class="lightblue-text" style="text-align:center"> S/. <%= @case.phonetype.base_price %> </h2>
 		</div>
-		<div class="col-md-6">
-			<h4>Artista: </h4>
-			<h3>Lalo González</h3>
-			<h2 class="lightblue-text"> S/. <%= @case.phonetype.base_price %> </h2>
-            <label>Dirección</label>
-            <input type="text" name="dirección">
-			<button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button>
-		</div>
+        <div class="col-md-6">
+            <%= render "shipping_form"%>
+        </div>
+    </div>
 
-<script type="text/javascript"
-src='https://integ-pago.culqi.com/api/v1/culqi.js'>
-</script>
 
 <script>
 
@@ -42,8 +48,6 @@ function culqi (checkout) {
 //checkout.respuesta tendrá en valor "checkout_cerrado"
 //También puede tener el valor: "error", "parametro_invalido"
 //Y si ha expirado, "venta_expirada"
-
-console.log(checkout.respuesta);
 $.ajax({
             url: '/users/'+ "<%= @case.user_id %>"+ '/charges/',
             type: 'POST',
@@ -89,4 +93,3 @@ checkout.cerrar();
 </script>
 	</div>
 </div>	
-<%= render "front_store/footer" %>

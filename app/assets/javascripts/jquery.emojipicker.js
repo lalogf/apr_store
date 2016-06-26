@@ -13,9 +13,9 @@
       };
 
   var MIN_WIDTH = 200,
-      MAX_WIDTH = 600,
-      MIN_HEIGHT = 100,
-      MAX_HEIGHT = 350,
+      MAX_WIDTH = "100%",
+      MIN_HEIGHT = 150,
+      MAX_HEIGHT = "100%",
       MAX_ICON_HEIGHT = 50;
 
   function Plugin( element, options ) {
@@ -243,7 +243,9 @@
       { name: 'food',     symbol: 'hamburger' },
       { name: 'folderol', symbol: 'sunny' },
       { name: 'thing',    symbol: 'kiss' },
-      { name: 'travel',   symbol: 'rocket' }
+      { name: 'travel',   symbol: 'rocket' },
+      { name: 'sports',   symbol: 'soccer' },
+      { name: 'flags',   symbol: 'flag-us' }
     ];
     var aliases = {
       'people':    'emotion',

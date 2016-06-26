@@ -1,50 +1,38 @@
 <script>
 	UPLOADCARE_LOCALE = "es";
 	UPLOADCARE_TABS = "file url facebook instagram dropbox";
+	// TODO - ADD PUBLIC KEY TO HEROKU AN FIGARO
 	UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
 	UPLOADCARE_LIVE = false;
 </script>
-
-<div class="container">
+<%= render "front_store/navbar" %>
+<div class="container" style="margin-bottom:20px">
+	<h1 class="century uppercase">Crea un nuevo Case</h1>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100%">
-					<p name="tipo_de_equipo">Elige el equipo <span class="caret"></span></p>
-				</button>
-				<ul class="dropdown-menu" id="phoneTypeDropDown" aria-labelledby="dropdownMenu3" style="height:auto;max-height:200px;overflow-x:hidden">
-					<% Phonetype.all.each do |n|%>
-					<li><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px; display:block">
-			<div class="col-md-12">
-				<p style="display:block">< Regresar</p>
-			</div>
-			
-		</div>
-		<div class="supercenter col-md-6 col-sm-12" >
+		<div class="col-md-8 col-sm-12" >
 			<canvas id="c"></canvas>
 		</div>
-		<div class="col-md-3">
-			<h1>S/. 90</h1>
-			<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
-			<%= bootstrap_form_for @picture do |f|%>
-			<%= hidden_field_tag 'picture_url'%>
-			<%= hidden_field_tag 'phone_type_name', '5'%>
-			<%= hidden_field_tag 'image_to_print'%>
-			<%= f.submit "Continuar", class: "btn btn-green margin-20", id: "generar" %>
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-4">
+			<div class="col-md-12 margin-10" style="margin-bottom:20px">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100%">
+						<p name="tipo_de_equipo">Elige el equipo</p>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" id="phoneTypeDropDown" aria-labelledby="dropdownMenu3" style="height:auto;max-height:200px;overflow-x:hidden">
+						<% Phonetype.all.each do |n|%>
+						<li><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
 			<div class="col-md-12" id="myTabs">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
+					<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
+					<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
+					<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
+				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="A" >
 						<div class="margin-10">
@@ -60,9 +48,8 @@
 							<% @colors.each do |color|%>
 							<div class="color_button" style="background-color:<%= color.color_code%>"></div>
 							<% end %>
-							<div class="col-md-12">
-							<p class="margin-10" style="display:inline">Busca otro color:</p><input type="color" id="back_color" class="form-control"  value="#ff0000" style="width:100px;display:inline">
-							</div>
+							<p class="margin-10">Busca otro color:</p>
+							<input type="color" id="back_color" class="form-control"  value="#ff0000">
 						</div>
 					</div>
 					<div class="tab-pane fade" id="C">
@@ -116,21 +103,20 @@
 								<input type="text" id="newtext" style="display:none">
 								<div id="emojiskeyboard"></div>
 							</div>
-							<div class="tab-pane fade" id="E">
-								<input type="text" id="newtext" style="display:none">
-								<div id="emojiskeyboard"></div>
-							</div>
 						</div>
 					</div>
-				</div>
-				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
-					<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
-					<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
-					<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
-					<li role="presentation" class="nav"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
-				</ul>
 
+					<div class="col-md-12">
+						<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
+
+						<%= bootstrap_form_for @picture do |f|%>
+						<%= hidden_field_tag 'picture_url'%>
+						<%= hidden_field_tag 'phone_type_name', '5'%>
+						<%= hidden_field_tag 'image_to_print'%>
+						<%= f.submit "Crear", class: "btn btn-pink margin-20", id: "generar" %>
+						<% end %>
+					</div>
+				</div>
 			</div>
 			<div class="row margin-20" style="display:none" >
 				<div class="col-md-8 col-md-offset-2" style="background-color:gray;padding:0px">
@@ -146,7 +132,7 @@
 						<p>Tamaño</p>
 						<select>
 							<%(10..100).each do |n|%>
-							<option><%=n%></option>
+								<option><%=n%></option>
 							<%end%>
 						</select>
 					</div>
@@ -160,6 +146,6 @@
 			</div>
 		</div>
 
-		<script type="text/javascript">
-			mixpanel.track("Ingresó a Crea tu case");
-		</script>	
+<script type="text/javascript">
+	mixpanel.track("Ingresó a Crea tu case");
+</script>	

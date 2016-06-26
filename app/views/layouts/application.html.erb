@@ -7,10 +7,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script charset="utf-8" src="https://ucarecdn.com/widget/2.0.6/uploadcare/uploadcare.full.min.js"></script>
-	<script type="text/javascript" src="https://fgnass.github.io/spin.js/spin.js"></script>
-	
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application' %>
+	<%= yield :javascript_includes %>
 	<%= csrf_meta_tags %>
 
 	<!-- start Mixpanel -->
@@ -24,24 +23,24 @@
 	<body class="site">
 
 			<% if flash[:notice].present? %>
-			<div class="container text-center alert alert-primary">
+			<div class="kitsuneUdon text-center container alert alert-primary alert-text">
 				<%= flash[:notice] %>
 			</div>
 			<% end %>
 
 			<% if flash[:alert].present? %>
-			<div class="container text-center alert alert-warning">
+			<div class="kitsuneUdon text-center container alert alert-warning alert-text">
 				<%= flash[:alert] %>
 			</div>
 			<% end %>
 
 			<% if flash[:success].present? %>
-			<div class="container text-center alert alert-success">
+			<div class="kitsuneUdon text-center container alert alert-success alert-text">
 				<%= flash[:success] %>
 			</div>
 			<%end%>
 			<% if flash[:error].present? %>
-			<div class="container text-center alert alert-danger">
+			<div class="kitsuneUdon text-center container alert alert-danger alert-text">
 				<%= flash[:error] %>
 			</div>
 			<% end %>
@@ -52,7 +51,6 @@
 		<script type="text/javascript">
 			mixpanel.track("Visitó la web");
 		</script>
-		<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.16/dist/jquery.flip.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	</body>
 	</html>
