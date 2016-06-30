@@ -2,6 +2,7 @@ class ChargesController < ApplicationController
 before_action :authenticate_user! , only: [:show]
 before_action :set_charge, only: [:show]
 
+
 def create
   @charge = Charge.new(charge_params)
   respond_to do |format|
@@ -37,10 +38,17 @@ def create
 end
 
 def show
+  @user = current_user
+  @order = current_order
   encryptor = Culqi::Encryptor.new
   if @charge.response.length >= 30
       @response = JSON.parse(encryptor.decrypt(@charge.response))
+      @order.order_status_id = 2
+      @order.save
+      session[:order_id] = nil
+      # UserMailer.purchase_confirmation(@user, @).deliver
   end
+ 
 end
 
 private

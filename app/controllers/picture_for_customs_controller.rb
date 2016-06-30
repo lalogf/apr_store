@@ -1,6 +1,6 @@
 class PictureForCustomsController < ApplicationController
 	before_action :authenticate_user! , only: [:show]
-	before_action :current_order, only: [:show, :shipping]
+
 	def index
 		@pictures = PictureForCustom.all
 	end
@@ -9,7 +9,6 @@ class PictureForCustomsController < ApplicationController
 		@picture = PictureForCustom.new
 		@colors = FlatColor.all
 		@custom_product = CustomProduct.new
-		# @user = current_user
 		@phonetype = Phonetype.find(3)
 	end
 
@@ -30,10 +29,8 @@ class PictureForCustomsController < ApplicationController
 	     	new_file_for_printing = File.open(file_name_to_print)
 	     	@picture = PictureForCustom.create(picture: new_file, uuid: case_random_code,phonetype_id: @trial.id )
 	     	@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
-	     	@order = Order.create(order_status_id:1, subtotal: @trial.base_price.to_f)
 	     	if current_user
-	     		@picture.user_id = current_user.id
-	     		@order.user_id = current_user.id
+	     		@picture.user_id = current_user.id	
 	     	end
 	     	respond_to do |format| 
 	     		if @picture.save
@@ -46,42 +43,32 @@ class PictureForCustomsController < ApplicationController
 
 	end
 	def show
+
 		@case = PictureForCustom.find_by_uuid(params[:id])
+		@order = current_order
+		@order.subtotal = @case.phonetype.base_price.to_f
+		@order.order_number = SecureRandom.hex(4)
+		@order.user_id = current_user.id
+		@order.save
+    	session[:order_id] = @order.id
 		if !@case.user_id
 				@case.user_id = current_user.id
 			@case.save
 		end
+		UserMailer.purchase_confirmation(current_user, @case).deliver
 	end
 
 	def shipping
+		@order = current_order
+		@order.shipping = params[:envio]
+		@order.save
 		if !current_user.last_name
 			current_user.last_name = params[:apellido]
+			current_user.save
 		end
-		@shipping = Shipping.create(order_id: current_order.id, address: params[:address], department: params[:departamento],province: params[:provincia],district: params[:distrito], country: params[:country], phone: params[:celular])
-		redirect_to root_path		
+		@shipping = Shipping.create(order_id: @order.id, address: params[:address], department: params[:departamento],province: params[:provincia],district: params[:distrito], country: params[:country], phone: params[:celular])
+		redirect_to user_order_path(current_user,@order)		
 	end
 
-	def sell
-		culqi = Culqi.default_client
-		datos_venta = {
-			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],
-			numero_pedido: SecureRandom.hex(4),
-			moneda: 'PEN',
-			monto: @case.phonetype.base_price*100,
-			descripcion: "Case personalizado para " + @case.phonetype.modelName + " en acabado " + @case.phonetype.type_of_case,
-			correo_electronico: current_user.email,
-			cod_pais: 'PE',
-			ciudad: 'Lima',
-			direccion: 'Av Javier Prado 2320, San Borja',
-			num_tel: '986976309',
-			id_usuario_comercio: current_user.id,
-			nombres: current_user.name,
-			apellidos: current_user.name
-		}
-
-		@venta = culqi.crear_venta(datos_venta)
-		@informacion_venta = @venta['informacion_venta']
-		
-	end
 	private
 end

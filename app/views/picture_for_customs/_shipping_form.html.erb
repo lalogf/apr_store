@@ -14,7 +14,7 @@
 	      		<%= f.text_field(:nombre, value:current_user.name) %>
 	      	</div>
 	      	<div class="col-md-8">
-	      	<%= f.text_field(:apellido, placeholder:"Apellido") %>
+	      	<%= f.text_field(:apellido, placeholder:"Apellido",value:current_user.last_name) %>
 	      	</div>
 	      	<div class="col-md-8">
 	      		<%= f.text_field(:email,value:current_user.email) %>	
@@ -62,8 +62,8 @@
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
       		<%= f.form_group :envio do %>
-            <%=f.radio_button(:envio,1,label:"Estándar - S/.5", checked: true)%>
-            <%=f.radio_button(:envio,0,label:"Next day - S/.10")%>
+            <%=f.radio_button(:envio,5,label:"Estándar - S/.5", checked: true)%>
+            <%=f.radio_button(:envio,10,label:"Next day - S/.10")%>
           <%end%>
       </div>
     </div>
@@ -72,6 +72,5 @@
     <%= f.form_group :terms do %>
       <%= f.check_box :terminos,label:"Acepto los términos y condiciones" %>
     <% end %>
-    <%= f.submit"Continuar", class:"btn btn-lightBlue"%>
+    <%= f.submit"Continuar", class:"btn btn-lightBlue", disabled:true, id: "continuar"%>
   <% end %>
-<!-- <button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button> -->

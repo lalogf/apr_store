@@ -45,7 +45,13 @@ Rails.application.routes.draw do
 
   resources :picture_for_customs, only:[:new, :create, :show],:path => "crea-tu-case"
 
+  resources :users do
+    resources :orders, only:[:show, :new]
+    resources :charges, only:[:new, :create, :show]
+  end
+
   post "/crea-tu-case/:uuid" => "picture_for_customs#shipping"
+
 
   get 'iphone6' => 'front_store#iphone6'
   get 'iphone5' => 'front_store#iphone5'

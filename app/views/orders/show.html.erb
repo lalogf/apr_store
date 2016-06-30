@@ -1,6 +1,34 @@
-var ready_culqi = function(){
 
-    checkout.codigo_comercio = "<%= ENV['CULQI_CODIGO_COMERCIO'] %>";
+<h1>Orders</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 style="text-align:center"><%= @user.name%> quedó <span class="lightblue-text kitsuneUdon">alucinante</span></h2>
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-md-10">
+    		<div class="col-md-6">
+    			<%= image_tag @user.picture_for_customs.last.picture.url(:medium), class:"showCase"  %>
+                <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shipping) %> </h2>
+    		</div>
+            <div class="col-md-6">
+            <%= bootstrap_form_tag do |f|  %>
+	            <%= f.form_group :envio do %>
+		            <%=f.radio_button(:envio,0,label:"Tarjeta de Crédito", checked: true)%>
+		            <%=f.radio_button(:envio,1,label:"Transferencia Bancaria")%>
+	          <%end%>
+            <% end %>
+            <button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button>
+            </div>
+        </div>
+	</div>
+</div>	
+
+    <script type="text/javascript"
+  src='https://integ-pago.culqi.com/api/v1/culqi.js'></script>
+  <script type="text/javascript">
+  	    checkout.codigo_comercio = "<%= ENV['CULQI_CODIGO_COMERCIO'] %>";
     checkout.informacion_venta = "<%= @informacion_venta %>";
 
 
@@ -23,18 +51,18 @@ var ready_culqi = function(){
     //También puede tener el valor: "error", "parametro_invalido"
     //Y si ha expirado, "venta_expirada"
     $.ajax({
-                url: '/users/'+ "<%= @case.user_id %>"+ '/charges/',
+                url: '/users/'+ "<%= @user.id %>"+ '/charges/',
                 type: 'POST',
                 data: {
                 	"charge": {
                 		"response": checkout.respuesta,
                 		"uuid": Math.random().toString(36).substring(20),
-                		"user_id": "<%= @case.user_id %>"
+                		"user_id": "<%= @user.id %>"
                 	}
                 },
                 success: function(data){
                 	console.log(data);
-                	window.location = "/users/"+ "<%= @case.user_id %>" +"/charges/" + data.uuid
+                	window.location = "/users/"+ "<%= @user.id %>" +"/charges/" + data.uuid
                     // var obj = data;
                     // var tipo_respuesta_venta = obj['codigo_respuesta'];
                     // if (tipo_respuesta_venta == "venta_exitosa") {
@@ -63,6 +91,4 @@ var ready_culqi = function(){
     checkout.cerrar();
 
     };
-};
-$(document).ready(ready_culqi);
-$(document).on('page:load', ready_culqi);
+  </script>

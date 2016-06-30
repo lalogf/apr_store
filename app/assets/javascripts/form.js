@@ -1,6 +1,6 @@
-var depo, depid;
+var depo, depid, terminos;
 var ready_to_rock = function(){
-	console.log("hello");
+	$terminos = $("#_terminos");
 	$.ajax({
 		url: "https://powerful-hollows-4606.herokuapp.com/departamentos.json",
 		headers: {
@@ -50,6 +50,14 @@ var ready_to_rock = function(){
 		$(distritos_provincia_selected).each(function(i){
 			$("#_distrito").append("<option value= \""+ distritos_provincia_selected[i].nombre + "\">" + distritos_provincia_selected[i].nombre +   "</option>");
 		});
+	});
+	$terminos.change(function(){
+		
+		if ($terminos[0].checked === true ){
+			document.getElementById("continuar").disabled = false
+		} else {
+			document.getElementById("continuar").disabled = true
+		}
 	});
 };
 

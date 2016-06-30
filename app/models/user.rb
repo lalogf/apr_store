@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-	has_many :customproducts
-	has_many :pictureforcustoms
-	has_many :charges 
+	has_many :custom_products
+	has_many :picture_for_customs
+	has_many :orders
+	has_many :charges
+	has_many :shippings, through: :orders 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

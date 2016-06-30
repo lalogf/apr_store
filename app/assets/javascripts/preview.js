@@ -235,13 +235,13 @@ $(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen"
 var createCanvas = function (){
   canvas = new fabric.Canvas('c');
   if (window.matchMedia('(max-width: 767px)').matches) {
-  canvas.setHeight(300);
-  canvas.setWidth(300);
-  canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
+    canvas.setHeight(300);
+    canvas.setWidth(300);
+    canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
   } else {
-  canvas.setHeight(500);
-  canvas.setWidth(500);
-  canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
+    canvas.setHeight(500);
+    canvas.setWidth(500);
+    canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
   }
   
 }; 
