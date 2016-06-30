@@ -17,7 +17,6 @@
 //= require jquery.emojipicker.js
 //= require jquery.emojipicker.a.js
 //= require fabric
-//= require preview
 //= require snap.svg.js
 //= require store
 //= require svgs.js

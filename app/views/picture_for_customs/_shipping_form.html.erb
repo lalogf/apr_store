@@ -22,7 +22,6 @@
 	      	<div class="col-md-8">
 	      		<%= f.telephone_field(:celular, label:"Celular",placeholder:"987654321") %>
       		</div>
-      	<% end %>
       </div>
     </div>
   </div>
@@ -36,7 +35,6 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-      	<%= bootstrap_form_tag do |f|  %>
       		<div class="col-md-12">
       			<%= f.text_area(:address,label: "Dirección", placeholder:"Dirección") %>
       		</div>
@@ -50,7 +48,6 @@
 	      		<%= f.select(:distrito, ["Distrito"]) %>
 	      	</div>
 	      	<%= f.hidden_field(:country, value:"Perú") %>
-      	<% end %>
       </div>
     </div>
   </div>
@@ -58,20 +55,23 @@
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Forma de pago
+          Forma de envío
         </a>
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
-      	<%= bootstrap_form_tag do |f|  %>
-      		<%= f.check_box(:culqi,label:"Culqi")%>
-      	<% end %>
+      		<%= f.form_group :envio do %>
+            <%=f.radio_button(:envio,1,label:"Estándar - S/.5", checked: true)%>
+            <%=f.radio_button(:envio,0,label:"Next day - S/.10")%>
+          <%end%>
       </div>
     </div>
   </div>
 </div>
-<%= bootstrap_form_tag do |f|  %>
-	<%= f.check_box(:terminos,label:"Acepto los términos y condiciones")%>
-<% end %>
-<button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button>
+    <%= f.form_group :terms do %>
+      <%= f.check_box :terminos,label:"Acepto los términos y condiciones" %>
+    <% end %>
+    <%= f.submit"Continuar", class:"btn btn-lightBlue"%>
+  <% end %>
+<!-- <button id="btn_pago" class="btn btn-lightBlue">Lo quiero</button> -->

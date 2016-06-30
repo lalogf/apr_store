@@ -1,5 +1,6 @@
 class PictureForCustomsController < ApplicationController
 	before_action :authenticate_user! , only: [:show]
+	before_action :current_order, only: [:show, :shipping]
 	def index
 		@pictures = PictureForCustom.all
 	end
@@ -30,11 +31,15 @@ class PictureForCustomsController < ApplicationController
 	     	@picture = PictureForCustom.create(picture: new_file, uuid: case_random_code,phonetype_id: @trial.id )
 	     	@image_to_print = CustomProduct.create(picture: new_file_for_printing, picture_for_customs_id: @picture.id)
 	     	@order = Order.create(order_status_id:1, subtotal: @trial.base_price.to_f)
+	     	if current_user
+	     		@picture.user_id = current_user.id
+	     		@order.user_id = current_user.id
+	     	end
 	     	respond_to do |format| 
 	     		if @picture.save
 					# TODO cambiar posición de mail de confirmación 
 					# UserMailer.purchase_confirmation(current_user, @picture).deliver
-					flash[:success] = "Mira el case que creaste"
+					# flash[:success] = "Mira el case que creaste"
 					format.html {redirect_to picture_for_custom_path(@picture.uuid)}
 				end
 			end
@@ -43,10 +48,20 @@ class PictureForCustomsController < ApplicationController
 	def show
 		@case = PictureForCustom.find_by_uuid(params[:id])
 		if !@case.user_id
-			@case.user_id = current_user.id
+				@case.user_id = current_user.id
 			@case.save
 		end
-		@shipping = Shipping.new 
+	end
+
+	def shipping
+		if !current_user.last_name
+			current_user.last_name = params[:apellido]
+		end
+		@shipping = Shipping.create(order_id: current_order.id, address: params[:address], department: params[:departamento],province: params[:provincia],district: params[:distrito], country: params[:country], phone: params[:celular])
+		redirect_to root_path		
+	end
+
+	def sell
 		culqi = Culqi.default_client
 		datos_venta = {
 			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],
@@ -66,9 +81,7 @@ class PictureForCustomsController < ApplicationController
 
 		@venta = culqi.crear_venta(datos_venta)
 		@informacion_venta = @venta['informacion_venta']
-
+		
 	end
-
-
 	private
 end

@@ -10,7 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'socilmedia@arteaparte.pe'
+  config.mailer_sender = 'socialmedia@arteaparte.pe'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -23,7 +23,7 @@ Devise.setup do |config|
 
   config.scoped_views = true
 
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], scope: 'email', info_fields: 'email, first_name, last_name'
 
 
   # ==> Configuration for any authentication mechanism
