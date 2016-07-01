@@ -45,7 +45,7 @@ def show
       @response = JSON.parse(encryptor.decrypt(@charge.response))
       @order.order_status_id = 2
       @order.save
-      UserMailer.purchase_confirmation(@user, @order).deliver
+      UserMailer.success_payment(@user, @order).deliver
   end
  
 end
