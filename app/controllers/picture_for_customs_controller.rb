@@ -10,6 +10,7 @@ class PictureForCustomsController < ApplicationController
 		@colors = FlatColor.all
 		@custom_product = CustomProduct.new
 		@phonetype = Phonetype.find(3)
+		session[:order_id] = nil
 	end
 
 	def create  
@@ -43,14 +44,15 @@ class PictureForCustomsController < ApplicationController
 
 	end
 	def show
-
-		@case = PictureForCustom.find_by_uuid(params[:id])
 		@order = current_order
+		@case = PictureForCustom.find_by_uuid(params[:id])
 		@order.subtotal = @case.phonetype.base_price.to_f
 		@order.order_number = SecureRandom.hex(4)
 		@order.user_id = current_user.id
 		@order.save
-    	session[:order_id] = @order.id
+		session[:order_id] = @order.id
+		@case.order_id = @order.id
+		@case.save
 		if !@case.user_id
 				@case.user_id = current_user.id
 			@case.save

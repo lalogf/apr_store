@@ -9,6 +9,22 @@
 	<%else%>
 	<h1><%= @charge.response%></h1>
 	<%end %>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 style="text-align:center"><%= @user.name%> quedó <span class="lightblue-text kitsuneUdon">alucinante</span></h2>
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-md-10">
+    		<div class="col-md-6">
+    			<%= image_tag @order.picture_for_custom.picture.url(:medium), class:"showCase"  %>
+                <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shipping).to_i %> </h2>
+    		</div>
+            <div class="col-md-6">
+            </div>
+        </div>
+	</div>
+
 </div>
 
 <%= render "front_store/footer" %>

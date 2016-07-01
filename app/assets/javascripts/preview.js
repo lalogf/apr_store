@@ -20,7 +20,7 @@ var ready = function(){
   if (window.matchMedia('(max-width: 767px)').matches) {
     overlay = '/assets/cases/i6t_mobile.png'
     overlay_line = '/assets/cases/i6t_l_mobile.png'
-  }
+  };
   createCanvas();
   $('#product_phonetype_id').change(function(){
     if(($(this).val()) == 2 || ($(this).val()) == 3){
@@ -105,7 +105,7 @@ $("canvas").mouseout(function(){
     canvas.setOverlayImage(overlay_mobile, canvas.renderAll.bind(canvas));
   }else{
     canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
-  }
+  };
   canvas.deactivateAll().renderAll();
 });
 

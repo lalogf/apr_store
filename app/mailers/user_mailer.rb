@@ -7,10 +7,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Mira el case que creaste')
   end
 
-    def success_payment(user, product, datos)
+    def success_payment(user, products)
 	    @user = user
-	    @product = product
-	    @datos = datos
+	    @order = products
 	    mail(to: @user.email, subject: 'Gracias por comprar en ArteAparte - ')
   	end
 end

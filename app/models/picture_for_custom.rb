@@ -2,7 +2,9 @@ require 'open-uri'
 class PictureForCustom < ActiveRecord::Base
   belongs_to :user
   belongs_to :phonetype
+  belongs_to :order
   has_one :custom_product 
+
 
   attr_reader :picture_remote_url
   has_attached_file :picture, 
