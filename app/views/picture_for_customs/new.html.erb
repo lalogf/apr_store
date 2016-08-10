@@ -10,7 +10,7 @@
 	UPLOADCARE_LIVE = false;
 </script>
 
-<div class="container">
+<div class="container" id="crea_case">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="dropdown">
@@ -29,7 +29,7 @@
 		<div class="col-md-3">
 			<img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px; display:block">
 			<div class="col-md-12">
-				<p style="display:block">< Regresar</p>
+				<%= link_to '< Regresar', root_path %>
 				<p id="mensaje_ayuda" style="display:none"> Intenta cubrir hasta la líneas punteadas</p>
 			</div>
 			
@@ -48,7 +48,8 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="row">
+</div>
+	<div class="">
 		<div class="col-md-12">
 			<div class="col-md-12" id="myTabs">
 				<div class="tab-content">
@@ -62,41 +63,31 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="B">
-						<div class="margin-10 margin-left-10">
+						<div class="margin-10">
 							<% @colors.each do |color|%>
-							<div class="color_button" style="background-color:<%= color.color_code%>"></div>
+								<div class="color_button" style="background-color:<%= color.color_code%>"></div>
 							<% end %>
+								<div class="other_color_button">+</div>
 							<div class="col-md-12">
 							<p class="margin-10" style="display:inline">Busca otro color:</p><input type="color" id="back_color" class="form-control"  value="#ff0000" style="width:100px;display:inline">
 							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="C">
-						<div class="margin-10">
+<!-- 						<div class="margin-10">
 							<a id="textCreation" class="btn btn-lightBlue margin-10">Agregar Texto</a>
-						</div>
-						<div class="text-edition-box" style="display:none">
-							<div class="margin-10">
+						</div> -->
+						<div class="text-edition-box" >
+							<div class="margin-10 col-md-4">
 								<p>Ingresa un texto:<p> 
-									<textarea type="text" id="text_to_canvas" cols="40" rows="5" style="width=100%">
+									<textarea type="text" id="text_to_canvas" cols="40" rows="4" style="width=100%">
 									</textarea>
-									<p>Tamaño:<p> 
-									</div>
+							</div>
 									<div class="margin-10 col-md-4">
-										<div class="dropdown">
-											<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-												Tamaño
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" id="fontSizeDropDown" aria-labelledby="dropdownMenu1" style="height:auto;max-height:200px;overflow-x:hidden">
-												<% [*4..9].each do |n|%>
-												<li><a href="#"><%= n*2 %></a></li>
-												<% end %>
-												<% [*4..25].each do |n|%>
-												<li><a href="#"><%= n*5 %></a></li>
-												<% end %>
-											</ul>
-										</div>
+										<% @sizenumbers = [8, 10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125] %>
+										<%= bootstrap_form_tag do |f|%>
+											<%= f.select :tamano, @sizenumbers, {label: "Tamaño:"}%>
+										<% end %>
 									</div>
 									<div class="col-md-4 margin-10 ">
 										<div class="dropdown">
@@ -108,8 +99,9 @@
 												<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
 												<li><a style="font-family:<%=n%>;font-size:20px"><%= n %></a></li>
 												<% end %>
-											</ul>
-										</div>
+									</div>
+
+									</ul>
 									</div>
 									<div class="col-md-12 margin-10">
 										<% @colors.each do |color|%>
@@ -123,8 +115,7 @@
 								<div id="emojiskeyboard"></div>
 							</div>
 							<div class="tab-pane fade" id="E">
-								<input type="text" id="newtext" style="display:none">
-								<div id="emojiskeyboard"></div>
+								
 							</div>
 						</div>
 					</div>
@@ -164,8 +155,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
+</div>
 		<script type="text/javascript">
 			mixpanel.track("Ingresó a Crea tu case");
 		</script>	

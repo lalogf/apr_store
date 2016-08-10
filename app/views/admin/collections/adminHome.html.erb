@@ -52,37 +52,44 @@
 <% if current_admin.god_mode?%>
 <div class="row">
 
-	<h2>Nuestros Productos</h2>
-
-<% @products.each do |prod|%>
-	<div class="col-sm-6 col-md-12">
-		<div class="thumbnail withBorder col-md-12">
-
-			<div class="col-md-4">
-				<%= image_tag prod.picture.url(:medium), style: "height:300px" %>
-			</div>
-
-			<div class="caption col-md-4">
-				<h2><%= prod.title %></h2>
-				<p><%= prod.phonetype.modelName %></p>
-				<p><%= prod.design.designer.name%> <%= prod.design.designer.lastname%></p>
-				<p><%= prod.design.collection.name %></p>
-			</div>
-
-			<div class="col-md-4">
-				<div class="col-md-12">
-					<h1 class="price text-center"><%= number_with_precision(prod.price, :precision => 0, :delimiter => ',') %></h1>
-				</div>
-				<div class="col-md-12">
-					<p class="text-center"><a href="#" class="btn btn-success" role="button">Edit Product</a> <a href="#"  class="btn btn-danger delete-button" role="button">Delete Product</a></p>
-				</div>
-			</div>
+	<h2>Últimas órdenes</h2>
 
 
-		</div>
+	<div class="col-md-12">
+		<table>
+			<thead>
+				<th>Orden Id</th>
+				<th>Subtotal</th>
+				<th>Status</th>
+				<th>Cliente Id</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Pedido</th>
+				<th>Case</th>
+			</thead>
+			<tbody>
+				
+				<% @orders.each do |o|%>
+
+					<% if o.user_id && o.picture_for_custom %>
+						<tr>
+							<td><%=o.id%></td>
+							<td><%=o.subtotal%></td>
+							<td><%=o.order_status.name%></td>
+							<td><%=o.user_id%></td>
+							<td><%=o.user.name%></td>
+							<td><%=o.user.last_name%></td>
+							<td><%=o.picture_for_custom.phonetype.modelName %> <%=o.picture_for_custom.phonetype.type_of_case %></td>
+							<td><%=image_tag o.picture_for_custom.picture((:thumb)) %></td>
+
+						</tr>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
-	<%end%>
-	<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+
+
 </div>
 <%end%>
 

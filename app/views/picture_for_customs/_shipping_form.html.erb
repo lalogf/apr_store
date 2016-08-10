@@ -20,7 +20,7 @@
 	      		<%= f.text_field(:email,value:current_user.email) %>	
 	      	</div>
 	      	<div class="col-md-8">
-	      		<%= f.telephone_field(:celular, label:"Celular",placeholder:"987654321") %>
+	      		<%= f.phone_field(:celular, label:"Celular",placeholder:"987654321") %>
       		</div>
       </div>
     </div>
@@ -70,7 +70,14 @@
   </div>
 </div>
     <%= f.form_group :terms do %>
-      <%= f.check_box :terminos,label:"Acepto los términos y condiciones" %>
+      <%= f.check_box :terminos,label: ("#{link_to 'Acepto los términos y condiciones','', id:"terminos_modal"}").html_safe %>
     <% end %>
     <%= f.submit"Continuar", class:"btn btn-lightBlue", disabled:true, id: "continuar"%>
   <% end %>
+
+  <script type="text/javascript">
+    var linkToModal = document.getElementById("terminos_modal")
+    linkToModal.setAttribute("data-toggle","modal");
+    linkToModal.setAttribute("data-target","#terminos");
+
+  </script>

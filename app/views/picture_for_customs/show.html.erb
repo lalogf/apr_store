@@ -9,10 +9,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2 style="text-align:center"><%= current_user.name%>, tu case para <%= @case.phonetype.modelName %> quedó <span class="lightblue-text kitsuneUdon">alucinante</span></h2>
+            <h2 style="text-align:center"><%= current_user.name%>, tu case para <%= @case.phonetype.modelName %> quedó <span class="lightblue-text kitsuneUdon"><%= ["alucinante","maldito","bravazo","perfecto","súper paja","mostro", "súper chévere","locazo"].sample %></span></h2>
+        
         </div>
     </div>
-	<div class="row">
+	<div class="row margin-20">
         <div class="col-md-10">
     		<div class="col-md-6">
     			<%= image_tag @case.picture.url(:medium), class:"showCase"  %>
@@ -20,7 +21,11 @@
     		</div>
             <div class="col-md-6">
                 <%= render "shipping_form"%>
+                <%= render "modal_terminos"%>
             </div>
         </div>
 	</div>
 </div>	
+
+
+

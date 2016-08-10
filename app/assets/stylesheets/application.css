@@ -169,6 +169,10 @@ span.glyphicon.bigIcon {
 
 }
 
+#crea_case {
+  background: url('bg/hero.png');
+}
+
 footer {
   padding: 20px 0 30px 0;
   background-color: rgb(26,26,26);
@@ -227,6 +231,9 @@ footer ul {
   background-color: rgba(64,160,191,1);
 }
 
+.pink-text{
+  color: rgba(229,69,140,1);
+}
 .pink-aa{
   background-color: rgba(229,69,140,1);
 }
@@ -332,10 +339,17 @@ footer ul {
   height: 100vh;
 }
 
+#conocenos{
+  height:90vh;
+}
+
 .noPadding{
   padding: 0px;
 }
 
+#emojiskeyboard{
+  margin: 20px;
+}
 
 .supercenter{
   display:flex;
@@ -643,6 +657,17 @@ canvas {
   display:inline-block;
 }
 
+.other_color_button{
+  height:20px;
+  width:20px; 
+  border-radius:20px;
+  display:inline-block;
+  border: dashed 2px rgba(64,160,191,1);
+  text-align:center;
+  line-height:15px;
+  color:rgba(64,160,191,1);
+}
+
 .color_button2{
   height:20px;
   width:20px; 
@@ -656,6 +681,13 @@ canvas {
 .tab-content{
   height: 20vh;
   background-color: #cccccc;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box
+}
+
+.tab-pane{
+  padding:10px 30px;
 }
 
 .infoContainer{
@@ -665,6 +697,11 @@ canvas {
 
 .showCase{
   height: 400px;
+}
+
+#terminos_modal {
+  width: 70%;
+  padding: 20px;
 }   
 
 /*.precio{

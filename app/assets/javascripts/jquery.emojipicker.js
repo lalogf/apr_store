@@ -43,8 +43,15 @@
       this.settings.height = MIN_HEIGHT;
     }
 
+    // if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    //   this.init();
+    // }
+
+
     // Do not enable if on mobile device (emojis already present)
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      this.init();
+    } else {
       this.init();
     }
 
@@ -262,27 +269,27 @@
     });
 
     nodes.push('<div class="emojiPicker">');
-    nodes.push('<nav>');
+    // nodes.push('<nav>');
+    // for (var i in categories) {
+    //   nodes.push('<div class="tab' +
+    //   ( i == 0 ? ' active' : '' ) +
+    //   '" data-tab="' +
+    //   categories[i].name +
+    //   '"><div class="emoji emoji-' +
+    //   categories[i].symbol +
+    //   '"></div></div>');
+    // }
+    // nodes.push('</nav>');
     for (var i in categories) {
-      nodes.push('<div class="tab' +
-      ( i == 0 ? ' active' : '' ) +
-      '" data-tab="' +
-      categories[i].name +
-      '"><div class="emoji emoji-' +
-      categories[i].symbol +
-      '"></div></div>');
-    }
-    nodes.push('</nav>');
-    for (var i in categories) {
-      nodes.push('<section class="' +
-        categories[i].name +
-        ( i == 0 ? '' : ' hidden' ) +
-        '">');
+      // nodes.push('<section class="' +
+      //   categories[i].name +
+      //   ( i == 0 ? '' : ' hidden' ) +
+      //   '">');
       for (var j in items[ categories[i].name ] ) {
         var emoji = items[ categories[i].name ][ j ];
         nodes.push('<div class="emoji emoji-' + emoji.shortcode + '"></div>');
       }
-      nodes.push('</section>');
+      // nodes.push('</section>');
     }
     nodes.push('</div>');
     return nodes.join("\n");

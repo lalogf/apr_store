@@ -4,7 +4,7 @@
 			<div class="col-md-8 col-md-offset-2 center">
 				<img src="assets/logo_arteaparte.png" style="height:100px">
 				<br>
-				<h1 class="kitsuneUdon center">Sé tu el artista y crea el case más divertido para tu celular</h1>
+				<h1 class="kitsuneUdon center">Sé tú el artista y crea el case más divertido para tu celular</h1>
 				<br>
 				<%= link_to "Crea el tuyo", new_picture_for_custom_path , class:"btn btn-lightBlue uppercase", method: :get%>
 			</div>
@@ -17,16 +17,14 @@
 		<div class="container infoContainer">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2" style="text-align:center">
-					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. </h3>
+					<h3>Cases que te gustarán desde el primer momento.</h3>
 				</div>
 					<div class="col-sm-6 col-md-4">
 						<div class="thumbnail">
-							<img style="height:250px" src="/assets/bg/datos3.png" alt="Imagen caracteristica 1">
+							<img style="height:250px" src="/assets/bg/datos2.png" alt="Imagen caracteristica 1">
 							<div class="caption">
-								<h3>Mejor acabado</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<h4 class="pink-text">Mejor acabado</h4>
+								<p>Te garantizamos el mejor acabado del mercado. No es broma.  </p>
 							</div>
 						</div>
 					</div>
@@ -34,19 +32,17 @@
 						<div class="thumbnail">
 							<img style="height:250px" src="/assets/bg/datos1.png" alt="Imagen caracteristica 2">
 							<div class="caption">
-								<h3>Mejor protección</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<h4 class="lightblue-text">Mayor protección</h4>
+								<p>Resiste más de 100 caídas por día. Son duros de verdad. </p>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-4">
 						<div class="thumbnail">
-							<img style="height:250px" src="/assets/bg/home3.png" alt="Imagen caracteristica 3">
+							<img style="height:250px" src="/assets/bg/datos3.png" alt="Imagen caracteristica 3">
 							<div class="caption">
-								<h3>Emojis</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<h4 class="pink-text">Emojis. Emojis. Emojis.</h4>
+								<p>A todos nos encantan los emojis. En Arte Aparte puedes agrégarle emojis a todos tus cases. </p>
 							</div>
 						</div>
 					</div>
@@ -57,5 +53,10 @@
 			</div>
 
 		</section>
+		
 	</main>		
 		<%= render "footer" %>
+
+		<script type="text/javascript">
+			mixpanel.track("Visitó la web");
+		</script>

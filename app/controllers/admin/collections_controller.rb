@@ -55,6 +55,7 @@ class Admin::CollectionsController < ApplicationController
 		@designer = Designer.new 
 		@products = Product.all.paginate(:page => params[:page], :per_page => 5)
 		@inventory = CaseInventory.all
+		@orders = Order.all
 	end
 
 	private

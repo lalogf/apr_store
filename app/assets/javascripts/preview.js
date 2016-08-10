@@ -120,11 +120,13 @@ $("#back_color").change(function(){
   canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
 });
 var cont_width = $(".tab-content").width();
+var cont_margin = $(".tab-content").css("margin-left");
 $("#newtext").emojiPicker({
-  height: '300px',
-  width: cont_width
+  height: '200px',
+  width: (cont_width- cont_margin)
 });
-$("section .emoji").click(function(e){
+// $(".section emoji")
+$(".emoji").click(function(e){
   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
   console.log(emojiUnicode);
@@ -156,12 +158,12 @@ $("#fontFamilyDropDown li a").click(function(e){
 });
 
 
-$("#textCreation").click(function(){
+$("#text_to_canvas").focus(function(){
   // var newtext = $("#text_to_canvas").val();
   // var font_size = $("#dropdownMenu1").html().split("<")[0];
   // var font_family = $("#dropdownMenu2").html().split("<")[0];
   // var text_color = $("#text_color").val();
-  $(".text-edition-box").toggle();
+  // $(".text-edition-box").toggle();
   var newtext = "Editar texto"
   var font_size = "30"
   var font_family = "Century Gothic"
@@ -185,8 +187,8 @@ $("#textCreation").click(function(){
     text.fontFamily = font_family;
     canvas.renderAll();
   });
-  $("#dropdownMenu1").bind("DOMSubtreeModified",function(){
-    font_size = $(this).html().split("<")[0];
+  $("#_tamano").change(function(){
+    font_size = $(this).val();
     text.fontSize = font_size;
     canvas.renderAll();
     text.setActiveObject();
@@ -228,7 +230,9 @@ $('#generar').click(function(e){
     $('#newcaseimage').val(canvas.toDataURL('image/png'));
   });
 }
-$(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen"
+$(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen";
+$(".uploadcare-widget-button").addClass("btn btn-lightBlue");
+$("tab-content")
 };
 
 
