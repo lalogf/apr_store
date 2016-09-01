@@ -17,11 +17,11 @@
         <div class="col-md-10">
     		<div class="col-md-6">
     			<%= image_tag @case.picture.url(:medium), class:"showCase"  %>
-                <h2 class="lightblue-text" style="text-align:center"> S/. <%= @case.phonetype.base_price %> </h2>
+                <h2 class="lightblue-text" id="order_price" style="text-align:center"> S/. <%= @case.phonetype.base_price %> </h2>
     		</div>
             <div class="col-md-6">
-                <%= render "shipping_form"%>
-                <%= render "modal_terminos"%>
+                <%= render "picture_for_customs/shipping_form"%>
+                <%= render "picture_for_customs/modal_terminos"%>
             </div>
         </div>
 	</div>

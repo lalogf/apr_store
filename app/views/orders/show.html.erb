@@ -9,7 +9,7 @@
         <div class="col-md-10">
     		<div class="col-md-6">
     			<%= image_tag @order.picture_for_custom.picture.url(:medium), class:"showCase"  %>
-                <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shipping).to_i %> </h2>
+                <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shippings.last.cost).to_i %> </h2>
     		</div>
             <div class="col-md-6">
             <%= bootstrap_form_tag do |f|  %>

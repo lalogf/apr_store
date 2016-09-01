@@ -12,4 +12,10 @@ class UserMailer < ActionMailer::Base
 	    @order = products
 	    mail(to: @user.email, subject: 'Gracias por comprar en ArteAparte - ')
   	end
+
+    def admin_success_payment(user,products)
+      @user = user
+      @order = products
+      mail(to: "lalo@soulutions.com.pe", subject:'Nuevo case para'+ @order.picture_for_custom.phonetype.modelName + @order.picture_for_custom.phonetype.type_of_case +' en ArteAparte')
+    end
 end

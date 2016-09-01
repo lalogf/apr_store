@@ -1,6 +1,6 @@
 var depo, depid, terminos;
 var ready_to_rock = function(){
-	$terminos = $("#_terminos");
+	$terminos = $("#shipping_terms");
 	$.ajax({
 		url: "https://powerful-hollows-4606.herokuapp.com/departamentos.json",
 		headers: {
@@ -9,46 +9,46 @@ var ready_to_rock = function(){
 		},
 		type: "GET",
 		success: function(data) {
-			$("#_departamento").empty();
+			$("#shipping_department").empty();
 			depo = data;
 			$(data).each(function (i) {
-				$("#_departamento").append("<option value=\""+data[i].departamento +"\" number=\""+data[i].id+"\" id=\""+i+"\" >"+data[i].departamento+"</option>");
+				$("#shipping_department").append("<option value=\""+data[i].departamento +"\" number=\""+data[i].id+"\" id=\""+i+"\" >"+data[i].departamento+"</option>");
 			});
-			$("#_departamento #14").attr("selected","selected");
-			$("#_provincia").empty();
+			$("#shipping_department #14").attr("selected","selected");
+			$("#shipping_province").empty();
 			$(data[14].provincias).each(function(i){
-				$("#_provincia").append("<option value= \""+ data[14].provincias[i].provincia.nombre + "\" number = \"" + data[14].provincias[i].provincia.id + "\" id=\""+i+"\"  >" + data[14].provincias[i].provincia.nombre + "</option>");
+				$("#shipping_province").append("<option value= \""+ data[14].provincias[i].provincia.nombre + "\" number = \"" + data[14].provincias[i].provincia.id + "\" id=\""+i+"\"  >" + data[14].provincias[i].provincia.nombre + "</option>");
 			});
-			$("#_provincia #7").attr("selected","selected");
-			$("#_distrito").empty();
+			$("#shipping_province #7").attr("selected","selected");
+			$("#shipping_district").empty();
 			$(data[14].provincias[7].distritos).each(function(i){
-				$("#_distrito").append("<option value= \""+ data[14].provincias[7].distritos[i].nombre + "\" number = \"" + data[14].provincias[7].distritos[i].id + "\" id=\""+i+"\" >" + data[14].provincias[7].distritos[i].nombre + "</option>");		
+				$("#shipping_district").append("<option value= \""+ data[14].provincias[7].distritos[i].nombre + "\" number = \"" + data[14].provincias[7].distritos[i].id + "\" id=\""+i+"\" >" + data[14].provincias[7].distritos[i].nombre + "</option>");		
 			});
 		},
 		error: function() {
 			alert("something went wrong ..."); 
 		}
 	});
-	$("#_departamento").change(function(){
-		depid = $("#_departamento").find(':selected').attr('id');
+	$("#shipping_departament").change(function(){
+		depid = $("#shipping_departament").find(':selected').attr('id');
 		var provs = depo[depid].provincias;
 		var distritos_op1 = provs[0].distritos
-		$("#_provincia").empty();
+		$("#shipping_province").empty();
 		$(provs).each(function(i){
 			$("#_provincia").append("<option value= \""+ provs[i].provincia.nombre + "\" number = \"" + provs[i].provincia.id + "\" id=\""+ i +"\" >" + provs[i].provincia.nombre + "</option>");
 		});
-		$("#_distrito").empty();
+		$("#shipping_district").empty();
 		$(distritos_op1).each(function(i){
-			$("#_distrito").append("<option value= \""+ distritos_op1[i].nombre + "\">" + distritos_op1[i].nombre + "</option>");
+			$("#shipping_district").append("<option value= \""+ distritos_op1[i].nombre + "\">" + distritos_op1[i].nombre + "</option>");
 		});
 	});
 
-	$("#_provincia").change(function(){
-		var provid = $("#_provincia").find(':selected').attr('id');
+	$("#shipping_province").change(function(){
+		var provid = $("#shipping_province").find(':selected').attr('id');
 		var distritos_provincia_selected = depo[depid].provincias[provid].distritos;
-		$("#_distrito").empty();
+		$("#shipping_district").empty();
 		$(distritos_provincia_selected).each(function(i){
-			$("#_distrito").append("<option value= \""+ distritos_provincia_selected[i].nombre + "\">" + distritos_provincia_selected[i].nombre +   "</option>");
+			$("#shipping_district").append("<option value= \""+ distritos_provincia_selected[i].nombre + "\">" + distritos_provincia_selected[i].nombre +   "</option>");
 		});
 	});
 	$terminos.change(function(){

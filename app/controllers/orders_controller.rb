@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 			codigo_comercio: ENV['CULQI_CODIGO_COMERCIO'],
 			numero_pedido: @order.order_number,
 			moneda: 'PEN',
-			monto: (@order.subtotal + @order.shipping).to_i*100,
+			monto: (@order.subtotal + @order.shippings.last.cost).to_i*100,
 			descripcion: "Case personalizado",
 			correo_electronico: @user.email,
 			cod_pais: 'PE',

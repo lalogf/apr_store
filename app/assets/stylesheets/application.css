@@ -348,7 +348,12 @@ footer ul {
 }
 
 #emojiskeyboard{
-  margin: 20px;
+  margin: 20px 200px;
+}
+
+.tab-center{
+  margin-left:200px;
+  margin-right:200px;
 }
 
 .supercenter{
@@ -703,6 +708,11 @@ canvas {
   width: 70%;
   padding: 20px;
 }   
+
+.checkout_box{
+  border:1px solid rgba(64,160,191,1);
+  background-color:rgba(253, 248, 231, 0.7);
+}
 
 /*.precio{
   position: relative;

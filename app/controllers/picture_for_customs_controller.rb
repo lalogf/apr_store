@@ -1,5 +1,6 @@
 class PictureForCustomsController < ApplicationController
 	before_action :authenticate_user! , only: [:show]
+	before_action :set_case , only: [:show]
 
 	def index
 		@pictures = PictureForCustom.all
@@ -45,7 +46,6 @@ class PictureForCustomsController < ApplicationController
 	end
 	def show
 		@order = current_order
-		@case = PictureForCustom.find_by_uuid(params[:id])
 		@order.subtotal = @case.phonetype.base_price.to_f
 		@order.order_number = SecureRandom.hex(4)
 		@order.user_id = current_user.id
@@ -53,6 +53,7 @@ class PictureForCustomsController < ApplicationController
 		session[:order_id] = @order.id
 		@case.order_id = @order.id
 		@case.save
+		@shipping = Shipping.new 
 		if !@case.user_id
 				@case.user_id = current_user.id
 			@case.save
@@ -60,17 +61,9 @@ class PictureForCustomsController < ApplicationController
 		UserMailer.purchase_confirmation(current_user, @case).deliver
 	end
 
-	def shipping
-		@order = current_order
-		@order.shipping = params[:envio]
-		@order.save
-		if !current_user.last_name
-			current_user.last_name = params[:apellido]
-			current_user.save
-		end
-		@shipping = Shipping.create(order_id: @order.id, address: params[:address], department: params[:departamento],province: params[:provincia],district: params[:distrito], country: params[:country], phone: params[:celular])
-		redirect_to user_order_path(current_user,@order)		
+	private
+	def set_case
+		@case = PictureForCustom.find_by_uuid(params[:id])
 	end
 
-	private
 end

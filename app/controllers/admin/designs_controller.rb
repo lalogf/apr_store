@@ -10,7 +10,6 @@ class Admin::DesignsController < ApplicationController
 	end
 	def create
 		@design = Design.create(design_params.merge(designer_id: @designer.id))
-		# @design.picture_from_url(params[:design_picture])
 		respond_to do |format|
 			if @design.save
 				flash[:success] = "El diseño " + @design.name + " se ha creado con éxito"

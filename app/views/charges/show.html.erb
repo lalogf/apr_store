@@ -1,30 +1,33 @@
 <%= render "front_store/navbar" %>
 
-<div class="container">
-	<%if @response %>
-	<h1><%= @response.select{|key, hash| key["mensaje_respuesta_usuario"]}.first[1] %></h1>
-	<p>Numero de pedido</p><%= @response.select{|key, hash| key["numero_pedido"]}.first[1] %>
-	<p>Numero de ticket</p><%= @response.select{|key, hash| key["ticket"]}.first[1] %>
-	<%=@response%>
-	<%else%>
-	<h1><%= @charge.response%></h1>
-	<%end %>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2 style="text-align:center"><%= @user.name%> quedó <span class="lightblue-text kitsuneUdon">alucinante</span></h2>
-        </div>
-    </div>
-	<div class="row">
-        <div class="col-md-10">
-    		<div class="col-md-6">
-    			<%= image_tag @order.picture_for_custom.picture.url(:medium), class:"showCase"  %>
-                <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shipping).to_i %> </h2>
-    		</div>
-            <div class="col-md-6">
+<%if @response %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2 style="text-align:center; font-weight:bold">Gracias por tu compra</h2>
+                <p>Tu pedido es el <span class="lightblue-text" style="font-weight:bold;">#<%= @response.select{|key, hash| key["numero_pedido"]}.first[1] %></span> y lo tendrás a más tardar <span class="lightblue-text" style="font-weight:bold;"><%= (Date.today+ 5).strftime("%d-%m-%Y")  %> </span></p>
             </div>
         </div>
-	</div>
+    	<div class="row margin-20">
+            <div class="col-md-10">
+        		<div class="col-md-6">
+        			<%= image_tag @order.picture_for_custom.picture.url(:medium), class:"showCase"  %>
+                    <h2 class="lightblue-text" style="text-align:center"> S/. <%= (@order.subtotal + @order.shippings.last.cost).to_i %> </h2>
+        		</div>
+                <div class="col-md-6 checkout_box">
+                    <h3 class="kitsuneUdon lightblue-text">Detalle del pedido</h3>
+                        <br>
+                        <p><span style="font-weight:bold">Número de pedido:</span> <%= @response.select{|key, hash| key["numero_pedido"]}.first[1] %> </p>
+                        <p><span style="font-weight:bold">Numero de ticket:</span> <%= @response.select{|key, hash| key["ticket"]}.first[1] %></p>
+                        <p><span style="font-weight:bold">Número de tarjeta:</span> <%= @response.select{|key, hash| key["numero_tarjeta"]}.first[1] %></p>
+                        <p><span style="font-weight:bold">Titular de la Tarjeta:</span> <%= @response.select{|key, hash| key["nombre_tarjeta_habiente"]}.first[1] %>  <%= @response.select{|key, hash| key["apellido_tarjeta_habiente"]}.first[1] %></p>
+                </div>
+            </div>
+    	</div>
 
-</div>
+    </div>
+<%else%>
+    <h1><%= @charge.response%></h1>
+<%end %>
 
 <%= render "front_store/footer" %>
