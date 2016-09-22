@@ -47,13 +47,13 @@
     //   this.init();
     // }
 
-
+    this.init();
     // Do not enable if on mobile device (emojis already present)
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      this.init();
-    } else {
-      this.init();
-    }
+    // if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    //   this.init();
+    // } else {
+    //   this.init();
+    // }
 
   }
 

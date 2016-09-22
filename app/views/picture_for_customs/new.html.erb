@@ -1,6 +1,6 @@
 
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "preview.js" %>
+<%= javascript_include_tag "preview.js" %>
 <% end %>
 
 <script>
@@ -27,7 +27,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3">
-			<img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px; display:block">
+			<img id="logo" src="/assets/logo_arteaparte.png" class="pull-left">
 			<div class="col-md-12">
 				<%= link_to '< Regresar', root_path %>
 				<p id="mensaje_ayuda" style="display:none"> Intenta cubrir hasta la líneas punteadas</p>
@@ -49,113 +49,80 @@
 		</div>
 	</div>
 </div>
-	<div class="">
-		<div class="col-md-12">
-			<div class="col-md-12" id="myTabs">
-				<div class="tab-content">
-					<div class="tab-pane fade in active" id="A" >
-						<div class="margin-10">
-							<form id="my-form">
-								<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
-							</form>
-							<div id="wuju" class="margin-10">
-							</div>
+<div class="">
+	<div class="col-md-12">
+		<div class="col-md-12" id="myTabs">
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="A" >
+					<div class="margin-10 tab-center">
+						<h4 class="century-bold subtitle">Sube una imagen</h4>
+						<form id="my-form">
+							<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
+						<div id="wuju" style="display:inline">
 						</div>
+						</form>
 					</div>
-					<div class="tab-pane fade" id="B">
-						<div class="margin-10 tab-center">
-							<% @colors.each do |color|%>
-								<div class="color_button" style="background-color:<%= color.color_code%>"></div>
-							<% end %>
-								<div class="other_color_button">+</div>
-							<div class="col-md-12">
+				</div>
+				<div class="tab-pane fade" id="B">
+					<div class="margin-10 tab-center">
+						<h4 class="century-bold subtitle">Selecciona el color que más te guste para el case</h4>
+						<% @colors.each do |color|%>
+							<div class="color-button" style="background-color:<%= color.color_code%>"></div>
+						<% end %>
+						<div class="other_color_button"></div>
+<!-- 							<div class="col-md-12">
 							<p class="margin-10" style="display:inline">Busca otro color:</p><input type="color" id="back_color" class="form-control"  value="#ff0000" style="width:100px;display:inline">
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="C">
-<!-- 						<div class="margin-10">
-							<a id="textCreation" class="btn btn-lightBlue margin-10">Agregar Texto</a>
 						</div> -->
-						<div class="text-edition-box" >
-							<div class="margin-10 col-md-4 tab-center">
-								<p>Ingresa un texto:<p> 
-									<textarea type="text" id="text_to_canvas" cols="40" rows="4" style="width=100%">
-									</textarea>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="C">
+					<div class="row" >
+						<h4 class="century-bold subtitle">Agrega un texto</h4>
+						<div class="margin-10 col-md-4">
+							<a id="text_to_canvas" class="btn btn-lightBlue">Agrega un texto</a>
+							<a id="remove-text" class="btn btn-red">Eliminar</a>
+						</div>
+						<div class="col-md-4 margin-10 ">
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:300px">
+									Fuente
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu"  id="fontFamilyDropDown"aria-labelledby="dropdownMenu2" style="height:auto;max-height:200px;overflow-x:hidden">
+									<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
+									<li><a style="font-family:<%=n%>;font-size:20px"><%= n %></a></li>
+									<% end %>
+								</ul>
 							</div>
-									<div class="margin-10 col-md-4">
-										<% @sizenumbers = [8, 10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125] %>
-										<%= bootstrap_form_tag do |f|%>
-											<%= f.select :tamano, @sizenumbers, {label: "Tamaño:"}%>
-										<% end %>
-									</div>
-									<div class="col-md-4 margin-10 ">
-										<div class="dropdown">
-											<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:300px">
-												Fuente
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu"  id="fontFamilyDropDown"aria-labelledby="dropdownMenu2" style="height:auto;max-height:200px;overflow-x:hidden">
-												<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
-												<li><a style="font-family:<%=n%>;font-size:20px"><%= n %></a></li>
-												<% end %>
-									</div>
-
-									</ul>
-									</div>
-									<div class="col-md-12 margin-10">
-										<% @colors.each do |color|%>
-										<div class="color_button2" style="background-color:<%= color.color_code%>"></div>
-										<% end %>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="D">
-								<input type="text" id="newtext" style="display:none">
-								<div id="emojiskeyboard"></div>
-							</div>
-							<div class="tab-pane fade" id="E">
-								
-							</div>
+						</div>
+						<div class="col-md-4 margin-10">
+							<% @colors.each do |color|%>
+							<div class="color_button2" style="background-color:<%= color.color_code%>"></div>
+							<% end %>
 						</div>
 					</div>
 				</div>
-				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
-					<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
-					<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
-					<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
-					<li role="presentation" class="nav"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
-				</ul>
+				<div class="tab-pane fade" id="D">
+					<h4 class="century-bold subtitle">Selecciona los emojis que quieras</h4>
+					<input type="text" id="newtext" style="display:none">
+					<div id="emojiskeyboard"></div>
+				</div>
+				<div class="tab-pane fade" id="E">
 
-			</div>
-			<div class="row margin-20" style="display:none" >
-				<div class="col-md-8 col-md-offset-2" style="background-color:gray;padding:0px">
-					<div class="col-md-3" style="border-right: 1px solid white">
-						<p>Fuente</p>
-						<select>
-							<% ["Andale Mono","Arial","Arial Black","Arial Narrow","Arial Rounded MT Bold","Avant Garde","Baskerville","Big Caslon","Bodoni MT","Book Antiqua","Calibri","Calisto MT","Cambria","Candara","Century Gothic","Consolas","Copperplate","Courier New","Didot","Futura	","Garamond	","Geneva","Georgia","Gill Sans","Goudy Old Style","Helvetica","Hoefler Text","Impact","Lucida Bright","Lucida Console","Lucida Grande","Lucida Sans Typewriter","Monaco","Optima","Palatino","Papyrus","Perpetua","Rockwell","Rockwell Extra Bold","Segoe UI","Tahoma","Times New Roman","Trebuchet MS","Verdana"].each do |n|%>
-							<option><%= n %></option>
-							<%end%>
-						</select>
-					</div>
-					<div class="col-md-3" style="border-right: 1px solid white">
-						<p>Tamaño</p>
-						<select>
-							<%(10..100).each do |n|%>
-							<option><%=n%></option>
-							<%end%>
-						</select>
-					</div>
-					<div class="col-md-3" style="border-right: 1px solid white">
-						<p>Color</p>
-					</div>
-					<div class="col-md-3" style="border-right: 1px solid white">
-						<p>Decoración</p>
-					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<ul class="nav nav-tabs nav-justified">
+		<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
+		<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
+		<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
+		<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
+		<li role="presentation" class="nav"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
+	</ul>
+
 </div>
-		<script type="text/javascript">
-			mixpanel.track("Ingresó a Crea tu case");
-		</script>	
+
+<script type="text/javascript">
+	mixpanel.track("Ingresó a Crea tu case");
+</script>	

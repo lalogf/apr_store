@@ -21,7 +21,10 @@ var ready = function(){
     overlay = '/assets/cases/i6t_mobile.png'
     overlay_line = '/assets/cases/i6t_l_mobile.png'
   };
+  uploading();
   createCanvas();
+  deletedItem();
+  changedCanvas(); 
   $('#product_phonetype_id').change(function(){
     if(($(this).val()) == 2 || ($(this).val()) == 3){
       canvas.setOverlayImage('/assets/cases/i5.png', canvas.renderAll.bind(canvas));
@@ -96,10 +99,12 @@ if (window.location.pathname.split("/")[1] !== "admin"){
     }
   });
 
+
 $("canvas").mouseover(function(){
   canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
   canvas.setOverlayImage(overlay_line, canvas.renderAll.bind(canvas));
 });
+
 $("canvas").mouseout(function(){
   if (window.matchMedia('(max-width: 767px)').matches) {
     canvas.setOverlayImage(overlay_mobile, canvas.renderAll.bind(canvas));
@@ -109,40 +114,47 @@ $("canvas").mouseout(function(){
   canvas.deactivateAll().renderAll();
 });
 
-$(".color_button").click(function(){
+$(".color-button").click(function(){
   var color = $(this).css("background-color");
   var hexColor = rgb2hex(color);
   $("#back_color").attr("value",hexColor);
   canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
 });
+
 $("#back_color").change(function(){
   var color = $(this).val();
   canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
 });
+
 var cont_width = $(".tab-content").width();
 var cont_margin = $(".tab-content").css("margin-left");
+
 $("#newtext").emojiPicker({
   height: '200px',
   width: (cont_width- cont_margin)
 });
-// $(".section emoji")
+
+
 $(".emoji").click(function(e){
   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
-  console.log(emojiUnicode);
-  var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:150, left:250, selectable:true});
+  // console.log(emojiUnicode);
+  var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:200, left:220, selectable:true});
   canvas.add(text);
 });
-$('#scale-control').change(function() {
-  var scaleThisImage = canvas.getActiveObject();
-  scaleThisImage.scale(parseFloat(this.value)).setCoords();
-  canvas.renderAll();
-});
-$('#angle-control').change(function() {
-  var rotateThisImage = canvas.getActiveObject();
-  rotateThisImage.setAngle(parseInt(this.value, 10)).setCoords();
-  canvas.renderAll();
-});
+
+// $('#scale-control').change(function() {
+//   var scaleThisImage = canvas.getActiveObject();
+//   scaleThisImage.scale(parseFloat(this.value)).setCoords();
+//   canvas.renderAll();
+// });
+
+// $('#angle-control').change(function() {
+//   var rotateThisImage = canvas.getActiveObject();
+//   rotateThisImage.setAngle(parseInt(this.value, 10)).setCoords();
+//   canvas.renderAll();
+// });
+
 $("#fontSizeDropDown li a").click(function(e){
   var clickedValue = $(e.target).text();
   $("#dropdownMenu1").html(clickedValue)
@@ -158,24 +170,20 @@ $("#fontFamilyDropDown li a").click(function(e){
 });
 
 
-$("#text_to_canvas").focus(function(){
-  // var newtext = $("#text_to_canvas").val();
-  // var font_size = $("#dropdownMenu1").html().split("<")[0];
-  // var font_family = $("#dropdownMenu2").html().split("<")[0];
-  // var text_color = $("#text_color").val();
-  // $(".text-edition-box").toggle();
+$("#text_to_canvas").click(function(){
   var newtext = "Editar texto"
   var font_size = "30"
-  var font_family = "Century Gothic"
+  var font_family = "Century Gothic Stb Bold"
   var text_color = "black"
-  text = new fabric.IText(newtext, {fontFamily: font_family,top:150, left:250,fill: text_color, fontSize: font_size});
+  text = new fabric.IText(newtext, {fontFamily: font_family,top:150, left:180,fill: text_color, fontSize: font_size});
   canvas.add(text);
   canvas.setActiveObject(text);
-  $("#text_to_canvas").val("Editar texto");
-  $("#text_to_canvas").on('input',function(e){
-    text.text = $(this).val();
-    canvas.renderAll();
-  });
+  // text.on("change",$("#text_to_canvas").val(text.text));
+  // $("#text_to_canvas").val(text.);
+  // $("#text_to_canvas").on('input',function(e){
+  //   text.text = $(this).val();
+  //   canvas.renderAll();
+  // });
   $(".color_button2").click(function(){
     var color = $(this).css("background-color");
     var hexColor = rgb2hex(color);
@@ -194,6 +202,7 @@ $("#text_to_canvas").focus(function(){
     text.setActiveObject();
   });
 });
+
 $('#generar').click(function(e){
       // canvas.overlayImage = null;
       // canvas.renderAll.bind(canvas);
@@ -206,33 +215,33 @@ $('#generar').click(function(e){
       canvas.deactivateAll().renderAll();
       $('#picture_url').val(canvas.toDataURL('image/png'));
 
-    });
-} else {
-  $(".designtocase").click(function(e){
-    imgData = e.target.src;
-    fabric.Image.fromURL(imgData,  function (img) {
-      canvas.add(img.set({
-        left: 0,
-        top: 0,
-      }));
-      canvas.controlsAboveOverlay = true;
-      canvas.item(0).set({
-        borderColor: 'black',
-        cornerColor: 'black',
-        cornerSize: 20,
-        transparentCorners: false
-      });
-      canvas.setActiveObject(canvas.item(0)); 
-    } , { crossOrigin: 'anonymous' });
-  });
-  $('#create').click(function(){
-    canvas.deactivateAll().renderAll();
-    $('#newcaseimage').val(canvas.toDataURL('image/png'));
-  });
-}
-$(".uploadcare-widget-button-open")[0].innerHTML = "Sube una imagen";
-$(".uploadcare-widget-button").addClass("btn btn-lightBlue");
-$("tab-content")
+    });    
+} 
+//else {
+//   $(".designtocase").click(function(e){
+//     imgData = e.target.src;
+//     fabric.Image.fromURL(imgData,  function (img) {
+//       canvas.add(img.set({
+//         height: 300,
+//         width: 300,
+
+//         left: 0,
+//         top: 0
+//       }));
+//       canvas.controlsAboveOverlay = true;
+//       canvas.sendToBack(img);
+
+//     } , { crossOrigin: 'anonymous' });
+//   });
+//   $('#create').click(function(){
+//     canvas.deactivateAll().renderAll();
+//     $('#newcaseimage').val(canvas.toDataURL('image/png'));
+//   });
+// };
+
+
+  $(".uploadcare-widget-button-open")[0].innerHTML = "Agregar imagen";
+  // $(".uploadcare-widget-button").addClass("btn btn-lightBlue");
 };
 
 
@@ -250,29 +259,82 @@ var createCanvas = function (){
   
 }; 
 
+var makeDesignsClickable = function () {
+    imgData = $(".designtocase")[0].src;
+    fabric.Image.fromURL(imgData,  function (img) {
+      if (img.height >= img.width){
+      canvas.add(img.set({
+          height:500,
+          width:500/img.height*img.width,
+          left: -(((500/img.height*img.width)-500)/2),
+          top: 0,
+      }));
+    } else if (img.width > img.height && img.width > 500) {
+      canvas.add(img.set({
+        height: 500,
+        width: 500/img.height*img.width,
+        left: -(((500/img.height*img.width)-500)/2),
+        top: 0,
+      }));
+    }
+      canvas.controlsAboveOverlay = true;
+      canvas.setActiveObject(canvas.item(0));
+    } , { crossOrigin: 'anonymous' });
 
-var createImage = function(cod){
-  imgElement = $('.designtocase')[cod];
-  if (window.matchMedia('(max-width: 767px)').matches) {
-  imgInstance = new fabric.Image(imgElement, {
-      height: 300,
-      width: 300,
-      scaleY:150/imgElement.width,
-      scaleX:100/imgElement.width,
-      left: 0,
-      top: 0,
-    },{ crossOrigin: 'Anonymous' } );
-  } else {
-  imgInstance = new fabric.Image(imgElement, {
-      height: 600,
-      width: 600,
-      scaleY:300/imgElement.width,
-      scaleX:200/imgElement.width,
-      left: 0,
-      top: 0,
-    },{ crossOrigin: 'Anonymous' } );
-  }
 };
+
+
+var changedCanvas = function(){
+  canvas.on('object:added',(function(e){
+    var activeObject = e.target;
+    if(activeObject.type!=="text" && activeObject.type !== "i-text"){
+      activeObject.sendToBack();
+    }
+  }));
+}
+
+var deletedItem = function (){
+  var selectedObject;
+  canvas.on('object:selected',(function(e){
+    selectedObject = e.target;
+  }
+  ));
+  $('html').keyup(function(e){
+    if(e.keyCode == 8 && selectedObject.type !== "i-text") {
+      selectedObject.remove();
+    }
+  });
+  $("#remove-text").click(function(){
+    if(selectedObject.type === "i-text"){
+        selectedObject.remove();
+    }
+  });
+
+}
+
+
+// var createImage = function(cod){
+//   imgElement = $('.designtocase')[cod];
+//   if (window.matchMedia('(max-width: 767px)').matches) {
+//   imgInstance = new fabric.Image(imgElement, {
+//       height: 300,
+//       width: 300,
+//       scaleY:150/imgElement.width,
+//       scaleX:100/imgElement.width,
+//       left: 0,
+//       top: 0,
+//     },{ crossOrigin: 'Anonymous' });
+//   } else {
+//   imgInstance = new fabric.Image(imgElement, {
+//       height: 600,
+//       width: 600,
+//       scaleY:300/imgElement.width,
+//       scaleX:200/imgElement.width,
+//       left: 0,
+//       top: 0,
+//     },{ crossOrigin: 'Anonymous' } );
+//   }
+// };
 
 
     function toUnicode(code) {
@@ -296,6 +358,18 @@ var createImage = function(cod){
        ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
        ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
      };
+
+     var uploading = function (){
+      var widget = uploadcare.Widget('[role=uploadcare-uploader]');
+      widget.onUploadComplete(function(info) {
+        var imageForCaseId = "my-image-" + ($(".designtocase").length + 1)
+        $("#wuju").append('<img class="designtocase" id="'+ imageForCaseId +'" src="'+ info.cdnUrl +'">');
+        makeDesignsClickable();
+      });
+    };
+
+
+
 
      $(document).ready(ready);
      $(document).on('page:load', ready);

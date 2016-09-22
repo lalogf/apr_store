@@ -13,7 +13,7 @@ def create
 	@shipping = Shipping.create(shipping_params.merge(order_id: @order.id))
 	respond_to do |format|
 		if @shipping.save 
-			format.html{ redirect_to user_order_path(current_user,@order), notice: 'Shipping was successfully destroyed.'}
+			format.html{ redirect_to user_order_path(current_user,@order)}
 		else
 			@case = @order.picture_for_custom
 			flash[:error] = 'Hubo un error'

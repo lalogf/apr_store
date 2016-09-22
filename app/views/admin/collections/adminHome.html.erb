@@ -56,37 +56,40 @@
 
 
 	<div class="col-md-12">
-		<table>
-			<thead>
-				<th>Orden Id</th>
-				<th>Subtotal</th>
-				<th>Status</th>
-				<th>Cliente Id</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Pedido</th>
-				<th>Case</th>
-			</thead>
-			<tbody>
-				
-				<% @orders.each do |o|%>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<th>Orden Id</th>
+					<th>Subtotal</th>
+					<th>Status</th>
+					<th>Cliente Id</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Pedido</th>
+					<th>Case</th>
+					<th>Acción</th>
+				</thead>
+				<tbody>
+					
+					<% @orders.each do |o|%>
 
-					<% if o.user_id && o.picture_for_custom %>
-						<tr>
-							<td><%=o.id%></td>
-							<td><%=o.subtotal%></td>
-							<td><%=o.order_status.name%></td>
-							<td><%=o.user_id%></td>
-							<td><%=o.user.name%></td>
-							<td><%=o.user.last_name%></td>
-							<td><%=o.picture_for_custom.phonetype.modelName %> <%=o.picture_for_custom.phonetype.type_of_case %></td>
-							<td><%=image_tag o.picture_for_custom.picture((:thumb)) %></td>
-
-						</tr>
+						<% if o.user_id && o.picture_for_custom %>
+							<tr>
+								<td><%=o.id%></td>
+								<td><%=o.subtotal%></td>
+								<td><%=o.order_status.name%></td>
+								<td><%=o.user_id%></td>
+								<td><%=o.user.name%></td>
+								<td><%=o.user.last_name%></td>
+								<td><%=o.picture_for_custom.phonetype.modelName %> <%=o.picture_for_custom.phonetype.type_of_case %></td>
+								<td><%=image_tag o.picture_for_custom.picture((:thumb)) %></td>
+								<td><a href="" class="btn btn-success">Editar</a></td>
+							</tr>
+						<% end %>
 					<% end %>
-				<% end %>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 
