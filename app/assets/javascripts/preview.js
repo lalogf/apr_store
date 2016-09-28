@@ -8,8 +8,10 @@ var caseImage;
 var overIm;
 var preOverIm;
 var imgData;
-var overlay = '/assets/cases/i6t_500.png';
-var overlay_line = '/assets/cases/i6t_l_500.png';
+// var overlay = '/assets/cases/i6t_500.png';
+var overlay = '/assets/cases/i6t_450_copy.png';
+// var overlay_line = '/assets/cases/i6t_l_500.png';
+var overlay_line = '/assets/cases/i6t_l_450_copy.png';
 var overlay_mobile;
 var overlay_line_mobile;
 var text;
@@ -252,9 +254,10 @@ var createCanvas = function (){
     canvas.setWidth(300);
     canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
   } else {
-    canvas.setHeight(500);
-    canvas.setWidth(500);
-    canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
+    canvas.setHeight(450);
+    canvas.setWidth(450);
+    // canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
+    canvas.setOverlayImage('/assets/cases/i6t_450_copy.png', canvas.renderAll.bind(canvas));
   }
   
 }; 
@@ -264,16 +267,16 @@ var makeDesignsClickable = function () {
     fabric.Image.fromURL(imgData,  function (img) {
       if (img.height >= img.width){
       canvas.add(img.set({
-          height:500,
-          width:500/img.height*img.width,
-          left: -(((500/img.height*img.width)-500)/2),
+          height:450,
+          width:450/img.height*img.width,
+          left: -(((450/img.height*img.width)-450)/2),
           top: 0,
       }));
-    } else if (img.width > img.height && img.width > 500) {
+    } else if (img.width > img.height && img.width > 450) {
       canvas.add(img.set({
-        height: 500,
-        width: 500/img.height*img.width,
-        left: -(((500/img.height*img.width)-500)/2),
+        height: 450,
+        width: 450/img.height*img.width,
+        left: -(((450/img.height*img.width)-450)/2),
         top: 0,
       }));
     }

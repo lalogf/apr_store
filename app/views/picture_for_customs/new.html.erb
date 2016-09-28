@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 desktop">
 			<img id="logo" src="/assets/logo_arteaparte.png" class="pull-left">
 			<div class="col-md-12">
 				<%= link_to '< Regresar', root_path %>
@@ -37,8 +37,8 @@
 		<div class="supercenter col-md-6 col-sm-12" >
 			<canvas id="c"></canvas>
 		</div>
-		<div class="col-md-3">
-			<h1>S/. 90</h1>
+		<div class="col-md-3 price_and_button">
+			<h1 class="custom_price">S/. 90</h1>
 			<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
 			<%= bootstrap_form_for @picture do |f|%>
 			<%= hidden_field_tag 'picture_url'%>
@@ -49,9 +49,9 @@
 		</div>
 	</div>
 </div>
-<div class="">
-	<div class="col-md-12">
-		<div class="col-md-12" id="myTabs">
+<div style="bottom:8vh;position:fixed;width:100%">
+	<div class="col-md-12 myTabs">
+		<div class="col-md-12 myTabs">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="A" >
 					<div class="margin-10 tab-center">
@@ -113,14 +113,24 @@
 			</div>
 		</div>
 	</div>
-	<ul class="nav nav-tabs nav-justified">
+<!-- 	<ul class="nav nav-tabs nav-justified">
 		<li role="presentation" class="nav active"><a href="#A" data-toggle="tab">FOTOS</a></li>
 		<li role="presentation" class="nav"><a href="#B" data-toggle="tab">FONDO</a></li>
 		<li role="presentation" class="nav"><a href="#C" data-toggle="tab">TEXTO</a></li>
 		<li role="presentation" class="nav"><a href="#D" data-toggle="tab">EMOJI</a></li>
 		<li role="presentation" class="nav"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
+	</ul> -->
+</div>
+<div style="height:8vh;background-color: #585858;position:fixed;bottom:0;width:100%">
+	<div class="supercenter">
+	<ul style="color:white">
+		<li style="display:inline"><a href="#A" data-toggle="tab">FOTOS</a></li>
+		<li style="display:inline"><a href="#B" data-toggle="tab">FONDO</a></li>
+		<li style="display:inline"><a href="#C" data-toggle="tab">TEXTO</a></li>
+		<li style="display:inline"><a href="#D" data-toggle="tab">EMOJI</a></li>
+		<li style="display:inline"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
 	</ul>
-
+	</div>
 </div>
 
 <script type="text/javascript">

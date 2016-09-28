@@ -723,18 +723,21 @@ canvas {
 
 
 .color-button {
-  height:20px;
-  width:20px; 
+  height:25px;
+  width:25px; 
   border-radius:20px;
+  margin-left:8px;
   display:inline-block;
 }
 
 .other_color_button{
-  height:20px;
-  width:20px; 
+  height:25px;
+  width:25px; 
   border-radius:20px;
   background: url('bg/more.png');
+  margin-left:8px;
   display:inline-block;
+  background-size: cover;
 }
 
 .color_button2{
@@ -748,11 +751,12 @@ canvas {
   width:100px;
 }
 .tab-content{
-  height: 20vh;
+  height: 25vh;
   background-color:  #f3f3f3;
   overflow-x: hidden;
   overflow-y: scroll;
-  box-sizing: border-box
+  box-sizing: border-box;
+  display:block;
 }
 
 .tab-pane{
@@ -805,8 +809,37 @@ footer{
   margin-top: 40px;
 }
 
-.footer-desktop{
+.footer-desktop, .desktop{
   display:none;
+}
+
+#emojiskeyboard{
+  margin: 20px;
+}
+
+.tab-center{
+  margin: 0 auto;
+}
+
+.new_picture_for_custom{
+  display:inline;
+}
+
+.myTabs{
+  padding-right: 0px;
+  padding-left: 0px ;
+}
+.custom_price{
+  display:inline;
+}
+
+#generar{
+  float:right;
+  margin-top:0px;
+}
+
+.price_and_button{
+  margin-top:20px;
 }
 
 /*.footer-mobile{
