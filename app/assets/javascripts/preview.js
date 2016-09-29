@@ -9,9 +9,9 @@ var overIm;
 var preOverIm;
 var imgData;
 // var overlay = '/assets/cases/i6t_500.png';
-var overlay = '/assets/cases/i6t_450_copy.png';
+var overlay = '/assets/cases/i6t.png';
 // var overlay_line = '/assets/cases/i6t_l_500.png';
-var overlay_line = '/assets/cases/i6t_l_450_copy.png';
+var overlay_line = '/assets/cases/i6t_l.png';
 var overlay_mobile;
 var text;
 
@@ -47,9 +47,9 @@ var ready = function(){
   });
 
 if (window.location.pathname.split("/")[1] !== "admin"){
-  $("#phoneTypeDropDown li a").click(function(e){
-    var clickedValue = $(e.target).text();
-    $("#dropdownMenu3 p").html(clickedValue);
+  $(".dropdown .phonetype a").click(function(e){
+    // var clickedValue = $(e.target).text();
+    // $("#dropdownMenu3 p").html(clickedValue);
     if(e.target.id === "2"){
       overlay = '/assets/cases/i5.png';
       overlay_line = '/assets/cases/i5_l.png';

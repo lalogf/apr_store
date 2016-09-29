@@ -12,20 +12,6 @@
 
 <div class="container" id="crea_case">
 	<div class="row">
-		<div class="col-md-12">
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100%">
-					<p name="tipo_de_equipo">Elige el equipo <span class="caret"></span></p>
-				</button>
-				<ul class="dropdown-menu" id="phoneTypeDropDown" aria-labelledby="dropdownMenu3" style="height:auto;max-height:200px;overflow-x:hidden">
-					<% Phonetype.all.each do |n|%>
-					<li><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-md-3 desktop">
 			<img id="logo" src="/assets/logo_arteaparte.png" class="pull-left">
 			<div class="col-md-12">
@@ -75,7 +61,7 @@
 						</div> -->
 					</div>
 				</div>
-				<div class="tab-pane fade" id="C">
+				<div class="tab-pane fade desktop" id="C">
 					<div class="row" >
 						<h4 class="century-bold subtitle">Agrega un texto</h4>
 						<div class="margin-10 col-md-4">
@@ -108,7 +94,13 @@
 					<div id="emojiskeyboard"></div>
 				</div>
 				<div class="tab-pane fade" id="E">
-
+					<h4 class="century-bold subtitle">Elige tu equipo</h4>
+					<div class="dropdown tab-center">	
+							<% Phonetype.all.each do |n|%>
+							<div class="phonetype supercenter" style="width:80px;height:80px;border:dashed 2px black;display:inline-block;white-space: normal;padding: 20px 0px; margin:10px"><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></div>
+							<% end %>
+						
+					</div>
 				</div>
 			</div>
 		</div>
@@ -122,14 +114,49 @@
 	</ul> -->
 </div>
 <div style="height:8vh;background-color: #585858;position:fixed;bottom:0;width:100%">
-	<div class="supercenter">
-	<ul style="color:white">
-		<li style="display:inline"><a href="#A" data-toggle="tab">FOTOS</a></li>
-		<li style="display:inline"><a href="#B" data-toggle="tab">FONDO</a></li>
-		<li style="display:inline"><a href="#C" data-toggle="tab">TEXTO</a></li>
-		<li style="display:inline"><a href="#D" data-toggle="tab">EMOJI</a></li>
-		<li style="display:inline"><a href="#E" data-toggle="tab">EQUIPOS</a></li>
-	</ul>
+	<div class="supercenter" style="color:white;padding:3vh 10vw">
+		<div class="custom_menu"">
+			<a href="#A" data-toggle="tab">
+				<img class="icon desktop" src="/assets/iconos/fotos.png">
+				FOTOS
+			</a>
+		</div>
+		<div class="custom_menu"">
+			<a href="#B" data-toggle="tab">
+				<img class="icon desktop" src="/assets/iconos/colores.png">
+				FONDO
+			</a>
+		</div>
+		<div class="custom_menu desktop">
+			<a href="#C" data-toggle="tab">
+				<img class="icon desktop" src="/assets/iconos/textos.png" >
+				TEXTO
+			</a>
+		</div>
+		<div class="custom_menu"">
+			<a href="#D" data-toggle="tab">
+				<!-- <img src="/assets/iconos/happy.svg" style="height:20px;margin-right: 7px;color:white"> -->
+				<svg class="icon desktop" version="1.1" id="Capa_1" x="0px" y="0px"
+				viewBox="0 0 462.4 414.9">
+				<g>
+					<path d="M230.7,19.8C126.7,19.8,42,104.5,42,208.5c0,104,84.6,188.7,188.7,188.7s188.7-84.7,188.7-188.7
+					C419.4,104.5,334.8,19.8,230.7,19.8z M230.7,378.1c-93.5,0-169.6-76.1-169.6-169.6c0-93.5,76.1-169.6,169.6-169.6
+					S400.3,115,400.3,208.5C400.3,302,324.3,378.1,230.7,378.1z"/>
+					<path d="M144.6,199c0-9.8-7.9-17.7-17.7-17.7c-9.8,0-17.7,7.9-17.7,17.7s7.9,17.7,17.7,17.7C136.6,216.7,144.6,208.7,144.6,199z"/>
+					<path d="M334.6,181.2c-9.8,0-17.7,7.9-17.7,17.7s7.9,17.7,17.7,17.7c9.8,0,17.7-7.9,17.7-17.7S344.4,181.2,334.6,181.2z"/>
+					<path d="M340.1,249.2H121.4c-4,0-7,3.3-6.3,7c4.3,22.5,24.8,91.4,115.6,91.4c90.8,0,111.3-68.9,115.6-91.4
+					C347,252.6,344.1,249.2,340.1,249.2z"/>
+				</g>
+			</svg>
+				EMOJI
+			</a>
+		</div>
+		<div class="custom_menu"">
+			<a href="#E" data-toggle="tab">
+				<img class="icon desktop" src="/assets/iconos/equipos.png">
+				EQUIPOS
+			</a>
+		</div>
 	</div>
 </div>
 
