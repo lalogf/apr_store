@@ -13,7 +13,6 @@ var overlay = '/assets/cases/i6t_450_copy.png';
 // var overlay_line = '/assets/cases/i6t_l_500.png';
 var overlay_line = '/assets/cases/i6t_l_450_copy.png';
 var overlay_mobile;
-var overlay_line_mobile;
 var text;
 
 
@@ -52,69 +51,71 @@ if (window.location.pathname.split("/")[1] !== "admin"){
     var clickedValue = $(e.target).text();
     $("#dropdownMenu3 p").html(clickedValue);
     if(e.target.id === "2"){
-      canvas.setOverlayImage('/assets/cases/i5.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i5.png';
       overlay_line = '/assets/cases/i5_l.png';
-      $("#phone_type_name").val("2")
+      overlay_mobile = '/assets/cases/mobile/i5.png';
+      $("#phone_type_name").val("2");
     } else if (e.target.id === "3") {
-      canvas.setOverlayImage('/assets/cases/i5t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i5t.png';
       overlay_line = '/assets/cases/i5t_l.png';
-      $("#phone_type_name").val("3")
+      overlay_mobile = '/assets/cases/mobile/i5t.png';
+      $("#phone_type_name").val("3");
     } else if (e.target.id === "7") {
-      canvas.setOverlayImage('/assets/cases/gs5t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/gs5t.png';
       overlay_line = '/assets/cases/gs5t_l.png';
+      overlay_mobile = '/assets/cases/mobile/gs5t.png';
       $("#phone_type_name").val("7");
     } else if (e.target.id === "9") {
-      canvas.setOverlayImage('/assets/cases/gs6t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/gs6t.png';
       overlay_line = '/assets/cases/gs6t_l.png';
+      overlay_mobile = '/assets/cases/mobile/gs6t.png';
       $("#phone_type_name").val("9");
     } else if (e.target.id === "8") {
-      canvas.setOverlayImage('/assets/cases/motog.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/motog.png';
       overlay_line = '/assets/cases/motog_l.png';
+      overlay_mobile = '/assets/cases/mobile/motog.png';
       $("#phone_type_name").val("8");
     } else if (e.target.id === "4") {
-      canvas.setOverlayImage('/assets/cases/i6.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6.png';
       overlay_line = '/assets/cases/i6_l.png';
-      $("#phone_type_name").val("4")
+      overlay_mobile = '/assets/cases/mobile/i6.png';
+      $("#phone_type_name").val("4");
     } else if (e.target.id === "5") {
-      canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
-      overlay = '/assets/cases/i6t_500.png';
-      overlay_line = '/assets/cases/i6t_l_500.png';
-      overlay_mobile = '/assets/cases/i6t_mobile.png';
-      overlay_line_mobile = '/assets/cases/i6t_l_mobile.png';
-      $("#phone_type_name").val("5")
+      overlay = '/assets/cases/i6t.png';
+      overlay_line = '/assets/cases/i6t_l.png';
+      overlay_mobile = '/assets/cases/mobile/i6t.png';
+      $("#phone_type_name").val("5");
     } else if (e.target.id === "6") {
-      canvas.setOverlayImage('/assets/cases/i6pt.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i6pt.png';
       overlay_line = '/assets/cases/i6pt_l.png';
-      $("#phone_type_name").val("6")
+      overlay_mobile = '/assets/cases/mobile/i6pt.png';
+      $("#phone_type_name").val("6");
     } else if (e.target.id === "1") {
-      canvas.setOverlayImage('/assets/cases/i4t.png', canvas.renderAll.bind(canvas));
       overlay = '/assets/cases/i4t.png';
       overlay_line = '/assets/cases/i4t_l.png';
+      overlay_mobile = '/assets/cases/mobile/i4t.png';
       $("#phone_type_name").val("1")
-    }
+    };
+    if (!(window.matchMedia('(max-width: 767px)').matches)){
+      canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
+    } else {
+      canvas.setOverlayImage(overlay_mobile, canvas.renderAll.bind(canvas));
+    };
   });
 
 
-$("canvas").mouseover(function(){
-  canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
-  canvas.setOverlayImage(overlay_line, canvas.renderAll.bind(canvas));
-});
+  if (!(window.matchMedia('(max-width: 767px)').matches)){
+    $("canvas").mouseover(function(){
+      canvas.setOverlayImage(null, canvas.renderAll.bind(canvas));
+      canvas.setOverlayImage(overlay_line, canvas.renderAll.bind(canvas));
+    });
+  }
 
-$("canvas").mouseout(function(){
-  if (window.matchMedia('(max-width: 767px)').matches) {
-    canvas.setOverlayImage(overlay_mobile, canvas.renderAll.bind(canvas));
-  }else{
-    canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
-  };
-  canvas.deactivateAll().renderAll();
-});
+  if (!(window.matchMedia('(max-width: 767px)').matches)){
+    $("canvas").mouseout(function(){
+      canvas.setOverlayImage(overlay, canvas.renderAll.bind(canvas));
+      canvas.deactivateAll().renderAll();
+    })};
 
 $(".color-button").click(function(){
   var color = $(this).css("background-color");
@@ -141,7 +142,11 @@ $(".emoji").click(function(e){
   var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
   var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
   // console.log(emojiUnicode);
-  var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:200, left:220, selectable:true});
+  if (window.matchMedia('(max-width: 767px)').matches){
+    var text = new fabric.Text(emojiUnicode, {fontSize: '50', top:110, left:125, selectable:true});
+  } else{
+    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:200, left:210, selectable:true});
+  }
   canvas.add(text);
 });
 
@@ -252,38 +257,60 @@ var createCanvas = function (){
   if (window.matchMedia('(max-width: 767px)').matches) {
     canvas.setHeight(300);
     canvas.setWidth(300);
-    canvas.setOverlayImage('/assets/cases/i6t_mobile.png', canvas.renderAll.bind(canvas));
+    canvas.setOverlayImage('/assets/cases/mobile/i6t.png', canvas.renderAll.bind(canvas));
   } else {
     canvas.setHeight(450);
     canvas.setWidth(450);
-    // canvas.setOverlayImage('/assets/cases/i6t_500.png', canvas.renderAll.bind(canvas));
-    canvas.setOverlayImage('/assets/cases/i6t_450_copy.png', canvas.renderAll.bind(canvas));
+    canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
   }
   
 }; 
 
 var makeDesignsClickable = function () {
-    imgData = $(".designtocase")[0].src;
+  imgData = $(".designtocase")[0].src;
+  if (!(window.matchMedia('(max-width: 767px)').matches)){ 
     fabric.Image.fromURL(imgData,  function (img) {
       if (img.height >= img.width){
-      canvas.add(img.set({
+        canvas.add(img.set({
           height:450,
           width:450/img.height*img.width,
           left: -(((450/img.height*img.width)-450)/2),
           top: 0,
-      }));
-    } else if (img.width > img.height && img.width > 450) {
-      canvas.add(img.set({
-        height: 450,
-        width: 450/img.height*img.width,
-        left: -(((450/img.height*img.width)-450)/2),
-        top: 0,
-      }));
-    }
+        }));
+      } else if (img.width > img.height && img.width > 450) {
+        canvas.add(img.set({
+          height: 450,
+          width: 450/img.height*img.width,
+          left: -(((450/img.height*img.width)-450)/2),
+          top: 0,
+        }));
+      }
       canvas.controlsAboveOverlay = true;
       canvas.setActiveObject(canvas.item(0));
-    } , { crossOrigin: 'anonymous' });
-
+    } , { crossOrigin: 'anonymous' })
+  } else {
+    fabric.Image.fromURL(imgData,  function (img) {
+      if (img.height >= img.width){
+        canvas.add(img.set({
+          height:300,
+          width:300/img.height*img.width,
+          left: -(((300/img.height*img.width)-300)/2),
+          top: 0,
+          selectable:false
+        }));
+      } else if (img.width > img.height && img.width > 300) {
+        canvas.add(img.set({
+          height: 300,
+          width: 300/img.height*img.width,
+          left: -(((300/img.height*img.width)-300)/2),
+          top: 0,
+          selectable:false
+        }));
+      }
+      // canvas.controlsAboveOverlay = true;
+      // canvas.setActiveObject(canvas.item(0));
+    } , { crossOrigin: 'anonymous' })
+  }
 };
 
 
