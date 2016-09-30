@@ -261,7 +261,7 @@ var createCanvas = function (){
   } else {
     canvas.setHeight(450);
     canvas.setWidth(450);
-    canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
+    canvas.setOverlayImage('/assets/cases/i7t_prueba2.png', canvas.renderAll.bind(canvas));
   }
   
 }; 

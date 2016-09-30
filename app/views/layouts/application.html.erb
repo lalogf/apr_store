@@ -21,30 +21,6 @@
 		<!-- end Mixpanel -->
 	</head>
 	<body class="site">
-
-			<% if flash[:notice].present? %>
-			<div class="kitsuneUdon text-center container alert alert-primary alert-text">
-				<%= flash[:notice] %>
-			</div>
-			<% end %>
-
-			<% if flash[:alert].present? %>
-			<div class="kitsuneUdon text-center container alert alert-warning alert-text">
-				<%= flash[:alert] %>
-			</div>
-			<% end %>
-
-			<% if flash[:success].present? %>
-			<div class="kitsuneUdon text-center container alert alert-success alert-text">
-				<%= flash[:success] %>
-			</div>
-			<%end%>
-			<% if flash[:error].present? %>
-			<div class="kitsuneUdon text-center container alert alert-danger alert-text">
-				<%= flash[:error] %>
-			</div>
-			<% end %>
-
 		<%= yield %>
 		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

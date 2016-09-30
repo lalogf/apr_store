@@ -1,0 +1,22 @@
+<% if flash[:notice].present? %>
+<div class="century text-center container alert alert-primary alert-text">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+<% if flash[:alert].present? %>
+<div class="century text-center container alert alert-danger alert-text">
+	<%= flash[:alert] %>
+</div>
+<% end %>
+
+<% if flash[:success].present? %>
+<div class="century text-center container alert alert-success alert-text">
+	<%= flash[:success] %>
+</div>
+<%end%>
+<% if flash[:error].present? %>
+<div class="century text-center container alert alert-danger alert-text">
+	<%= flash[:error] %>
+</div>
+<% end %>
