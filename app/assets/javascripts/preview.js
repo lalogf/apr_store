@@ -132,15 +132,20 @@ $("#back_color").change(function(){
 var cont_width = $(".tab-content").width();
 var cont_margin = $(".tab-content").css("margin-left");
 
-$("#newtext").emojiPicker({
-  height: '200px',
-  width: (cont_width- cont_margin)
-});
+// $("#newtext").emojiPicker({
+//   height: '200px',
+//   width: (cont_width- cont_margin)
+// });
 
 
 $(".emoji").click(function(e){
-  var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
-  var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+  // var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
+  // var emoji_image = ($(e.target).css('background-image').split('"')[1]);
+  // var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
+      var emojiUnicode = $(e.target).text();
+  // fabric.Image.fromURL (emoji_image,  function (img) {
+  //       canvas.add(img.set({top:200, left:210}));
+  //     });
   // console.log(emojiUnicode);
   if (window.matchMedia('(max-width: 767px)').matches){
     var text = new fabric.Text(emojiUnicode, {fontSize: '50', top:110, left:125, selectable:true});
@@ -261,7 +266,7 @@ var createCanvas = function (){
   } else {
     canvas.setHeight(450);
     canvas.setWidth(450);
-    canvas.setOverlayImage('/assets/cases/i7t_prueba2.png', canvas.renderAll.bind(canvas));
+    canvas.setOverlayImage('/assets/cases/i6t.png', canvas.renderAll.bind(canvas));
   }
   
 }; 
@@ -367,27 +372,27 @@ var deletedItem = function (){
 // };
 
 
-    function toUnicode(code) {
-      var codes = code.split('-').map(function(value, index) {
-        return parseInt(value, 16);
-      });
-      return String.fromCodePoint.apply(null, codes);
-    };
-    function findEmoji(emojiShortcode) {
-      var emojis = $.fn.emojiPicker.emojis;
-      for (var i = 0; i < emojis.length; i++) {
-        if (emojis[i].shortcode == emojiShortcode) {
-          return emojis[i];
-        }
-      }
-    };
-    function rgb2hex(orig){
-     var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-       return (rgb && rgb.length === 4) ? "#" +
-       ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-       ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-       ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
-     };
+    // function toUnicode(code) {
+    //   var codes = code.split('-').map(function(value, index) {
+    //     return parseInt(value, 16);
+    //   });
+    //   return String.fromCodePoint.apply(null, codes);
+    // };
+    // function findEmoji(emojiShortcode) {
+    //   var emojis = $.fn.emojiPicker.emojis;
+    //   for (var i = 0; i < emojis.length; i++) {
+    //     if (emojis[i].shortcode == emojiShortcode) {
+    //       return emojis[i];
+    //     }
+    //   }
+    // };
+    // function rgb2hex(orig){
+    //  var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+    //    return (rgb && rgb.length === 4) ? "#" +
+    //    ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+    //    ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+    //    ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
+    //  };
 
      var uploading = function (){
       var widget = uploadcare.Widget('[role=uploadcare-uploader]');
@@ -397,9 +402,6 @@ var deletedItem = function (){
         makeDesignsClickable();
       });
     };
-
-
-
 
      $(document).ready(ready);
      $(document).on('page:load', ready);
