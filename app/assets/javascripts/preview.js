@@ -129,28 +129,20 @@ $("#back_color").change(function(){
   canvas.setBackgroundColor(color,canvas.renderAll.bind(canvas));
 });
 
-var cont_width = $(".tab-content").width();
-var cont_margin = $(".tab-content").css("margin-left");
+// var cont_width = $(".tab-content").width();
+// var cont_margin = $(".tab-content").css("margin-left");
 
 // $("#newtext").emojiPicker({
-//   height: '200px',
 //   width: (cont_width- cont_margin)
 // });
 
 
 $(".emoji").click(function(e){
-  // var emojiShortcode = $(e.target).attr('class').split('emoji-')[1];
-  // var emoji_image = ($(e.target).css('background-image').split('"')[1]);
-  // var emojiUnicode = toUnicode(findEmoji(emojiShortcode).unicode);
-      var emojiUnicode = $(e.target).text();
-  // fabric.Image.fromURL (emoji_image,  function (img) {
-  //       canvas.add(img.set({top:200, left:210}));
-  //     });
-  // console.log(emojiUnicode);
+  var emojiUnicode = $(e.target).text();
   if (window.matchMedia('(max-width: 767px)').matches){
     var text = new fabric.Text(emojiUnicode, {fontSize: '50', top:110, left:125, selectable:true});
   } else{
-    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:200, left:210, selectable:true});
+    var text = new fabric.Text(emojiUnicode, {fontSize: '70', top:212, left:212, selectable:true});
   }
   canvas.add(text);
 });
@@ -221,7 +213,12 @@ $('#generar').click(function(e){
       var overlay = canvas.overlayImage;
       canvas.overlayImage = null;
       canvas.deactivateAll().renderAll();
-      $('#image_to_print').val(canvas.toDataURL('image/png'));
+      $('#image_to_print').val(canvas.toDataURL({
+        format: 'png',
+        left:90,
+        width:277,
+        multiplier:2
+      }));
 
       canvas.overlayImage = overlay;
       canvas.deactivateAll().renderAll();
@@ -253,7 +250,6 @@ $('#generar').click(function(e){
 
 
   $(".uploadcare-widget-button-open")[0].innerHTML = "Agregar imagen";
-  // $(".uploadcare-widget-button").addClass("btn btn-lightBlue");
 };
 
 
@@ -312,8 +308,6 @@ var makeDesignsClickable = function () {
           selectable:false
         }));
       }
-      // canvas.controlsAboveOverlay = true;
-      // canvas.setActiveObject(canvas.item(0));
     } , { crossOrigin: 'anonymous' })
   }
 };
@@ -347,29 +341,6 @@ var deletedItem = function (){
 
 }
 
-
-// var createImage = function(cod){
-//   imgElement = $('.designtocase')[cod];
-//   if (window.matchMedia('(max-width: 767px)').matches) {
-//   imgInstance = new fabric.Image(imgElement, {
-//       height: 300,
-//       width: 300,
-//       scaleY:150/imgElement.width,
-//       scaleX:100/imgElement.width,
-//       left: 0,
-//       top: 0,
-//     },{ crossOrigin: 'Anonymous' });
-//   } else {
-//   imgInstance = new fabric.Image(imgElement, {
-//       height: 600,
-//       width: 600,
-//       scaleY:300/imgElement.width,
-//       scaleX:200/imgElement.width,
-//       left: 0,
-//       top: 0,
-//     },{ crossOrigin: 'Anonymous' } );
-//   }
-// };
 
 
     // function toUnicode(code) {
@@ -406,7 +377,3 @@ var deletedItem = function (){
      $(document).ready(ready);
      $(document).on('page:load', ready);
 
-/* TODO : 
-1. si eliges una foto luego del texto, enviar la foto al frente
-2. Poder poner solo un texto 
-*/

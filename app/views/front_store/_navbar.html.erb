@@ -1,31 +1,27 @@
-<div style="height:10vh" role="navigation" class="whiteBg">
+<div role="navigation" class="navbar-aa">
 	<div class="container-fluid">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 col-xs-6">
 						<div class="front desktop" style="height: 100%; width: 100%;"> 
-							<img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px">
+							<a href="/"><img id="logo" src="/assets/logo_arteaparte.png" height="80px" class="pull-left" id="logo" style="padding:10px"></a>
 						</div> 
 						<div class="front_mobile" > 
 							<img id="logo" src="/assets/logo_arteaparte.png" height="80px">
 						</div> 
 				</div>
 
-				<div class="col-md-6 navbar-right">
-<!-- 					<div class="col-md-3">
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2"><img src="/assets/iconos/case.svg" style="height:2vh"></span>
-							<input type="text" class="form-control century" value="Español/PEN" aria-describedby="sizing-addon2">
-						</div>
-						<a href="#" class="btn-lg"data-target="#shoppingcart" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">4</span></a>
-					</div> -->
-					<div class="col-md-3">
-						<% if user_signed_in?%>
-						<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
-						<%end%>
-					</div>
+				<div class="col-md-6 col-xs-6 navbar-right">
+					<span class="pull-right" id="hb" style="font-size:30px; cursor:pointer">☰</span>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>	
+
+<script type="text/javascript">
+	$("#hb").click(function(){
+		$(".site").toggleClass("moved-nav");
+		$("#me-nu").toggleClass("visi");	
+	});
+</script>

@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Ingresa tu correo electrónico" 
+            password:
+              blank: "Ingresa tu password" 
+      messages:
+        not_saved: "Por favor corrige los siguientes errores"

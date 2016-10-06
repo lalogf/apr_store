@@ -1,0 +1,33 @@
+<div id="me-nu" class="visi" style="position: fixed;width: 260px;z-index:1;top: 0;right: 0;bottom: 0;background-color:#585858;color:white">
+	<div class="container">
+		<div style="padding:10px">
+			<% if user_signed_in?%>
+			<div class="menu-options">
+				<%= link_to "Mi cuenta", user_path(current_user.id), method: :get %>
+			</div>
+			<div class="menu-options">
+				<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+			</div>
+			<% else %>
+				<div class="menu-options">
+					<%= link_to "Iniciar sesión", new_user_session_path %>
+				</div>
+				<div class="menu-options">
+					<%= link_to "Regístrate", new_user_registration_path %>
+				</div>
+			<%end%>
+			<div class="menu-options">
+				<%= link_to "Crea un case", new_picture_for_custom_path%>
+			</div>
+			<div class="menu-options">
+				<%= link_to "Galería", iphone6_path%>
+			</div>
+			<div class="menu-options">
+				<a href="">Contacto</a>
+			</div>
+			<div class="menu-options">
+				<a href="">Blog</a>
+			</div>
+		</div>
+	</div>
+</div>

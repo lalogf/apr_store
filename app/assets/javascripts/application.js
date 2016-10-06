@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
+//= require jquery.emojipicker.js
+//= require jquery.emojipicker.a.js
 //= require fabric
 //= require snap.svg.js
 //= require store

@@ -1,0 +1,42 @@
+<%= render "front_store/navbar" %>
+<div class="container">
+	<h2>Hello <%= @user.name %> <%= @user.last_name %></h2>
+
+	<%= link_to "Editar", edit_user_registration_path(@user.id) %>
+
+
+
+	<h2>Orders</h2>
+
+
+	<div class="col-md-12">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<th>Número de orden</th>
+					<th>Total </th>
+					<th>Status</th>
+					<th>Pedido</th>
+					<th>Fecha</th>
+					<th>Foto</th>
+				</thead>
+				<tbody>
+
+					<% @orders.each do |o|%>
+
+					<% if o.user_id && o.picture_for_custom && o.order_number && o.shipping%>
+					<tr>
+						<td><%=o.order_number%></td>
+						<td><%=o.subtotal + o.shipping%></td>
+						<td><%=o.order_status.name%></td>
+						<td><%=o.picture_for_custom.phonetype.modelName %> <%=o.picture_for_custom.phonetype.type_of_case %></td>
+						<td><%=o.created_at%></td>
+						<td><%=image_tag o.picture_for_custom.picture((:thumb)) %></td>
+					</tr>
+					<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
