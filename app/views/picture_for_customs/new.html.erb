@@ -9,8 +9,10 @@
 	UPLOADCARE_PUBLIC_KEY = "8012d0738a4f45c757e4";
 	UPLOADCARE_LIVE = false;
 </script>
-
 <div class="container" id="crea_case">
+	<div class="row front_mobile supercenter">
+		<h1 class="century-bold">Crea un case</h1>
+	</div>
 	<div class="row">
 		<div class="col-md-3 desktop">
 			<img id="logo" src="/assets/logo_arteaparte.png" class="pull-left">
@@ -34,6 +36,11 @@
 			<% end %>
 		</div>
 	</div>
+	<div class="row desktop">
+		<div class="col-md-4 col-md-offset-4">
+			<h1 class="century-bold center">Crea un case</h1>
+		</div>
+	</div>
 </div>
 <div style="bottom:8vh;position:fixed;width:100%">
 	<div class="col-md-12 myTabs">
@@ -41,7 +48,7 @@
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="A" >
 					<div class="margin-10 tab-center">
-						<h4 class="century-bold subtitle">Sube una imagen</h4>
+						<h3 class="century-bold subtitle">Sube una imagen</h3>
 						<form id="my-form">
 							<input type="hidden" role="uploadcare-uploader" data-crop="disabled" data-preview-step="true" data-images-only="true"/>
 						<div id="wuju" style="display:inline">
@@ -51,7 +58,7 @@
 				</div>
 				<div class="tab-pane fade" id="B">
 					<div class="margin-10 tab-center">
-						<h4 class="century-bold subtitle">Selecciona el color que más te guste para el case</h4>
+						<h3 class="century-bold subtitle">Selecciona el color que más te guste para el case</h3>
 						<% @colors.each do |color|%>
 							<div class="color-button" style="background-color:<%= color.color_code%>"></div>
 						<% end %>
@@ -60,7 +67,7 @@
 				</div>
 				<div class="tab-pane fade desktop" id="C">
 					<div class="row" >
-						<h4 class="century-bold subtitle">Agrega un texto</h4>
+						<h3 class="century-bold subtitle">Agrega un texto</h3>
 						<div class="margin-10 col-md-4">
 							<a id="text_to_canvas" class="btn btn-lightBlue">Agrega un texto</a>
 							<a id="remove-text" class="btn btn-red">Eliminar</a>
@@ -86,7 +93,7 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="D">
-					<h4 class="century-bold subtitle">Selecciona los emojis que quieras</h4>
+					<h3 class="century-bold subtitle">Selecciona los emojis que quieras</h3>
 <!-- 					<input type="text" id="newtext" style="display:none"> -->
 					<div id="emojiskeyboard">
 										<% "😬 😁 😂 😃 😄 😅 😆 😇 😉 😊 🙂 🙃 😋 😌 😍 😘 😗 😙 😚 😜 😝 😛 🤑 🤓 😎 🤗 😏 😶 😐 😑 😒 🙄 🤔 😳 😞 😟 😠 😡 😔 😕 🙁 😣 😖 😫 😩 😤 😮 😱 😨 😰 😯 😦 😧 😢 😥 😪 😓 😭 😵 😲 🤐 😷 🤒 🤕 😴 💤 💩 😈 👿 👹 👺 💀 👻 👽 🤖 😺 😸 😹 😻 😼 😽 🙀 😿 😾 🙌 👏 👋 👍 👊 ✊ 👌 ✋ 💪 🙏 ☝️ 👆 👇 👈 👉 🖕 🤘 🖖 💅 👄 👅 👂 👃 👁 👀 👤 🗣 👶 👦 👧 👨 👩 👱 👴 👵 👲 👳 👮 👷 💂 🕵 🎅 👼 👸 👰 🚶 🏃 💃 👯 👫 👬 👭 🙇 💁 🙅 🙆 🙋 🙎 🙍 💇 💆 💑 👩‍❤️‍👩 👨‍❤️‍👨 💏 👩‍❤️‍💋‍👩 👨‍❤️‍💋‍👨 👪 👨‍👩‍👧 👨‍👩‍👧‍👦 👨‍👩‍👦‍👦 👨‍👩‍👧‍👧 👩‍👩‍👦 👩‍👩‍👧 👩‍👩‍👧‍👦 👩‍👩‍👦‍👦 👩‍👩‍👧‍👧 👨‍👨‍👦 👨‍👨‍👧 👨‍👨‍👧‍👦 👨‍👨‍👦‍👦 👨‍👨‍👧‍👧 👚 👕 👖 👔 👗 👙 👘 💄 💋 👣 👠 👡 👢 👞 👟 👒 🎩 ⛑ 🎓 👑 🎒 👝 👛 👜 💼 👓 🕶 💍 🌂😇".split().each do |el|
@@ -96,7 +103,7 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="E">
-					<h4 class="century-bold subtitle">Elige tu equipo</h4>
+					<h3 class="century-bold subtitle">Elige tu equipo</h3>
 					<div class="dropdown tab-center">	
 							<% Phonetype.all.each do |n|%>
 							<div class="phonetype supercenter" style="width:80px;height:80px;border:dashed 2px black;display:inline-block;white-space: normal;padding: 20px 0px; margin:10px"><a href="#" id="<%=n.id%>"><%= n.modelName %> <%= n.type_of_case%></a></div>

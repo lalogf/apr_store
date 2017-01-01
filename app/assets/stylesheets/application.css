@@ -47,6 +47,10 @@ h1{
   font-size: 50px;
 }
 
+h1.kitsuneUdon {
+  font-size: 70px;
+}
+
 h2{
   font-size:40px;
 }
@@ -109,6 +113,7 @@ h4{
 span.glyphicon.bigIcon {
   font-size: 5em;
 }
+
 
 
 .uploadcare-widget-status-ready .uploadcare-widget-button-open, .uploadcare-widget-status-started .uploadcare-widget-status, .uploadcare-widget-status-started .uploadcare-widget-text, .uploadcare-widget-status-started .uploadcare-widget-button-cancel, .uploadcare-widget-status-loaded .uploadcare-widget-text, .uploadcare-widget-status-loaded .uploadcare-widget-button-remove, .uploadcare-widget-status-error .uploadcare-widget-text, .uploadcare-widget-status-error .uploadcare-widget-button-open{
@@ -273,7 +278,7 @@ label{
 }
 
 .alert-text{
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* -------alerts----------*/
@@ -548,11 +553,7 @@ a, a:active, a:hover{
 }
 
 
-    .right-side {
-    border-radius: 1px;
-    text-align: center;
-    padding: 0px;
-  }
+
   .caption {
     /*margin: 22px 0;*/
     padding-top: 22px;
@@ -577,19 +578,6 @@ a, a:active, a:hover{
     margin:10px 0;
   }
 
-#artist3, #artist4, #artist5, #artist6, #artist7 {
-    background-image: url('pics/kate.png');
-    background-size: cover;
-  }
-
-/*    #artist1 {
-    background-image: url('bg/artist1.png');
-    background-size: cover;
-  }*/
-      #artist2 {
-    background-image: url('bg/artist2.png');
-    background-size: cover;
-  }
 /*-------------------buttons-------------------*/
 
 
@@ -748,23 +736,6 @@ a, a:active, a:hover{
 
 /*-------------------buttons-------------------*/
 
-.divider {
-    margin-left: 40px;
-    display: inline-block;
-    width: 0;
-    border-right: 2px solid #000;
-    border-left: 2px solid #000;
-    border-radius: 2px
-}
-
-.divider-h {
-    display: inline-block;
-    height: 0;
-    width:100%;
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
-    border-radius: 2px
-}
 
 .artists{
   margin: 37.5px 0;
@@ -880,6 +851,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
     align-items:center;*/
   }
 
+  
+
   footer{
     margin-top: 40px;
   }
@@ -943,8 +916,14 @@ and (-webkit-min-device-pixel-ratio: 2) {
   h1{
     font-size: 30px;
   }
+  
+
+h1.kitsuneUdon {
+  font-size: 50px;
+}
+
   .home{
-    background-position: 15% 70%;
+    background-position: 85% 70%;
   }
 
   .showCase{

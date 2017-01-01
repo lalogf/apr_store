@@ -6,7 +6,9 @@ es:
           attributes:
             email:
               blank: "Ingresa tu correo electrónico" 
+              taken: "El correo electrónico ingresado ya está asociado a una cuenta"
             password:
               blank: "Ingresa tu password" 
       messages:
         not_saved: "Por favor corrige los siguientes errores"
+      

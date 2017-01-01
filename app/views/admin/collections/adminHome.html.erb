@@ -1,36 +1,4 @@
 <div class="row">
-	<div class="col-md-4">
-		<div class="panel panel-success">
-			<div class="panel-heading">
-				<span class="glyphicon glyphicon-picture bigIcon" aria-hidden="true"></span><h2 class="pull-right">Designs</h2>
-			</div>
-			<div class="panel-body">
-				Hello 2
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<span class="glyphicon glyphicon-user bigIcon" aria-hidden="true"></span><h2 class="pull-right">Designers</h2>
-			</div>
-			<div class="panel-body">
-				Hello 2
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<span class="glyphicon glyphicon-shopping-cart bigIcon" aria-hidden="true"></span><h2 class="pull-right">Sales</h2>
-			</div>
-			<div class="panel-body">
-				Hello 2
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row">
 	
 	<div class="col-md-12">
 		<div class="col-md-3 margin-10">
@@ -72,7 +40,6 @@
 				<tbody>
 					
 					<% @orders.each do |o|%>
-
 						<% if o.user_id && o.picture_for_custom %>
 							<tr>
 								<td><%=o.id%></td>
@@ -82,7 +49,8 @@
 								<td><%=o.user.name%></td>
 								<td><%=o.user.last_name%></td>
 								<td><%=o.picture_for_custom.phonetype.modelName %> <%=o.picture_for_custom.phonetype.type_of_case %></td>
-								<td><%=image_tag o.picture_for_custom.picture((:thumb)) %></td>
+								<td><%=image_tag o.picture_for_custom.picture((:thumb)) %>
+								</td>
 								<td><a href="" class="btn btn-success">Editar</a></td>
 							</tr>
 						<% end %>

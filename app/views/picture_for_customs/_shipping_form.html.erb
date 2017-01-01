@@ -11,10 +11,10 @@
       <div class="panel-body">
       	<%= bootstrap_form_for [@order, @shipping] do |f|  %>
       		<div class="col-md-8">
-	      		<%= f.text_field(:nombre, value:current_user.name) %>
+	      		<%= f.text_field(:name, value:current_user.name) %>
 	      	</div>
 	      	<div class="col-md-8">
-	      	<%= f.text_field(:apellido, placeholder:"Apellido",value:current_user.last_name) %>
+	      	<%= f.text_field(:last_name, placeholder:"Apellido",value:current_user.last_name) %>
 	      	</div>
 	      	<div class="col-md-8">
 	      		<%= f.text_field(:email,value:current_user.email) %>	

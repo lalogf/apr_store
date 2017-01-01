@@ -1,38 +1,21 @@
 <%= render "navbar"%>
 
 <div class="container">
-<h1 class="century uppercase" style="text-align:center">Colecciones</h1>
+  <h1 class="century-bold uppercase center">Colecciones</h1>
   <div class="row" style="margin-top:20px">
-    <div class="col-md-8 col-md-offset-2">
-      <% @collections.each_with_index do |el,index| %>
-          <%if index.even? %>
-            <div class="col-md-6 thumbnail supercenter">
-              <div class="col-sm-6 artists" style="margin:37.5px 0; background-image:url(<%=el.designs.first.picture.url(:thumb) %>);background-size:cover" >
-              </div>
-              <span class="divider"></span>
-              <div class="col-sm-6">
-                <div class="caption">
-                  <h3 class="title century"><%=el.name%></h3>
-                  <p class="century"><%=el.designs.count%> diseños</p>
-                </div>
-              </div>
-            </div>
-          <% else %>
-            <div class="col-md-6 thumbnail supercenter" style="padding-left:30px">
-              <div class="col-sm-6 artists" style="margin:37.5px 0; background-image:url(<%=el.designs.first.picture.url(:thumb) %>);background-size:cover" >
-              </div>
-              <span class="divider"></span>
-              <div class="col-sm-6">
-                <div class="caption">
-                  <h3 class="title century"><%=el.name%></h3>
-                  <p class="century"><%=el.designs.count%> diseños</p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-      <% end %>
+  <div class="col-md-8 col-md-offset-2">
+    <% @collections.each_with_index do |el,index| %>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <%= image_tag el.designs.first.picture.url(:thumb) %>
+          <div class="caption">
+            <h3 class="title century-bold"><%=el.name%></h3>
+            <p class="century"><%=el.designs.count%> diseños</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
-
 <%= render "footer"%>

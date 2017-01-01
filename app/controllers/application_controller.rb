@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
   
   protected
 
+  before_filter :configure_devise_params, if: :devise_controller?
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:name, :last_name, :email, :password, :password_confirmation)
+    end
+  end
+
+
   # def after_sign_in_path_for(admin)
   #   admin_path
   # end

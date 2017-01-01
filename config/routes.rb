@@ -62,7 +62,7 @@ end
   get 'iphone5' => 'front_store#iphone5'
   get 'motog' => 'front_store#motog'
   # get 'artistas' => 'front_store#designers'
-  # get 'colecciones' => 'front_store#collections'
+  get 'colecciones' => 'front_store#collections'
   get 'productos' => 'front_store#products_index'
   get 'terminos-y-condiciones' => 'front_store#terminos'
   get 'styleguide' => 'front_store#styleguide'

@@ -6,10 +6,6 @@ end
 def create
 	@order = current_order
 	@order.save
-	if !current_user.last_name
-		current_user.last_name = params[:apellido]
-		current_user.save
-	end
 	@shipping = Shipping.create(shipping_params.merge(order_id: @order.id))
 	respond_to do |format|
 		if @shipping.save 

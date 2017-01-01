@@ -56,6 +56,7 @@ class Admin::CollectionsController < ApplicationController
 		@products = Product.all.paginate(:page => params[:page], :per_page => 5)
 		@inventory = CaseInventory.all
 		@orders = Order.all
+		@custom = CustomProduct.all
 	end
 
 	private
