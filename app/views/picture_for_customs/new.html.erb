@@ -13,7 +13,7 @@
 	<div class="row front_mobile supercenter">
 		<h1 class="century-bold">Crea un case</h1>
 	</div>
-	<div class="row">
+	<div class="row" id="row_mobile">
 		<div class="col-md-3 desktop">
 			<img id="logo" src="/assets/logo_arteaparte.png" class="pull-left">
 			<div class="col-md-12">
@@ -26,13 +26,12 @@
 			<canvas id="c"></canvas>
 		</div>
 		<div class="col-md-3 price_and_button">
-			<h1 class="century-bold custom_price">S/. 90</h1>
-			<a href="#" class="btn btn-lightBlue" id="generar2" style="display:none"> Generar </a>
+			<h1 class="century-bold custom_price desktop">S/. 90</h1>
 			<%= bootstrap_form_for @picture do |f|%>
-			<%= hidden_field_tag 'picture_url'%>
-			<%= hidden_field_tag 'phone_type_name', '5'%>
-			<%= hidden_field_tag 'image_to_print'%>
-			<%= f.submit "Continuar", class: "btn btn-green margin-20", id: "generar" %>
+				<%= hidden_field_tag 'picture_url'%>
+				<%= hidden_field_tag 'phone_type_name', '5'%>
+				<%= hidden_field_tag 'image_to_print'%>
+				<%= f.submit "Continuar", class: "btn btn-green2 margin-20", id: "generar" %>	
 			<% end %>
 		</div>
 	</div>
@@ -42,7 +41,7 @@
 		</div>
 	</div>
 </div>
-<div style="bottom:8vh;position:fixed;width:100%">
+<div style="bottom:16vh;position:fixed;width:100%">
 	<div class="col-md-12 myTabs">
 		<div class="col-md-12 myTabs">
 			<div class="tab-content">
@@ -115,7 +114,7 @@
 		</div>
 	</div>
 </div>
-<div style="height:8vh;background-color: #585858;position:fixed;bottom:0;width:100%">
+<div style="height:8vh;background-color: #585858;position:fixed;bottom:8vh;width:100%">
 	<div class="supercenter" style="color:white;padding:3vh 10vw">
 		<div class="custom_menu"">
 			<a href="#A" data-toggle="tab">

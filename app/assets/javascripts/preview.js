@@ -256,9 +256,9 @@ $('#generar').click(function(e){
 var createCanvas = function (){
   canvas = new fabric.Canvas('c');
   if (window.matchMedia('(max-width: 767px)').matches) {
-    canvas.setHeight(300);
-    canvas.setWidth(300);
-    canvas.setOverlayImage('/assets/cases/mobile/i6t.png', canvas.renderAll.bind(canvas));
+    canvas.setHeight(250);
+    canvas.setWidth(250);
+    canvas.setOverlayImage('/assets/cases/mobile/i6t_2.png', canvas.renderAll.bind(canvas));
   } else {
     canvas.setHeight(450);
     canvas.setWidth(450);
@@ -293,17 +293,17 @@ var makeDesignsClickable = function () {
     fabric.Image.fromURL(imgData,  function (img) {
       if (img.height >= img.width){
         canvas.add(img.set({
-          height:300,
-          width:300/img.height*img.width,
-          left: -(((300/img.height*img.width)-300)/2),
+          height:250,
+          width:250/img.height*img.width,
+          left: -(((250/img.height*img.width)-250)/2),
           top: 0,
           selectable:false
         }));
-      } else if (img.width > img.height && img.width > 300) {
+      } else if (img.width > img.height && img.width > 250) {
         canvas.add(img.set({
-          height: 300,
-          width: 300/img.height*img.width,
-          left: -(((300/img.height*img.width)-300)/2),
+          height: 250,
+          width: 250/img.height*img.width,
+          left: -(((250/img.height*img.width)-250)/2),
           top: 0,
           selectable:false
         }));
