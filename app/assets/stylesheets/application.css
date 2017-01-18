@@ -847,6 +847,19 @@ canvas {
   background-color:rgba(253, 248, 231, 0.7);
 }
 
+.design_tabs {
+  height:8vh;
+  background-color: #585858;
+  position:fixed;
+  bottom:0vh;
+  width:100%
+}
+
+.content_tabs{
+  bottom:8vh;
+  position:fixed;
+  width:100%
+}
 /*.precio{
   position: relative;
   bottom: 0;
@@ -873,6 +886,12 @@ and (orientation: portrait) {
     display:flex;
 /*    justify-content:center;
     align-items:center;*/
+  }
+
+  #mobile_title{
+    display:flex;
+    justify-content:center;
+    align-items:center;
   }
 
   
@@ -922,6 +941,20 @@ and (orientation: portrait) {
     width: 100%;
     padding:0;
   }
+
+.design_tabs {
+  height:8vh;
+  background-color: #585858;
+  position:fixed;
+  bottom:8vh;
+  width:100%
+}
+
+.content_tabs{
+  bottom:16vh;
+  position:fixed;
+  width:100%
+}
 
   .container{
     padding: 0;
