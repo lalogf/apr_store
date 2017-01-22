@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.3"
+ruby "2.3.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -72,9 +72,6 @@ gem 'stripe', git: "https://github.com/stripe/stripe-ruby"
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem "rails-erd"
-	
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views

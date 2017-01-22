@@ -36,19 +36,6 @@ ActiveRecord::Schema.define(version: 20160901170737) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
-  create_table "banners", force: :cascade do |t|
-    t.string   "caption"
-    t.string   "type_of_banner"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "active",             default: false
-    t.boolean  "principal",          default: false
-  end
-
   create_table "case_inventories", force: :cascade do |t|
     t.string   "finish"
     t.integer  "phonetype_id"
